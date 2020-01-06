@@ -6,6 +6,7 @@ export default class SessionForm extends Component {
         super(props);
         this.state = {
             username: "",
+            email: "",
             password: ""
         };
         this.handleSubmit = this.handleSubmit.bind(this)
@@ -25,7 +26,16 @@ export default class SessionForm extends Component {
     }
 
     render(){
-        const {username, password} = this.state
+      const {username, password, email} = this.state
+      const emailField = this.props.formType === "Signup" ? 
+         (
+          <label>
+            Email
+                <input type="email" value={email} onChange={this.handleInput("email")} />
+          </label>
+        ) : (
+          null
+        )
         return (
             <div>
               <ul>
@@ -44,6 +54,7 @@ export default class SessionForm extends Component {
                 Username
                 <input type="text" value={username} onChange={this.handleInput("username")}/>
               </label>
+              {emailField}
               <label>
                 Password
                 <input type="password" value={password} onChange={this.handleInput("password")}/>

@@ -2,3 +2,4 @@ node_modules
 tmp/cache/*
 tmp/cache/bootsnap-compile-cache/*
 tmp/*
+config/master.key

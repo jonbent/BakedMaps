@@ -80,6 +80,6 @@ test:
 #
 production:
   <<: *default
-  database: weedmaps_production
-  username: weedmaps
+  database: baked_maps_production
+  username: baked_maps
   password: <%= ENV['WEEDMAPS_DATABASE_PASSWORD'] %>

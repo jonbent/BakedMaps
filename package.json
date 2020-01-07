@@ -1,8 +1,9 @@
 {
-  "name": "BenchBnB",
+  "name": "baked-maps",
   "private": true,
   "scripts": {
-    "start": "webpack --mode=development --watch"
+    "start": "webpack --mode=development --watch",
+    "postinstall": "webpack"
   },
   "dependencies": {
     "@babel/core": "^7.7.7",

@@ -1,4 +1,4 @@
 node_modules
-tmp/cache/assets/sprockets/*
+tmp/cache/*
 tmp/cache/bootsnap-compile-cache/*
 tmp/*

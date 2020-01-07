@@ -1,12 +1,14 @@
 import React from 'react'
 import {AuthRoute, ProtectedRoute} from '../util/RouteUtil'
-import GreetingContainer from './greetings/GreetingContainer'
+import NavBarContainer from './navbar/NavBarContainer'
 import LoginFormContainer from './auth/LoginFormContainer';
 import SignupFormContainer from './auth/SignupFormContainer';
+import ImageSlideIndex from './slider/ImageSlideIndex'
 
 const App = () => (
   <div>
-    <GreetingContainer />
+    <NavBarContainer />
+    <ImageSlideIndex />
     <AuthRoute path="/signup" component={SignupFormContainer} />
     <AuthRoute path="/login" component={LoginFormContainer} />
   </div>

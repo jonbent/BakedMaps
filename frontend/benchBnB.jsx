@@ -2,11 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import store from './store/store'
-import {logout, login} from './actions/session'
 import Root from './components/Root'
+import CityUtil from './util/city_recommendations/CityStateUtil'
 
 document.addEventListener('DOMContentLoaded', () => {
     const root = document.getElementById('root');
+    window.cities = new CityUtil
     if (window.currentUser) {
         const preloadedState = {
             entities: {

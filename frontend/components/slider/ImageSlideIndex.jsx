@@ -16,10 +16,7 @@ export default class ImageSlideIndex extends Component {
     }
 
     componentDidMount() {
-        this.fetchImages().then(() => {
-            
-        })
-        // this.fetchImages()
+        this.fetchImages()
     }
     
     nextImage() {
@@ -43,9 +40,17 @@ export default class ImageSlideIndex extends Component {
             method: "GET",
             dataType: "JSON"
         }).then(response => {
-            this.setState({
-                images: Object.values(response.data.carousel)
-            }, () => setInterval(this.nextImage, 3000))
+            const carousel = Object.values(response.data.carousel)
+            if (!carousel.length){ 
+                this.fetchImages();
+            } else {
+                this.setState(
+                    {
+                        images: Object.values(response.data.carousel)
+                    }, 
+                    () => setInterval(this.nextImage, 5000)
+                )
+            }
         })
     }
     slideWidth() {

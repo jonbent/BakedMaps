@@ -6,6 +6,7 @@ class User < ApplicationRecord
   validates :password, length: {minimum: 6, allow_nil: true}
   attr_reader :password
   before_validation :ensure_session_token
+  has_one_attached :image
 
   def ensure_session_token
     self.session_token ||= SecureRandom.urlsafe_base64

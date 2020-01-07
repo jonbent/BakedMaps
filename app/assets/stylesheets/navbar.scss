@@ -1,0 +1,204 @@
+/* start navbar css */
+body{
+    font-family: proxima-nova, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+    // remove for more responsiveness later
+    min-width: 900px;
+}
+.nav-bar{
+    border-bottom: 0.0625rem solid rgb(230, 229, 229);
+}
+.nav-bar > div{
+    max-width: 75rem;
+    display: grid;
+    grid-template-columns: repeat(11, 1fr);
+    margin: 0px auto;
+    
+    height: 97px;
+    min-width: 900px;
+}
+.logo {
+    grid-column-start: 1;
+    grid-column-end: 1;
+    background-image: "https://weedmaps.com/static/images/wm-logo-mini-black-smile.svg";
+    justify-self: center;
+    display: grid;
+}
+.logo > div {
+    align-self: center;
+}
+.header-content{
+    
+    justify-content: center;
+    width: 100%;
+    grid-column-start: 2;
+    grid-column-end: 12;
+    display: flex;
+    flex-direction: column;
+};
+
+.bakery-search{
+    width: -webkit-fill-available;
+    height: 2.125rem;
+    padding: 1rem 0px 0.875rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+    // background-color: rgb(204, 204, 204);
+};
+.bakery-search-bar {
+    width: 100%;
+    max-width: 45.625rem;
+    display: flex;
+    position: relative;
+}
+.bakery-search-bar > input {
+    width: -webkit-fill-available;
+    display: grid;
+    height: 2.125rem;
+    background-color: rgb(204, 204, 204);
+    padding-left: 2.3125rem;
+    border-radius: 5px;
+};
+.search-icon{
+    display: grid;
+    align-self: center;
+    justify-self: center;
+}
+.search-icon-container {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    height: 2.125rem;
+    width: 2.25rem;
+}
+
+.nav-user-info{
+    height: 24px;
+    width: 24px;
+    padding-right: 0.5rem
+}
+.search-options{
+    width: -webkit-fill-available;
+    height: 2.125rem;
+    display: flex;
+    align-items: center;
+    padding-left: 1rem;
+    // background-color: rgb(204, 204, 204);
+};
+
+.search-options > a {
+    text-decoration: none;
+    color: rgb(74, 74, 74);
+    padding: 0px 0.75rem 0.5rem;
+    padding-left: 0.25rem;
+}
+.search-options > a:hover {
+    color: rgb(0, 205, 190);
+    
+}
+
+.active-param {
+    color: rgb(0, 205, 190) !important;
+}
+.auth-links{
+    display:flex;
+}
+.auth-links > a {
+    padding: 0px 1.25rem;
+    margin: 0px 0.3125rem;
+    font-size: 0.875rem;
+    font-weight: 700;
+    text-decoration: none;
+    color: rgb(102, 102, 102);
+    height: 2rem;
+    display: flex;
+    line-height: 1.875rem;
+}
+.auth-links > a:nth-of-type(1):hover {
+    color: rgb(1, 168, 163);
+}
+.auth-links > a:nth-of-type(2) {
+    border-width: 0.0625rem;
+    border-style: solid;
+    border-radius: 0.1875rem;
+    border-color: rgb(0, 205, 190);
+    margin-right: 1.25rem;
+}
+.auth-links > a:nth-of-type(2):hover {
+    background-color: rgb(0, 205, 190);
+    color: rgb(255, 255, 255);
+}
+
+.location-field{ 
+    max-width: 12.5rem;
+    width: 100%;
+    height: 2.125rem;
+    margin-left: 0.5rem;
+    position: relative;
+}
+.location-field > input {
+    color:rgb(74, 74, 74);
+    padding: 0px 0.75rem;
+    padding-left: 2.3125rem;
+    padding-right: 2rem;
+    height: 2.125rem;
+    text-indent: 0px;
+    font-size:14px;
+    font-stretch:100%;
+    font-style:normal;
+}
+.location-icon-container {
+    position: absolute;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    height: 2.125rem;
+    width: 2.25rem;
+}
+.location-down-arrow-container{
+    position: absolute;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    height: 2.125rem;
+    width: 2.25rem;
+    top: 0.0625rem;
+    right:-1.4rem;
+}
+.bakery-drop-down {
+    position: absolute;
+    min-height: auto;
+    max-height: 35rem;
+    width: 100%;
+    background-color: white;
+    top: 2.125rem;
+    padding-top: 0.5rem;
+    box-shadow: rgb(102, 102, 102) 0px 0.0625rem 0.1875rem;
+    border-radius: 0px 0px 0.125rem 0.125rem;
+    z-index: 2;
+
+}
+.bakery-drop-down > li {
+    height: 3rem;
+    padding: 0.5rem 0.5rem 0.5rem 1rem;
+    border-radius: 0.1875rem;
+    display: flex;
+}
+.bakery-drop-down > li:hover {
+    background-color: rgb(242, 245, 245);
+}
+.position-icon{
+    margin-right: 0.5rem;
+    display: grid;
+    align-items: center;
+}
+.position-name{
+    width: calc(100vw - 64px);
+    color: rgb(124, 124, 124);
+    align-items: center;
+    white-space: nowrap;
+    overflow: hidden;
+    display: grid;
+}

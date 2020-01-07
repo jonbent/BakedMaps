@@ -4,3 +4,4 @@ tmp/cache/bootsnap-compile-cache/*
 tmp/*
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+/log/development.rb

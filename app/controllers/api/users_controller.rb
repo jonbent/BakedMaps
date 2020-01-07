@@ -1,7 +1,6 @@
 class Api::UsersController < ApplicationController
     def create
         @user = User.new(user_params)
-        @user.image.attach(asset_path('profile_avatar_dark.svg'))
         if @user.save
             login(@user)
             render :show

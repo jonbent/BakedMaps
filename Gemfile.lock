@@ -136,6 +136,9 @@ GEM
     nio4r (2.5.2)
     nokogiri (1.10.7)
       mini_portile2 (~> 2.4.0)
+    passenger (6.0.4)
+      rack
+      rake (>= 0.8.1)
     pg (1.2.0)
     pry (0.12.2)
       coderay (~> 1.1.0)
@@ -143,7 +146,6 @@ GEM
     pry-rails (0.3.9)
       pry (>= 0.10.4)
     public_suffix (4.0.2)
-    puma (3.12.2)
     rack (2.0.8)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
@@ -238,9 +240,9 @@ DEPENDENCIES
   jbuilder (~> 2.5)
   jquery-rails
   listen (>= 3.0.5, < 3.2)
+  passenger
   pg (>= 0.18, < 2.0)
   pry-rails
-  puma (~> 3.11)
   rails (~> 5.2.4, >= 5.2.4.1)
   sass-rails (~> 5.0)
   selenium-webdriver

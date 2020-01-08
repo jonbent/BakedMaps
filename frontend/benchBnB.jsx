@@ -4,6 +4,8 @@ import ReactDOM from 'react-dom';
 import store from './store/store'
 import Root from './components/Root'
 import CityUtil from './util/city_recommendations/CityStateUtil'
+import { login, logout } from './util/SessionApiUtil';
+
 
 document.addEventListener('DOMContentLoaded', () => {
     const root = document.getElementById('root');
@@ -20,5 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
         window.store = store();
     }
+    window.login = login
+    window.logout = logout
     ReactDOM.render(<Root store={window.store} />, root);
 })

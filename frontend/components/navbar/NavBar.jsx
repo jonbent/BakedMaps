@@ -5,6 +5,8 @@ import Crosshair from '../svg/crosshair'
 import { Link, NavLink } from 'react-router-dom';
 import { debounce } from 'lodash'
 import CityUtil from '../../util/city_recommendations/CityStateUtil';
+import UserInfoModal from '../users/UserInfoModal'
+import OutsideClickHandler from "../OutsideClickHandler";
 
 class NavBar extends Component {
     constructor(props){
@@ -14,13 +16,15 @@ class NavBar extends Component {
             locationPlaceholder: "San Francisco, CA",
             selectedCity: "San Francisco",
             cities: [],
-            locationInputValue: ""
+            locationInputValue: "",
+            userModalOpen: false
         };
         this.CityUtil = new CityUtil();
         this.handleCitySelect = this.handleCitySelect.bind(this);
         this.handleLocationInputFocus = this.handleLocationInputFocus.bind(this);
         this.handleSearchInputChange = this.handleSearchInputChange.bind(this);
         this.emitSearchInputChangeDebounce = debounce(this.emitSearchInputChange.bind(this), 250);
+        this.handleUserClick = this.handleUserClick.bind(this)
     }
 
     handleLocationInputFocus(value){
@@ -50,96 +54,141 @@ class NavBar extends Component {
         })
     }
     handleCitySelect(cityName){
-        console.log("hitting");
-        
         const cityInfo = this.CityUtil.getCityInfo(cityName);
         this.setState({
             locationInputValue: `${cityName}, ${cityInfo.state_id}`,
             selectedCity: cityName,
         })
     }
-    render(){
-        const { currentUser, logout } = this.props;
-        return(
-            <nav className="nav-bar">
-                <div>
-                    <Link to="/" className="logo">
-                        <div >
-                            <img src="https://weedmaps.com/static/images/wm-logo-mini-black-smile.svg" alt="weedmaps"/>
-                        </div>
-                    </Link>
-                    <div className="header-content">
-                        <div className="bakery-search">
-                            <div className="bakery-search-bar">
-                                {this.state.locationSearch && 
-                                    <ul className="bakery-drop-down">
-                                        <li>
-                                            <div className="position-icon">
-                                                <Crosshair />
-                                            </div>
-                                            <div className="position-name">
-                                                Current Location
-                                            </div>
-                                        </li>
-                                        {this.state.cities.map(cityName => {
-                                            return (
-                                                <li key={cityName} onMouseDown={e => this.handleCitySelect(cityName)}>
-                                                    <div className="position-icon">
-                                                        <MarkerIcon />
-                                                    </div>
-                                                    <div className="position-name">
-                                                        {cityName}, {this.CityUtil.getCityInfo(cityName).state_id}
-                                                    </div>
-                                                </li>
-                                            )
-                                        })}
-                                    </ul>
-                                }
-                                
-                                <div className="search-icon-container">
-                                    <i className="fa fa-search search-icon"></i>
-                                </div>
-                                <input type="text" placeholder="Search for Bakeries, or products"/>
-                                <div className="location-field cursor-text" onClick={e => this.focusLocationInput(e)}>
-                                    
-                                    
-                                    <div className="location-icon-container">
-                                        {!this.state.locationSearch ? (
-                                            <MarkerIcon />
-                                        ) : (
-                                            <i className="fa fa-times search-icon"></i>
-                                        )}
-                                        
-                                    </div>
-                                    <input className="location-input" type="text" value={this.state.locationInputValue} placeholder={this.state.locationPlaceholder} onFocus={e => this.handleLocationInputFocus(true)} onBlur={e => this.handleLocationInputFocus(false)} onChange={this.handleSearchInputChange} />
-                                    {!this.state.locationSearch && 
-                                        <div className="location-down-arrow-container">
-                                            <i className="fa fa-caret-down location-down-arrow-icon"></i>
-                                        </div>
-                                    }
-                                </div>
-                            </div>
 
-                            {currentUser && <Link to={`/users/${currentUser.username}`}>
-                                <div className="nav-user-info">
-                                    <ProfileAvatarSvg />
-                                </div>
-                            </Link>}
-                            {!currentUser && <div className="auth-links">
-                                <Link to="/login">LOG IN</Link>
-                                <Link to="/signup">SIGN UP</Link>
-                            </div>}
-                        </div>
-                        <div className="search-options">
-                            <NavLink activeClassName="active-param" to="/bakeries">Bakeries</NavLink>
-                            <NavLink activeClassName="active-param" to="/products">Products</NavLink>
-                            <NavLink activeClassName="active-param" to="/deals">Deals</NavLink>
-                            <NavLink activeClassName="active-param" to="/maps">Maps</NavLink>
-                        </div>
-                    </div>
+    handleUserClick(){
+        this.setState({
+            userModalOpen: !this.state.userModalOpen
+        });
+    }
+
+    render(){
+        const {locationSearch} = this.state
+        const { currentUser, logout } = this.props;
+        return (
+          <nav className="nav-bar">
+            <div>
+              <Link to="/" className="logo">
+                <div>
+                  <img
+                    src="https://weedmaps.com/static/images/wm-logo-mini-black-smile.svg"
+                    alt="weedmaps"
+                  />
                 </div>
-            </nav>
-        )
+              </Link>
+              <div className="header-content">
+                <div className="bakery-search">
+                  <div className="bakery-search-bar">
+                    {locationSearch && (
+                      <ul className="bakery-drop-down">
+                        <li>
+                          <div className="position-icon">
+                            <Crosshair />
+                          </div>
+                          <div className="position-name">Current Location</div>
+                        </li>
+                        {this.state.cities.map(cityName => {
+                          return (
+                            <li
+                              key={cityName}
+                              onMouseDown={e => this.handleCitySelect(cityName)}
+                            >
+                              <div className="position-icon">
+                                <MarkerIcon />
+                              </div>
+                              <div className="position-name">
+                                {cityName},{" "}
+                                {this.CityUtil.getCityInfo(cityName).state_id}
+                              </div>
+                            </li>
+                          );
+                        })}
+                      </ul>
+                    )}
+
+                    <div className="search-icon-container">
+                      <i className="fa fa-search search-icon"></i>
+                    </div>
+                    <input
+                      type="text"
+                      placeholder="Search for Bakeries, or products"
+                    />
+                    <div
+                      className="location-field cursor-text"
+                      onClick={e => this.focusLocationInput(e)}
+                    >
+                      <div className="location-icon-container">
+                        {!locationSearch ? (
+                          <MarkerIcon />
+                        ) : (
+                          <i className="fa fa-times search-icon"></i>
+                        )}
+                      </div>
+                      <input
+                        className="location-input"
+                        type="text"
+                        value={this.state.locationInputValue}
+                        placeholder={this.state.locationPlaceholder}
+                        onFocus={e => this.handleLocationInputFocus(true)}
+                        onBlur={e => this.handleLocationInputFocus(false)}
+                        onChange={this.handleSearchInputChange}
+                      />
+                      {!locationSearch && (
+                        <div className="location-down-arrow-container">
+                          <i className="fa fa-caret-down location-down-arrow-icon"></i>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                  {currentUser && (
+                    <div className="nav-user-info">
+                      <div
+                        className="nav-user-icon-container"
+                        onClick={this.handleUserClick}
+                      >
+                        <ProfileAvatarSvg />
+                      </div>
+                      {this.state.userModalOpen && (
+                        <OutsideClickHandler action={this.handleUserClick}>
+                          <UserInfoModal
+                            user={currentUser}
+                            logout={logout}
+                            closeModal={this.handleUserClick}
+                          />
+                        </OutsideClickHandler>
+                      )}
+                    </div>
+                  )}
+                  {!currentUser && (
+                    <div className="auth-links">
+                      <Link to="/login">LOG IN</Link>
+                      <Link to="/signup">SIGN UP</Link>
+                    </div>
+                  )}
+                </div>
+                <div className="search-options">
+                  <NavLink activeClassName="active-param" to="/bakeries">
+                    Bakeries
+                  </NavLink>
+                  <NavLink activeClassName="active-param" to="/products">
+                    Products
+                  </NavLink>
+                  <NavLink activeClassName="active-param" to="/deals">
+                    Deals
+                  </NavLink>
+                  <NavLink activeClassName="active-param" to="/maps">
+                    Maps
+                  </NavLink>
+                </div>
+              </div>
+            </div>
+          </nav>
+        );
     }
 }
 export default NavBar

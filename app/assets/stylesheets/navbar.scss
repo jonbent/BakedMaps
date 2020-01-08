@@ -2,7 +2,6 @@
 body{
     font-family: proxima-nova, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
     // remove for more responsiveness later
-    min-width: 900px;
 }
 .nav-bar{
     border-bottom: 0.0625rem solid rgb(230, 229, 229);
@@ -12,9 +11,8 @@ body{
     display: grid;
     grid-template-columns: repeat(11, 1fr);
     margin: 0px auto;
-    
     height: 97px;
-    min-width: 900px;
+    min-width: 1064px;
 }
 .logo {
     grid-column-start: 1;
@@ -201,4 +199,86 @@ body{
     white-space: nowrap;
     overflow: hidden;
     display: grid;
+}
+
+.user-info-modal {
+    position: absolute;
+    top: 2.375rem;
+    right: 0px;
+    background-color: rgb(255, 255, 255);
+    z-index: 2;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 3px;
+}
+.user-info-modal > nav {
+    min-width: 22.5rem;
+}
+.user-info-modal > nav > ul {
+    padding: 1rem;
+    margin: 0px;
+
+}
+.list-user-info-modal {
+    font-size: 1rem;
+    line-height: 1.5rem;
+    color: rgb(74, 74, 74);
+    outline: 0px;
+    
+    
+}
+.list-user-info-modal > a {
+    padding: 0.5rem;
+    border-radius: 0.1875rem;
+    text-decoration: none;
+    color: rgb(51, 51, 51);
+}
+.list-user-info-modal > a > div {
+    display: grid;
+    grid-template-columns: 3rem 1fr;
+    grid-template-rows: 1.5rem 1fr;
+    grid-template-areas:
+    "avatar username"
+    "avatar view-profile";
+    width: 100%;
+    
+}
+
+.separator{
+    border-bottom: 1px solid rgb(230, 229, 229);
+    margin: 1rem -1rem;
+    
+}
+.avatar-list-user-info-modal{
+    cursor: pointer;
+    align-self: start;
+    border-width: 0px;
+    border-style: initial;
+    border-color: initial;
+    border-image: initial;
+    margin: 0px 0.125rem;
+    transition: opacity 0.3s ease-in-out 0s;
+    height: 48px;
+    width: 48px;
+}
+.username-list-user-info-modal{
+    grid-area: username / username / username / username;
+    margin-left: 1rem;
+    text-decoration: none;
+}
+.profile-list-user-info-modal{
+    grid-area: view-profile / view-profile / view-profile / view-profile;
+    margin-left: 1rem;
+    text-decoration: none;
+}
+.list-user-info-modal a {
+    padding: 0.5rem;
+    display: flex;
+}
+.list-user-info-modal + li {
+    margin-top: 1rem;
+}
+.logout-button{
+    cursor: pointer;
+}
+.nav-user-icon-container{
+    cursor: pointer;
 }

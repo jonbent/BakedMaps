@@ -1,0 +1,126 @@
+body, html, main#root{
+    height: 100%;
+}
+.signup-splash {
+    display: flex;
+    min-height: 100%;
+}
+.signup-splash .main {
+    position: relative;
+    padding-bottom: 2.75em;
+    flex: 2 1;
+    display: flex;
+    justify-content: center;
+    padding-top: 9em;
+}
+.banner-container{
+    background: url(https://weedmaps-assets-production.weedmaps.com/packs/media/auth/images/signup-bg-21f09731f49185db202047ab1c5f6ddb.jpg) no-repeat 50%;
+    background-size: cover;
+    flex: 1 1;
+    padding: 150px 50px 80px;
+    background-color: #3a3a3a;
+    color: #fff;
+}
+.signup-banner-info{
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    
+}
+.signup-banner-info h2 {
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 32px;
+    margin-bottom: 60px;
+}
+.signup-splash ul.check-list {
+    padding-left: 1.25em;
+}
+.check-list li {
+    line-height: 1.4em;
+    margin: 32px 0;
+    padding-left: 8px;
+    position: relative;
+}
+.signup-splash .banner-container .dm-logo-container .dm-logo {
+    background: url(https://weedmaps-assets-production.weedmaps.com/packs/media/auth/images/wm-logo-b0a57e5c552a77f0fd04e8facd729e1b.svg) no-repeat 0;
+    margin: 0 0 36px;
+    height: 44px;
+}
+.check-list .check-list-checkmark {
+    position: absolute;
+    left: -1rem;
+}
+.signup-splash .main .form-container {
+    max-width: 512px;
+    padding: 0 1em 1em;
+    width: 100%;
+}
+.signup-splash p {
+    color: #898989;
+    font-size: 1em;
+    text-align: center;
+    margin-bottom: 40px;
+}
+.separator-container {
+    display: flex;
+    align-items: center;
+    margin: 1em 0;
+}
+.separator-container .separator {
+    border-bottom: 1px solid #898989;
+    flex: 1 1;
+    margin: 0 1.5em;
+}
+.email-button, .demo-sign-in {
+    position: relative;
+}
+#login, #resend {
+    margin-top: 2rem;
+}
+.signup-splash a:not(.btn):not(.wm-logo-container) {
+    color: #00cdbe;
+    text-decoration: none;
+    text-align: center;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    transition: all .2s ease-in-out;
+    will-change: color;
+    text-transform: uppercase;
+}
+
+.btn{
+    display: block;
+    align-items: center;
+    text-align: center;
+    text-decoration: none;
+    border: 1px solid #00a498;
+    border-radius: 3px;
+    background-color: #00cdbe;
+    box-shadow: 0 0 1px 0 rgba(0,0,0,.3);
+    margin: 0 0 1em;
+    transition: all .2s ease-in-out;
+    will-change: background-color color;
+    text-transform: uppercase;
+    font: 700 16px proxima-nova,sans-serif;
+    color: #fff;
+    padding: 1.25em 2em;
+}
+.demo-sign-in{
+    margin-bottom: 1em;
+    background-color: #000;
+    border-color: #000;
+}
+.signup-splash .main .form-container form .btn, .signup-splash .main .form-container form button {
+    margin: 0;
+    opacity: 1;
+    cursor: pointer;
+    font-size: 1rem;
+}
+.signup-splash .main .form-container form .btn, .signup-splash .main .form-container form button:not(:last-child) {
+    margin-bottom: 1em;
+}
+.email-icon-container{
+    position: absolute;
+}

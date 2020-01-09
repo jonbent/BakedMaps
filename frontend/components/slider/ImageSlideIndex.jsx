@@ -66,7 +66,6 @@ export default class ImageSlideIndex extends Component {
                         transition: 'transform ease-out 0.45s'
                     }}
                 >
-                
                     {this.state.images.map(image => {
                         return <ImageSlideItem image={image} key={image.ad_id}/>
                     })}

@@ -1,7 +1,7 @@
 const path = require('path');
 
 module.exports = {
-	entry: './frontend/benchBnB.jsx',
+	entry: './frontend/bakedMaps.jsx',
 	output: {
 		path: path.resolve(__dirname, 'app', 'assets', 'javascripts'),
 		filename: "bundle.js"

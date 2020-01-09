@@ -4,7 +4,11 @@ body{
     // remove for more responsiveness later
 }
 .nav-bar{
+    position: sticky;
+    top: 0px;
     border-bottom: 0.0625rem solid rgb(230, 229, 229);
+    z-index: 1000;
+    background-color: white;
 }
 .nav-bar > div{
     max-width: 75rem;

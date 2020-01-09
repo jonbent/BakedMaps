@@ -27,12 +27,7 @@ body, html, main#root{
     text-rendering: optimizeLegibility;
     
 }
-.signup-banner-info h2 {
-    font-size: 24px;
-    font-weight: 500;
-    line-height: 32px;
-    margin-bottom: 60px;
-}
+
 .signup-splash ul.check-list {
     padding-left: 1.25em;
 }
@@ -78,7 +73,7 @@ body, html, main#root{
 #login, #resend {
     margin-top: 2rem;
 }
-.signup-splash a:not(.btn):not(.wm-logo-container) {
+.signup-splash a:not(.btn):not(.dm-logo-container) {
     color: #00cdbe;
     text-decoration: none;
     text-align: center;
@@ -90,7 +85,7 @@ body, html, main#root{
     text-transform: uppercase;
 }
 
-.btn{
+.btn, button{
     display: block;
     align-items: center;
     text-align: center;
@@ -123,4 +118,86 @@ body, html, main#root{
 }
 .email-icon-container{
     position: absolute;
+}
+
+// start form styling
+.signup-splash .main .form-container form .form-title {
+    margin-top: 0;
+    margin-bottom: 2rem;
+    font-weight: 700;
+}
+.signup-splash .main .form-container form label {
+    font-size: 1.2em;
+    font-weight: 600;
+    display: block;
+    padding: 5px 0;
+    transition: all .2s ease-in-out;
+    will-change: font-size color;
+}
+.signup-splash .main .form-container form input[type=email], .signup-splash .main .form-container form input[type=password], .signup-splash .main .form-container form input[type=text], .signup-splash .main .form-container form input[type=username], .signup-splash .main .form-container form select {
+    height: 2.5em;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    background-color: #fff;
+    padding: 0 .5em;
+    font-size: 1em;
+}
+.signup-splash .main .form-container form .form-control {
+    width: -webkit-fill-available;
+}
+.signup-splash .main .form-container form .hint {
+    padding: .5em 0;
+    color: #8a8a8a;
+    font-size: 1em;
+    font-weight: 400;
+}
+.signup-splash .main .form-container .error-msg {
+    color: #d60032;
+    margin: .5em 0;
+    transition: height .2s ease-in-out;
+    will-change: height;
+    overflow: hidden;
+}
+.signup-splash .main .form-container form .btn:disabled, .signup-splash .main .form-container form button:disabled {
+    opacity: .3;
+    cursor: not-allowed;
+}
+.signup-splash .main .form-container form .btn:not(:last-child), .signup-splash .main .form-container form button:not(:last-child) {
+    margin-bottom: 1em;
+}
+.signup-splash .main .form-container form .btn, .signup-splash .main .form-container form button {
+    margin: 0;
+    opacity: 1;
+    cursor: pointer;
+    font-size: 1rem;
+}
+.secondary-button {
+    border: 1px solid #ccc;
+    background-color: #f8f8f8;
+    color: #3a3a3a;
+}
+.field-container{
+    width: 100%;
+}
+#signup{
+    width: 100%;
+}
+.signup-splash .main .form-container h2 {
+    text-transform: uppercase;
+}
+.alert.alert-danger {
+    background-color: #f36;
+}
+.alert {
+    display: flex;
+    align-items: center;
+    padding: 1.5em;
+    color: #fff;
+    justify-content: space-between;
+    position: absolute;
+    width: -webkit-fill-available;
+    top: 0;
+    left: 0;
+    z-index: 12;
+    background-color: #f36;
 }

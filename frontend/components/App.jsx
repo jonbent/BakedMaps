@@ -5,12 +5,13 @@ import LoginFormContainer from './auth/LoginFormContainer';
 import SignupFormContainer from './auth/SignupFormContainer';
 import ImageSlideIndex from './slider/ImageSlideIndex'
 import { Route } from 'react-router-dom';
+import BakeryIndex from './bakeries/BakeryIndexContainer'
 
 const App = () => (
   <div>
     <NavBarContainer />
-    <ImageSlideIndex />
-    {/* <Route path="/" component={}/> */}
+    {/* <ImageSlideIndex /> */}
+    <Route path="/bakeries" component={BakeryIndex}/>
     
   </div>
 );

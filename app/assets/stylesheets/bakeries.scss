@@ -1,0 +1,11 @@
+ #bakery-map{
+    height: 100%;
+    width: 100%;
+}
+.bakery-map-container{
+    box-sizing: border-box;
+    display: flex;
+    position: relative;
+    flex: 1;
+    height: calc(100vh - 98px);
+}

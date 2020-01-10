@@ -5,6 +5,7 @@ import NavigationArrow from '../svg/navigation_arrow';
 import queryString from "query-string";
 import Filters from "../svg/filters"
 import BakeryMapList from './BakeryMapList'
+import BakeryMapResetBounds from "./BakeryMapResetBounds";
 
 
 export default class BakeryMap extends Component {
@@ -23,18 +24,21 @@ export default class BakeryMap extends Component {
             northEast: {
               lat: 0,
               lng: 0
-            }
+            },
+            changedBounds: false
           },
           openNow: 'openNow' in queryStringParams,
           storefronts: 'storefronts' in queryStringParams,
           delivery: 'delivery' in queryStringParams
         };
+        this.firstMount = true;
         this.filters = {
             openNow: "filter%5Bis_open%5D=true",
             storefronts: "filter%5Bany_retailer_services%5D%5B%5D=storefront",
             delivery: "filter%5Bany_retailer_services%5D%5B%5D=delivery"
         }
         this.handleSelection = this.handleSelection.bind(this);
+        this.handleSearch = this.handleSearch.bind(this);
     }
     componentDidMount() {
         const {city} = this.props
@@ -79,6 +83,25 @@ export default class BakeryMap extends Component {
                 }
             );
         });
+        this.map.addListener('idle', () => {
+            let bounds = this.map.getBounds();
+            if (!this.firstMount){
+                this.setState(
+                    {
+                        mapBounds: {
+                            southWest: bounds.getSouthWest().toJSON(),
+                            northEast: bounds.getNorthEast().toJSON()
+                        },
+                        changedBounds: true
+                    },
+                    () => {
+                        this.props.updateBounds(this.state.mapBounds);
+                    }
+                )
+            }else{
+                this.firstMount = false
+            }
+        })
     }
     // componentDidUpdate(){
     //     
@@ -87,36 +110,31 @@ export default class BakeryMap extends Component {
     handleSelection(field){
         this.setState({
           [field]: !this.state[field]
-        }, () => {
-             let filter = "";
-             let i = 0;
-             let wmFilter = "";
-             Object.keys(this.filters).forEach(key => {
-               if (this.state[key]) {
-                 if (i === 0) {
-                   filter += "?" + key;
-                 } else {
-                   filter += "&" + key;
-                 }
-                 wmFilter += "&" + this.filters[key];
-                 i++;
-               }
-             });
-             this.props
-                   .fetchBakeries(
-                     this.state.mapBounds,
-                     wmFilter
-                   )
-                   .then(e => { console.dir(this);
-                   ; this.MarkerManager.updateMarkers(this.props.bakeries)});
-             this.props.history.push(this.props.location.pathname + filter);
-           });
-        
-        
+        }, this.handleSearch);
+    }
 
-        //     let filter = "";
-            
-            
+    handleSearch(){
+        let filter = "";
+        let i = 0;
+        let wmFilter = "";
+        Object.keys(this.filters).forEach(key => {
+          if (this.state[key]) {
+            if (i === 0) {
+              filter += "?" + key;
+            } else {
+              filter += "&" + key;
+            }
+            wmFilter += "&" + this.filters[key];
+            i++;
+          }
+        });
+        this.props.fetchBakeries(this.state.mapBounds, wmFilter).then(e => {
+          this.MarkerManager.updateMarkers(this.props.bakeries);
+        });
+        this.setState({
+          changedBounds: false
+        });
+        this.props.history.push(this.props.location.pathname + filter);
     }
     render() {
         const {city} = this.props
@@ -178,7 +196,8 @@ export default class BakeryMap extends Component {
             </div>
             <div id="bakery-map-container">
               <div id="bakery-map" ref={map => (this.mapNode = map)}></div>
-                <BakeryMapList {...this.props} />
+              <BakeryMapList {...this.props} />
+              {this.state.changedBounds && <BakeryMapResetBounds handleSearch={this.handleSearch}/>}
             </div>
           </div>
         );

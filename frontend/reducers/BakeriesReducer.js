@@ -10,7 +10,8 @@ export default (prevState = {}, action) => {
                 listings[el.id] = el;
             })
             nextState = Object.assign({}, prevState, listings);
-            return nextState;
+            // return nextState;
+            return listings
         default:
             return prevState;
     }

@@ -9,8 +9,8 @@ const receiveBakeries = (payload) => ({
 export const fetchBakeries = ({
         southWest: { lat: lat1, lng: long1 },
         northEast: { lat: lat2, lng: long2 }
-    }) => dispatch => {
-    return WMApiUtil.findBoundingBoxDispensaries({ lat1, lat2, long1, long2 }).then(res => {
+    }, filter) => dispatch => {
+    return WMApiUtil.findBoundingBoxDispensaries({ lat1, lat2, long1, long2, filter}).then(res => {
         dispatch(receiveBakeries(res))
     });
 };

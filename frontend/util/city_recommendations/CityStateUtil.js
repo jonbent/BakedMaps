@@ -12,6 +12,6 @@ export default class CityStateUtil {
         return this.cityNames.filter(name => RegExp(`^.*${cityName}.*`, "i").test(name)).slice(0, num);
     }
     getCityInfo(cityName){
-        return cities[cityName];
+        return {name: cityName, ...cities[cityName]};
     }
 } 

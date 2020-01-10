@@ -59,6 +59,7 @@ class NavBar extends Component {
             locationInputValue: `${cityName}, ${cityInfo.state_id}`,
             selectedCity: cityName,
         })
+        this.props.receiveCity(cityInfo);
     }
 
     handleUserClick(){

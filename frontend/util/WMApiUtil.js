@@ -5,9 +5,9 @@ export const findDispensaries = ({ lat, long, mileRadius }) => {
     dataType: "JSON"
   });
 };
-export const findBoundingBoxDispensaries = ({ lat1, long1, lat2, long2 }) => {
+export const findBoundingBoxDispensaries = ({ lat1, long1, lat2, long2, filter = "" }) => {
   return $.ajax({
-    url: `https://api-g.weedmaps.com/discovery/v1/listings?filter%5Bany_retailer_services%5D%5B%5D=storefront&filter%5Bbounding_box%5D=${lat1}%2C${long1}%2C${lat2}%2C${long2}&page_size=100&page=1`,
+    url: `https://api-g.weedmaps.com/discovery/v1/listings?filter%5Bbounding_box%5D=${lat1}%2C${long1}%2C${lat2}%2C${long2}&page_size=100&page=1${filter}`,
     method: "GET",
     dataType: "JSON"
   });

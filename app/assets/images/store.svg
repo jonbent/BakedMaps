@@ -1,0 +1,28 @@
+<svg
+    width="45"
+    height="57"
+    viewBox="0 0 45 57"
+    xmlns="http://www.w3.org/2000/svg"
+    data-test-id="marker-pin"
+>
+    <g transform="translate(0.5,13)">
+    <path
+        fill="#00CDBE"
+        data-test-id="pin-path"
+        d="M30.981 31.202C27.654 34.965 18.018 44 18.018 44S8.354 34.964 5.062 31.163c-6.281-7.25-7.187-18.71-.04-25.833 7.145-7.123 18.75-7.104 25.919.04 7.168 7.144 6.296 18.758.04 25.832z"
+    ></path>
+    </g>
+    <g transform="translate(6.5,21.5)">
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="20px" viewBox="0 0 24 20" version="1.1">
+        <!-- Generator: Sketch 46 (44423) - http://www.bohemiancoding.com/sketch -->
+        <title>store</title>
+        <desc>Created with Sketch.</desc>
+        <defs/>
+        <g id="icons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+            <g id="Artboard" transform="translate(-574.000000, -103.000000)" fill-rule="nonzero" fill="#FFFFFF">
+                <path d="M595,107 L577,107 L577,122 L583,122 L583,111 L589,111 L589,122 L595,122 L595,107 Z M595,106 L595,104 L577,104 L577,106 L595,106 Z M596,122 L598,122 L598,123 L574,123 L574,122 L576,122 L576,103 L596,103 L596,122 Z M584,122 L588,122 L588,112 L584,112 L584,122 Z M594,111 L594,117 L590,117 L590,111 L594,111 Z M591,116 L593,116 L593,112 L591,112 L591,116 Z M582,111 L582,117 L578,117 L578,111 L582,111 Z M579,116 L581,116 L581,112 L579,112 L579,116 Z" id="store"/>
+            </g>
+        </g>
+    </svg>
+    </g>
+</svg>

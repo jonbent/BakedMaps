@@ -4,6 +4,12 @@
     <title>Baked Maps</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <link rel="preload" href="https://weedmaps.com/static/fonts/weedmaps-sans-heavy.woff" as="font" type="font/woff" crossorigin="true">
+    <link rel="preload" href="https://weedmaps.com/static/fonts/weedmaps-sans-regular.otf" as="font" type="font/otf" crossorigin="true">
+    <link rel="preload" href="https://weedmaps.com/static/fonts/weedmaps-sans-heavy.otf" as="font" type="font/otf" crossorigin="true">
+    <link rel="preload" href="https://weedmaps.com/static/fonts/weedmaps-sans-light.woff" as="font" type="font/woff" crossorigin="true">
+    <link rel="preload" href="https://weedmaps.com/static/fonts/weedmaps-sans-light.otf" as="font" type="font/otf" crossorigin="true">
+    <link rel="preload" href="https://weedmaps.com/static/fonts/weedmaps-sans-regular.woff" as="font" type="font/woff" crossorigin="true">
     <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{Rails.application.credentials.google_maps[:api_key]}" %>
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
@@ -16,6 +22,10 @@
     ).html_safe %>
       </script>
     <% end %>
+    <script>
+      window.carSvg = "<%= asset_path('car.svg')%>"
+      window.storeSvg = "<%= asset_path('store.svg')%>"
+    </script>
     
   </head>
 

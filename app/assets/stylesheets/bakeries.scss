@@ -380,3 +380,48 @@
     font-weight: 600;
     padding: 0px 0.125rem;
 }
+.redo-search-container{
+    position: absolute;
+    top: 1rem;
+    left: 0px;
+    right: 0px;
+    z-index: 480;
+    pointer-events: none;
+}
+@media only screen and (min-width: 832px) {
+    .redo-search-container {
+        padding-left: 24rem;
+    }
+}
+.redo-search-button {
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 3px 0px;
+    pointer-events: all;
+    margin: auto;
+    border-width: initial;
+    border-style: none;
+    border-color: initial;
+    border-image: initial;
+    -webkit-box-align: center;
+    align-items: center;
+    background-color: rgb(255, 255, 255);
+    position: relative;
+    color: rgb(74, 74, 74);
+    display: flex;
+    align-content: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    font-family: proxima-nova, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    height: 40px;
+    text-transform: uppercase;
+    z-index: 1;
+    cursor: pointer;
+    border-radius: 3px;
+    border-width: 1px;
+    border-style: solid;
+    border-image: initial;
+    border-color: rgb(204, 204, 204);
+    padding: 0px 16px;
+    transition: all 150ms ease-in-out 0s;
+}

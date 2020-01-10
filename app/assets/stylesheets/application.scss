@@ -10,12 +10,14 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require_tree .
+
  *= require_self
  */
 /* start image slider css */
-// @import 'reset';
-// @import 'navbar';
+@import 'reset';
+@import 'navbar';
+@import 'signup';
+@import 'bakeries';
 .image-slider {
 
     width: 100%;
@@ -41,9 +43,43 @@
 }
 /* end image slider css */
 
+a {
+    color: rgb(0, 205, 190);
+    cursor: pointer;
+    text-decoration: none;
+}
+h1, h2, h3, h4, h5, h6, p {
+    font-weight: 400;
+    text-rendering: optimizelegibility;
+    margin: 0px;
+}
 h2 {
     font-size: 24px;
     font-weight: 500;
     line-height: 32px;
     margin-bottom: 60px;
+}
+h1, h1 *, h2, h2 *, h3, h3 *, h4, h4 *, h5, h5 *, h6, h6 * {
+    font-family: proxima-nova, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+}
+button {
+    outline: none;
+}
+#bakery-map-container{
+    position: relative;
+}
+body{
+    font-family: proxima-nova, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+}
+a img {
+    border-width: 0px;
+    border-style: initial;
+    border-color: initial;
+    border-image: initial;
+}
+img {
+    height: auto;
+    max-width: 100%;
+    vertical-align: middle;
+    border-style: none;
 }

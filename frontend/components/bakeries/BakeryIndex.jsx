@@ -1,14 +1,11 @@
 import React, { Component } from 'react'
 import BakeryMap from "./BakeryMap";
+import BakeryMapList from "./BakeryMapList";
 export default class BakeryIndex extends Component {
     render() {
         return (
           <div className="bakery-map-container">
-            <BakeryMap
-              updateBounds={this.props.updateBounds}
-              fetchBakeries={this.props.fetchBakeries}
-              bakeries={this.props.bakeries}
-            />
+            <BakeryMap {...this.props} />
           </div>
         );
     }

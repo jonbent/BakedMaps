@@ -83,3 +83,37 @@ img {
     vertical-align: middle;
     border-style: none;
 }
+h1, h2, h3, h4, h5, h6, p {
+    font-weight: 400;
+    text-rendering: optimizelegibility;
+    margin: 0px;
+}
+
+// input {
+//     -webkit-writing-mode: horizontal-tb !important;
+//     text-rendering: auto;
+//     color: -internal-light-dark-color(black, white);
+//     letter-spacing: normal;
+//     word-spacing: normal;
+//     text-transform: none;
+//     text-indent: 0px;
+//     text-shadow: none;
+//     display: inline-block;
+//     text-align: start;
+//     -webkit-appearance: textfield;
+//     background-color: -internal-light-dark-color(white, black);
+//     -webkit-rtl-ordering: logical;
+//     cursor: text;
+//     margin: 0em;
+//     font: 400 11px system-ui;
+//     padding: 1px;
+//     border-width: 2px;
+//     border-style: inset;
+//     border-color: initial;
+//     border-image: initial;
+// }
+a {
+    color: rgb(0, 205, 190);
+    cursor: pointer;
+    text-decoration: none;
+}

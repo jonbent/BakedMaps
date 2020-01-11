@@ -8,11 +8,11 @@ export default class OutsideClickHandler extends Component {
         this.handleOutsideClick = this.handleOutsideClick.bind(this);
     }
     componentDidMount() {
-        document.addEventListener('mousedown', this.handleOutsideClick);
+        document.addEventListener('mouseup', this.handleOutsideClick);
     }
 
     componentWillUnmount() {
-        document.removeEventListener('mousedown', this.handleOutsideClick);
+        document.removeEventListener('mouseup', this.handleOutsideClick);
     }
 
     setRef(node){

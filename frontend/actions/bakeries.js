@@ -1,8 +1,13 @@
 export const RECEIVE_BAKERIES = "RECEIVE_BAKERIES"
+export const RECEIVE_BAKERY = "RECEIVE_BAKERY";
 import * as WMApiUtil from '../util/WMApiUtil'
 
 const receiveBakeries = (payload) => ({
     type: RECEIVE_BAKERIES,
+    payload
+})
+const receiveBakery = (payload) => ({
+    type: RECEIVE_BAKERY,
     payload
 })
 
@@ -14,3 +19,8 @@ export const fetchBakeries = ({
         dispatch(receiveBakeries(res))
     });
 };
+export const fetchBakery = bakerySlug => dispatch => {
+         return WMApiUtil.fetchBakery(bakerySlug).then(res => {
+           dispatch(receiveBakery(res));
+         });
+       };

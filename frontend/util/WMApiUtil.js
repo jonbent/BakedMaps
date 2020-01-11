@@ -13,6 +13,14 @@ export const findBoundingBoxDispensaries = ({ lat1, long1, lat2, long2, filter =
   });
 };
 
+export const fetchBakery = (bakerySlug) => {
+  return $.ajax({
+    url: `https://api-g.weedmaps.com/discovery/v1/listings/dispensaries/${bakerySlug}`,
+    method: "GET",
+    dataType: "JSON"
+  })
+}
+
 export const getMenuItems = dispensarySlug => {
   return $.ajax({
     url: `https://api-g.weedmaps.com/discovery/v1/listings/dispensaries/${dispensarySlug}/menu_items?page_size=150&filter%5Bany_categories%5D%5B%5D=flower`,

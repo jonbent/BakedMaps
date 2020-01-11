@@ -4,8 +4,10 @@ import {Link, NavLink} from 'react-router-dom';
 import NavigationArrow from '../svg/navigation_arrow';
 import queryString from "query-string";
 import Filters from "../svg/filters"
+import FiltersModal from "./FiltersModal"
 import BakeryMapList from './BakeryMapList'
 import BakeryMapResetBounds from "./BakeryMapResetBounds";
+import OutsideClickHandler from '../OutsideClickHandler'
 
 
 export default class BakeryMap extends Component {
@@ -25,7 +27,8 @@ export default class BakeryMap extends Component {
               lat: 0,
               lng: 0
             },
-            changedBounds: false
+            changedBounds: false,
+            openFilters: false,
           },
           openNow: 'openNow' in queryStringParams,
           storefronts: 'storefronts' in queryStringParams,
@@ -39,6 +42,7 @@ export default class BakeryMap extends Component {
         }
         this.handleSelection = this.handleSelection.bind(this);
         this.handleSearch = this.handleSearch.bind(this);
+        this.handleSortBy = this.handleSortBy.bind(this);
     }
     componentDidMount() {
         const {city} = this.props
@@ -72,6 +76,7 @@ export default class BakeryMap extends Component {
                                 wmFilter += "&" + this.filters[key];
                             }
                         })
+                        if (this.state.sortBy) wmFilter += "&" + this.state.sortBy
                         this.props
                           .fetchBakeries(
                             this.state.mapBounds,
@@ -103,9 +108,11 @@ export default class BakeryMap extends Component {
             }
         })
     }
-    // componentDidUpdate(){
-    //     
-    // }
+    handleSortBy(value){
+        this.setState({
+          sortBy: value
+        },this.handleSearch)
+    }
     
     handleSelection(field){
         this.setState({
@@ -117,7 +124,7 @@ export default class BakeryMap extends Component {
         let filter = "";
         let i = 0;
         let wmFilter = "";
-        Object.keys(this.filters).forEach(key => {
+        [...Object.keys(this.filters), this.state.sortBy].forEach(key => {
           if (this.state[key]) {
             if (i === 0) {
               filter += "?" + key;
@@ -128,6 +135,7 @@ export default class BakeryMap extends Component {
             i++;
           }
         });
+        if (this.state.sortBy) {wmFilter += "&" + this.state.sortBy; }
         this.props.fetchBakeries(this.state.mapBounds, wmFilter).then(e => {
           this.MarkerManager.updateMarkers(this.props.bakeries);
         });
@@ -138,7 +146,8 @@ export default class BakeryMap extends Component {
     }
     render() {
         const {city} = this.props
-
+        const appliedFilters = {};
+        Object.keys(this.filters).forEach(arg => appliedFilters[arg] = this.state[arg]);
         return (
           <div>
             <div id="map-header">
@@ -162,9 +171,8 @@ export default class BakeryMap extends Component {
                 </div>
               </div>
               <h1 className="listing-description">
-                <span className="listing-type">Bakery Listings</span>
+                <span className="listing-type">Bakery Listings </span>
                 <span>
-                  {" "}
                   in {city.name}, {city.state_id}
                 </span>
               </h1>
@@ -188,16 +196,33 @@ export default class BakeryMap extends Component {
                   Delivery
                 </button>
                 <div className="filter-separator"></div>
-                <button className="filter-button">
-                  <Filters />
-                  Filters
-                </button>
+                <div className="filter-container">
+                  <button
+                    className="filter-button"
+                    onMouseUp={() =>
+                      this.setState({ openFilters: !this.state.openFilters })
+                    }
+                  >
+                    <Filters />
+                    Filters
+                  </button>
+                  {this.state.openFilters && (
+                    <OutsideClickHandler action={() => this.setState({ openFilters: !this.state.openFilters })}>
+                      <FiltersModal
+                        filters={appliedFilters}
+                        handleClick={this.handleSelection}
+                      />
+                    </OutsideClickHandler>
+                  )}
+                </div>
               </div>
             </div>
             <div id="bakery-map-container">
               <div id="bakery-map" ref={map => (this.mapNode = map)}></div>
-              <BakeryMapList {...this.props} />
-              {this.state.changedBounds && <BakeryMapResetBounds handleSearch={this.handleSearch}/>}
+              <BakeryMapList {...this.props} handleSortBy={this.handleSortBy} fetchBakery={this.props.fetchBakery}/>
+              {this.state.changedBounds && (
+                <BakeryMapResetBounds handleSearch={this.handleSearch} />
+              )}
             </div>
           </div>
         );

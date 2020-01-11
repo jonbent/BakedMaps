@@ -2,16 +2,16 @@ import React from 'react'
 
 import {Link} from 'react-router-dom'
 
-const BakeryMapListItem = ({bakery}) => {
+const BakeryMapListItem = ({bakery, handleClick}) => {
     const bakeryType =
       bakery.license_type === "hybrid"
         ? "Medical & Recreational"
         : bakery.license_type === "recreational" 
         ? "Recreational" : "Medical"
     return (
-      <div className="bakery-map-listing-item">
+      <div className="bakery-map-listing-item" onClick={e => handleClick(bakery.slug)}>
         <div className="bakery-map-listing-item-card">
-          <Link to={`/dispensaries/${bakery.slug}`}>
+          <Link to={`/bakeries/${bakery.slug}`}>
             <div>
               <div className="item-card-picture-container">
                 <img

@@ -150,7 +150,7 @@ class NavBar extends Component {
                     <div className="nav-user-info">
                       <div
                         className="nav-user-icon-container"
-                        onClick={this.handleUserClick}
+                        onMouseUp={this.handleUserClick}
                       >
                         <ProfileAvatarSvg />
                       </div>

@@ -672,6 +672,37 @@
                 display: flex;
                 position: relative;
                 margin: 0.5rem 0px 0.75rem;
+                .copied-container{
+                    position: absolute;
+                    will-change: transform;
+                    top: 0px;
+                    left: 0px;
+                    transform: translate3d(169px, -54px, 0px);
+                    z-index: 5;
+                    .copied{
+                        background-color: rgb(255, 255, 255);
+                        box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 3px;
+                        border-radius: 0.1875rem;
+                        padding: 1rem;
+                        span{
+                            color: rgb(51, 51, 51);
+                        }
+                        div{
+                            left: 52px;
+                            bottom: 0px;
+                            margin-bottom: -0.5rem;
+                            filter: drop-shadow(rgba(0, 0, 0, 0.2) 0px 1px 0.5px);
+                            width: 0px;
+                            height: 0px;
+                            border-top-color: rgb(255, 255, 255);
+                            border-right-color: transparent;
+                            border-bottom-color: transparent;
+                            border-left-color: transparent;
+                            border-width: 8px 6px 0px;
+                            border-style: solid;
+                        }
+                    }
+                }
                 button{
                     outline: none;
                     -webkit-appearance: none;
@@ -922,12 +953,379 @@
                 box-sizing: border-box;
                 order: 2;
                 width: 100%;
+                padding-right: 1rem;
+                display:none;
+                .title{
+                    font-size: 1.125rem;
+                    line-height: 1.6875rem;
+                    font-weight: 600;
+                    margin: 0.5rem 0px 1rem;
+                }
+                .categories{
+                    border-bottom: 0.0625rem solid rgb(204, 204, 204);
+                    box-sizing: border-box;
+                    flex-direction: column;
+                    display: flex;
+                    position: relative;
+                }
             }
             .bakery-items{
                 box-sizing: border-box;
                 order: 1;
                 width: 100%;
                 padding-left: 0px;
+                .bakery-list{
+                    li div a{
+                        display: block;
+                        .menu-item-info-container{
+                            background-color: rgb(255, 255, 255);
+                            box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 3px;
+                            border-radius: 3px;
+                            overflow: hidden;
+                            display: flex;
+                            flex-direction: column;
+                            -webkit-box-align: stretch;
+                            align-items: stretch;
+                            margin-bottom: 0.75rem;
+                            border-bottom: 0.0625rem solid rgb(230, 229, 229);
+                            padding: 1rem;
+                            .menu-item-info{
+                                box-sizing: border-box;
+                                display: flex;
+                                width: 100%;
+                                .prices-and-name{
+                                    box-sizing: border-box;
+                                    flex-direction: column;
+                                    display: flex;
+                                    -webkit-box-flex: 1;
+                                    flex-grow: 1;
+                                    min-width: 0px;
+                                    .prices-container{
+                                        box-sizing: border-box;
+                                        align-items: flex-end;
+                                        display: flex;
+                                        margin-top: 1rem;
+                                        flex-wrap: wrap;
+                                        .prices{
+                                            box-sizing: border-box;
+                                            -webkit-box-pack: start;
+                                            justify-content: flex-start;
+                                            display: flex;
+                                            margin-left: 0px;
+                                            order: 2;
+                                            flex-direction: row;
+                                            border-width: initial;
+                                            border-style: none;
+                                            border-color: initial;
+                                            border-image: initial;
+                                            .price-and-unit:not(:nth-of-type(1)){
+                                                margin-left: 1.875rem;
+                                            }
+                                            .price-and-unit{
+                                                flex-direction: column;
+                                                align-items: flex-start;
+                                                box-sizing: border-box;
+                                                display: flex;
+                                                font-size: 0.875rem;
+                                                line-height: 1;
+                                                .price{
+                                                    margin: 0px;
+                                                    color: rgb(74, 74, 74);
+                                                    font-weight: 600;
+                                                    font-size: 0.875rem;
+                                                }
+                                                .unit{
+                                                    flex-direction: row;
+                                                    box-sizing: border-box;
+                                                    display: flex;
+                                                    color: rgb(124, 124, 124);
+                                                    text-align: right;
+                                                    text-transform: uppercase;
+                                                    font-size: 0.75rem;
+                                                    line-height: 0.9375rem;
+                                                    height: 0.9375rem;
+                                                    margin-bottom: 0.125rem;
+                                                }
+                                            }
+                                        }
+                                    }
+                                    .name-and-type-container{
+                                        box-sizing: border-box;
+                                        flex-direction: column;
+                                        display: flex;
+                                        .name-and-type{
+                                            box-sizing: border-box;
+                                            flex-direction: column;
+                                            display: flex;
+                                            min-width: 0px;
+                                            margin-bottom: 0.25rem;
+                                            span{
+                                                color: rgb(124, 124, 124);
+                                                font-size: 0.75rem;
+                                                height: 0.75rem;
+                                                line-height: 0.75rem;
+                                                max-width: 100%;
+                                                text-overflow: ellipsis;
+                                                white-space: nowrap;
+                                                overflow: hidden;
+                                            }
+                                            .name-container{
+                                                box-sizing: border-box;
+                                                display: flex;
+                                                -webkit-box-align: center;
+                                                align-items: center;
+                                                margin-top: 0.25rem;
+                                                .name{
+                                                    display: inline-block;
+                                                    max-width: 100%;
+                                                    text-overflow: ellipsis;
+                                                    white-space: nowrap;
+                                                    overflow-wrap: normal;
+                                                    color: rgb(74, 74, 74);
+                                                    font-family: proxima-nova, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+                                                    font-size: 1rem;
+                                                    line-height: 1.25rem;
+                                                    font-weight: 600;
+                                                    max-height: 2.5rem;
+                                                    overflow: hidden;
+                                                }
+                                            }
+                                        }
+                                        .whitespace{
+                                            box-sizing: border-box;
+                                            display: flex;
+                                            font-size: 0.75rem;
+                                            color: rgb(124, 124, 124);
+                                            white-space: nowrap;
+                                            padding-top: 0px;
+                                            margin-left: 0px;
+                                        }
+                                    }
+                                }
+                                .menu-item-avatar-container{
+                                    margin-right: 1rem;
+                                    position: relative;
+                                    .menu-item-avatar{
+                                        border-width: 0.0625rem;
+                                        border-style: solid;
+                                        border-color: rgb(230, 229, 229);
+                                        border-image: initial;
+                                        border-radius: 0.375rem;
+                                        display: flex;
+                                        -webkit-box-align: center;
+                                        align-items: center;
+                                        align-self: center;
+                                        -webkit-box-pack: center;
+                                        justify-content: center;
+                                        width: 96px;
+                                        height: 96px;
+                                        position: relative;
+                                        overflow: hidden;
+                                        img{
+                                            width: auto;
+                                            height: auto;
+                                            max-width: 100%;
+                                            max-height: 100%;
+                                            border-width: initial;
+                                            border-style: none;
+                                            border-color: initial;
+                                            border-image: initial;
+                                            object-fit: fill;
+                                            border-radius: 5%;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                .pagination-container{
+                    box-sizing: border-box;
+                    -webkit-box-pack: center;
+                    justify-content: center;
+                    margin-bottom: 32px;
+                    display: flex;
+                    .pagination{
+                        box-sizing: border-box;
+                        display: flex;
+                        font-family: proxima-nova, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+                        user-select: none;
+                        div{
+                            position: relative;
+                            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+                            width: 60%;
+                            font-family: inherit;
+                            font-weight: inherit;
+                            color: rgb(74, 74, 74);
+                            button{
+                                cursor: pointer;
+                                font-weight: 600;
+                                background-color: rgb(255, 255, 255);
+                                padding-left: 1rem;
+                                border-radius: 0.1875rem;
+                                display: inline-flex;
+                                -webkit-box-align: center;
+                                align-items: center;
+                                flex-direction: row;
+                                -webkit-box-pack: justify;
+                                justify-content: space-between;
+                                max-width: 100%;
+                                width: 100%;
+                                height: 2.5rem;
+                                font-size: 0.875rem;
+                                font-weight: 300;
+                                text-align: left;
+                                box-sizing: border-box;
+                                padding: 0px 1rem;
+                                border-width: 0.0625rem;
+                                border-style: solid;
+                                border-color: rgb(204, 204, 204);
+                                border-image: initial;
+                                border-radius: 0.1875rem;
+                                outline: none;
+                                span{
+                                    text-overflow: ellipsis;
+                                    white-space: nowrap;
+                                    overflow: hidden;
+                                    color:rgba(0, 0, 0, 0.847);
+                                }
+                                div{
+                                    width: 10px;
+                                    height: 10px;
+                                    margin-left: 0.5rem;
+                                    transition: transform 0.3s ease 0s;
+                                    display: flex;
+                                    -webkit-box-align: center;
+                                    align-items: center;
+                                    -webkit-box-pack: center;
+                                    justify-content: center;
+                                    position: relative;
+                                    margin-left: 0.5rem;
+                                    cursor: pointer;
+                                    svg{
+                                        transform: rotate(0deg);
+                                    }
+                                }
+                            }
+                        }
+                        .back-button{
+                            font-family: inherit;
+                            font-weight: inherit;
+                            width: 3.75rem;
+                            display: flex;
+                            -webkit-box-align: center;
+                            align-items: center;
+                            -webkit-box-pack: center;
+                            justify-content: center;
+                            height: 2.5rem;
+                            color: rgb(74, 74, 74);
+                            cursor: pointer;
+                            background-color: rgb(255, 255, 255);
+                            padding: 0px;
+                            border-radius: 3px;
+                            border-width: 0.0625rem;
+                            border-style: solid;
+                            border-color: rgb(204, 204, 204);
+                            border-image: initial;
+                            margin: 0px 0.5rem 0px 0px;
+                        }
+                        .next-button{
+                            font-family: inherit;
+                            font-weight: inherit;
+                            width: 3.75rem;
+                            display: flex;
+                            -webkit-box-align: center;
+                            align-items: center;
+                            -webkit-box-pack: center;
+                            justify-content: center;
+                            height: 2.5rem;
+                            color: rgb(74, 74, 74);
+                            cursor: pointer;
+                            background-color: rgb(255, 255, 255);
+                            padding: 0px;
+                            border-radius: 3px;
+                            border-width: 0.0625rem;
+                            border-style: solid;
+                            border-color: rgb(204, 204, 204);
+                            border-image: initial;
+                            margin: 0px 0px 0px 0.5rem;
+                            svg{
+                                fill: rgb(74, 74, 74);
+                            }
+                        }
+                    }
+                }
+                .category-name{
+                    list-style: none;
+                    margin: 0px 0px 1.75rem;
+                    padding: 0px;
+                    padding-inline-start: 0px;
+                }
+                .categories-container{
+                    box-sizing: border-box;
+                    .categories{
+                        box-sizing: border-box;
+                        display: flex;
+                        overflow-x: auto;
+                        overflow-y: hidden;
+                        margin: 0px -1rem;
+                        padding: 0.25rem 1rem 1.5rem;
+                        button:not(:nth-of-type(1)){
+                            margin-left: 0.5rem;
+                        }
+                        a{
+                            flex: 0 0 auto;
+                            -webkit-box-align: center;
+                            align-items: center;
+                            position: relative;
+                            display: flex;
+                            align-content: center;
+                            -webkit-box-pack: center;
+                            justify-content: center;
+                            font-family: proxima-nova, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+                            z-index: 1;
+                            cursor: pointer;
+                            background-color: rgb(255, 255, 255);
+                            color: rgb(74, 74, 74);
+                            font-size: 0.875rem;
+                            font-weight: 400;
+                            text-transform: none;
+                            height: 2rem;
+                            transition: all 150ms ease-in-out 0s;
+                            border-width: 0.0625rem;
+                            border-style: solid;
+                            border-color: rgb(204, 204, 204);
+                            border-image: initial;
+                            border-radius: 1rem;
+                            padding: 0.25rem 1rem;
+                        }
+                        a.active{
+                            -webkit-box-align: center;
+                            align-items: center;
+                            position: relative;
+                            display: flex;
+                            align-content: center;
+                            -webkit-box-pack: center;
+                            justify-content: center;
+                            font-family: proxima-nova, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+                            z-index: 1;
+                            cursor: pointer;
+                            background-color: rgb(0, 205, 190);
+                            color: rgb(255, 255, 255);
+                            font-size: 0.875rem;
+                            font-weight: 400;
+                            text-transform: none;
+                            height: 2rem;
+                            transition: all 150ms ease-in-out 0s;
+                            border-width: 0.0625rem;
+                            border-style: solid;
+                            border-color: rgb(1, 168, 163);
+                            border-image: initial;
+                            border-radius: 1rem;
+                            padding: 0.25rem 1rem;
+                        }
+                    }
+                }
             }
             @media screen and (min-width: 640px){
                 .bakery-filters{
@@ -938,13 +1336,41 @@
                     order: 1;
                     width: 100%;
                     padding-left: 0px;
-                }
-            }
-            @media screen and (min-width: 1024px){
-                .bakery-items{
-                    order: 2;
-                    width: 75%;
-                    padding-left: 24px;
+                    .search-and-sort {
+                        padding-bottom: 0px;
+                    }
+                    .pagination{
+                        margin-bottom: 32px;
+                    }
+                    .bakery-list{
+                        .menu-item-info-container{
+                            border-bottom: none;
+                            border-radius: 0.1875rem 0.1875rem 0px 0px;
+                            .menu-item-info{
+                                .prices-and-name{
+                                    .name-and-type-container{
+                                        flex-direction: row;
+                                        .whitespace{
+                                            margin-left: auto;
+                                        }
+                                        .name{
+                                            font-size: 1.125rem;
+                                        }
+                                    }
+                                    .prices-container{
+                                        .prices{
+                                            -webkit-box-pack: end;
+                                            justify-content: flex-end;
+                                            margin-left: 30px;
+                                        }
+                                        .price-and-unit{
+
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
             }
             @media screen and (min-width: 832px){
@@ -952,6 +1378,34 @@
                     order: 2;
                     width: 100%;
                     padding-left: 0px;
+                    .search-and-sort {
+                        padding-bottom: 0px;
+                    }
+                    .pagination{
+                        margin-bottom: 32px;
+                    }
+                }
+                .bakery-filters{
+                    order: 2;
+                    width: 100%;
+                }
+            }
+            @media screen and (min-width: 1024px){
+                .bakery-items{
+                    order: 2;
+                    width: 75%;
+                    padding-left: 24px;
+                    .search-and-sort {
+                        padding-bottom: 16px;
+                    }
+                    .categories-container {
+                        display: none;
+                    }
+                }
+                .bakery-filters{
+                    display: block;
+                    order: 1;
+                    width: 25%;
                 }
             }
         }

@@ -1,6 +1,6 @@
 export const RECEIVE_BAKERIES = "RECEIVE_BAKERIES"
 export const RECEIVE_BAKERY = "RECEIVE_BAKERY";
-import * as WMApiUtil from '../util/WMApiUtil'
+import * as WMApiUtil from '../util/WMApiUtil';
 
 const receiveBakeries = (payload) => ({
     type: RECEIVE_BAKERIES,

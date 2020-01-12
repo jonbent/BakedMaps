@@ -21,9 +21,9 @@ export const fetchBakery = (bakerySlug) => {
   })
 }
 
-export const getMenuItems = dispensarySlug => {
+export const fetchMenuItems = (dispensarySlug, filter = "") => {
   return $.ajax({
-    url: `https://api-g.weedmaps.com/discovery/v1/listings/dispensaries/${dispensarySlug}/menu_items?page_size=150&filter%5Bany_categories%5D%5B%5D=flower`,
+    url: `https://api-g.weedmaps.com/discovery/v1/listings/dispensaries/${dispensarySlug}/menu_items`,
     method: "GET",
     dataType: "JSON"
   });

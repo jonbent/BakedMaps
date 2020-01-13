@@ -26,8 +26,9 @@ export default class OutsideClickHandler extends Component {
     }
     
     render() {
+        const className = this.props.className ? this.props.className : ""
         return (
-            <div ref={this.setRef}>{this.props.children}</div>
+            <div ref={this.setRef} className={className}>{this.props.children}</div>
         );
     }
 }

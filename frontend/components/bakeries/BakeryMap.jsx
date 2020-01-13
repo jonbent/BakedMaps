@@ -219,7 +219,7 @@ export default class BakeryMap extends Component {
             </div>
             <div id="bakery-map-container">
               <div id="bakery-map" ref={map => (this.mapNode = map)}></div>
-              <BakeryMapList {...this.props} handleSortBy={this.handleSortBy} fetchBakery={this.props.fetchBakery}/>
+              <BakeryMapList {...this.props} handleSortBy={this.handleSortBy}/>
               {this.state.changedBounds && (
                 <BakeryMapResetBounds handleSearch={this.handleSearch} />
               )}

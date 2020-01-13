@@ -177,6 +177,16 @@
     box-shadow: rgb(102, 102, 102) 0px 0.0625rem 0.1875rem;
     border-radius: 0px 0px 0.125rem 0.125rem;
     z-index: 2;
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    background-color: rgb(255, 255, 255);
+    color: rgb(102, 102, 102);
+    font-size: 0.875rem;
+    padding-top: 0.5rem;
+    scroll-behavior: smooth;
+    margin: 0px;
+    overflow: hidden scroll;
 
 }
 .bakery-drop-down > li {

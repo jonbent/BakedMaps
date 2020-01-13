@@ -12,13 +12,13 @@ export const receiveMenuItem = (payload) => ({
     payload
 })
 
-export const fetchMenuItems = (dispensarySlug, filter) => dispatch => {
-  return WMApiUtil.fetchMenuItems(dispensarySlug , filter).then(res => {
+export const fetchMenuItems = (dispensarySlug, bakeryType, filter) => dispatch => {
+  return WMApiUtil.fetchMenuItems(dispensarySlug, bakeryType, filter).then(res => {
     dispatch(receiveMenuItems(res));
   });
 };
-export const fetchMenuItem = menuItemSlug => dispatch => {
-  return WMApiUtil.fetchMenuItem(menuItemSlug).then(res => {
-    dispatch(receiveMenuItem(res));
-  });
-};
+// export const fetchMenuItem = menuItemSlug => dispatch => {
+//   return WMApiUtil.fetchMenuItem(menuItemSlug).then(res => {
+//     dispatch(receiveMenuItem(res));
+//   });
+// };

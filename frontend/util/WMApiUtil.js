@@ -13,17 +13,19 @@ export const findBoundingBoxDispensaries = ({ lat1, long1, lat2, long2, filter =
   });
 };
 
-export const fetchBakery = (bakerySlug) => {
+export const fetchBakery = (bakerySlug, bakeryType = "dispensaries") => {
+  if (bakeryType === "bakeries") bakeryType = "dispensaries";
   return $.ajax({
-    url: `https://api-g.weedmaps.com/discovery/v1/listings/dispensaries/${bakerySlug}`,
+    url: `https://api-g.weedmaps.com/discovery/v1/listings/${bakeryType}/${bakerySlug}`,
     method: "GET",
     dataType: "JSON"
   })
 }
 
-export const fetchMenuItems = (dispensarySlug, filter = "") => {
+export const fetchMenuItems = (dispensarySlug, bakeryType="dispensaries", filter = "") => {
+  if (bakeryType === "bakeries") bakeryType = "dispensaries";
   return $.ajax({
-    url: `https://api-g.weedmaps.com/discovery/v1/listings/dispensaries/${dispensarySlug}/menu_items`,
+    url: `https://api-g.weedmaps.com/discovery/v1/listings/${bakeryType}/${dispensarySlug}/menu_items?${filter}`,
     method: "GET",
     dataType: "JSON"
   });

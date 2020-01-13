@@ -1,6 +1,29 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 const BakeryMenuItem = ({menuItem, bakery}) => {
+    let unit;
+    if (menuItem.prices.unit){
+        unit = (
+            <div key={menuItem.prices.unit.price} className="price-and-unit">
+                <div className="unit">
+                    <span>EACH</span>
+                </div>
+                <span className="price">${menuItem.prices.unit.price}</span>
+            </div>
+        );
+    } else if (menuItem.prices.ounce){
+        unit = menuItem.prices.ounce && menuItem.prices.ounce.map(price => {
+            return (
+                <div key={price.price} className="price-and-unit">
+                    <div className="unit">
+                        <span>{price.units}</span>
+                    </div>
+                    <span className="price">${price.price}</span>
+                </div>
+            )
+        })
+    }
+    
     return (
         <li>
             <div>
@@ -15,7 +38,7 @@ const BakeryMenuItem = ({menuItem, bakery}) => {
                             <div className="prices-and-name">
                                 <div className="name-and-type-container">
                                     <div className="name-and-type">
-                                        <span>{menuItem.edge_category.name} | {menuItem.genetics_tag.name}</span>
+                                        <span>{menuItem.edge_category.name} {menuItem.genetics_tag &&  `| ${menuItem.genetics_tag.name}` }</span>
                                         <div className="name-container">
                                             <div className="name">
                                                 {menuItem.name}
@@ -26,16 +49,7 @@ const BakeryMenuItem = ({menuItem, bakery}) => {
                                 </div>
                                 <div className="prices-container">
                                     <div className="prices">
-                                        {menuItem.prices.ounce.map(price => {
-                                            return (
-                                                <div key={price.price} className="price-and-unit">
-                                                    <div className="unit">
-                                                        <span>{price.units}</span>
-                                                    </div>
-                                                    <span className="price">${price.price}</span>
-                                                </div>
-                                            )
-                                        })}
+                                        {unit}
                                     </div>
                                 </div>
                             </div>

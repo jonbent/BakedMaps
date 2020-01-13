@@ -577,6 +577,271 @@
     height: 100%;
     width: 100%;
     background-color: rgb(255, 255, 255);
+    .bakery-details-container{
+        box-sizing: border-box;
+        padding-top: 0px;
+        padding-bottom: 100px;
+        max-width: 75rem;
+        width: 100%;
+        margin: auto;
+        padding-left: 0px;
+        padding-right: 0px;
+        display: flex;
+        flex-direction: column-reverse;
+        main{
+            max-width: 36.75rem;
+            background: transparent;
+            margin: 0px 1rem;
+            padding-bottom: 2rem;
+            .details-container{
+                color: rgb(124, 124, 124);
+                font-size: 0.875rem;
+                line-height: 1.25rem;
+                margin-top: 1rem;
+                position: relative;
+                .read-more-container{
+                    bottom: 0px;
+                    line-height: inherit;
+                    position: absolute;
+                    right: 0px;
+                    user-select: none;
+                    .read-more:before{
+                        background: linear-gradient(to right, rgba(255, 255, 255, 0), rgb(255, 255, 255));
+                        content: "";
+                        position: absolute;
+                        top: 0px;
+                        right: 100%;
+                        bottom: 0px;
+                        left: auto;
+                        width: 1.5rem;
+                    }
+                    .read-more{
+                        line-height: inherit;
+                        position: absolute;
+                        top: auto;
+                        right: 0px;
+                        bottom: 0px;
+                        left: auto;
+                        user-select: none;
+                        white-space: nowrap;
+                        background: rgb(255, 255, 255);
+                        button{
+                            cursor: pointer;
+                            color: rgb(0, 205, 190);
+                            position: relative;
+                            font-weight: 600;
+                            text-transform: lowercase;
+                            outline: none;
+                            border:none;
+                        }
+                        button:before{
+                            content: "…";
+                        }
+                    }
+                }
+                h3{
+                    color: rgb(74, 74, 74);
+                    font-family: proxima-nova, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+                    font-size: 1.125rem;
+                    font-weight: 600;
+                    margin: 0.25rem auto;
+                }
+                .details{
+                    position: relative;
+                    line-height: 20px;
+                }
+                .details-chopped{
+                    max-height: 80px;
+                    overflow: hidden;
+                }
+            }
+        }
+        aside{
+            background: rgb(255, 255, 255);
+            padding: 1rem;
+            background-color: rgb(255, 255, 255);
+            box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 3px;
+            border-radius: 3px;
+            overflow: hidden;
+            #details-map{
+                box-sizing: border-box;
+                height: 15.625rem;
+                border-top-right-radius: 0.1875rem;
+                border-top-left-radius: 0.1875rem;
+            }
+            .details-socials{
+                box-sizing: border-box;
+                padding-left: 16px;
+                padding-right: 16px;
+                display: grid;
+                font-size: 0.875rem;
+                grid-template-columns: auto;
+                grid-template-rows: auto;
+                grid-template-areas:
+                    "address address"
+                    "phoneNumber phoneNumber"
+                    "openHours openHours"
+                    "email email"
+                    "website website"
+                    "socialMedia socialMedia";
+                .address-container{
+                    box-sizing: border-box;
+                    padding-top: 10px;
+                    padding-bottom: 10px;
+                    max-height: 4.6875rem;
+                    flex: 1 1 0%;
+                    background: rgb(255, 255, 255);
+                    grid-area: address / address / address / address;
+                    margin-bottom: 20px;
+                    display: flex;
+                    background-color: rgb(255, 255, 255);
+                    .address{
+                        box-sizing: border-box;
+                        display: flex;
+                        max-width: 18.75rem;
+                        flex-direction: column;
+                        line-height: 1.25rem;
+                        font-size: 0.875rem;
+                        -webkit-box-pack: center;
+                        justify-content: center;
+                        p{
+                            display: inline-block;
+                            max-width: 18.75rem;
+                            text-overflow: ellipsis;
+                            white-space: nowrap;
+                            overflow-wrap: normal;
+                            color: rgb(102, 102, 102);
+                            overflow: hidden;
+                            margin: 0px;
+                            a{
+                                font-weight: 600;
+                                text-transform: uppercase;
+                                color: rgb(0, 205, 190);
+                                margin: 0px;
+                            }
+                        }
+                    }
+                    svg{
+                        vertical-align: middle;
+                        margin-right: 0.625rem;
+                    }
+                }
+                .phone{
+                    box-sizing: border-box;
+                    padding-top: 10px;
+                    padding-bottom: 10px;
+                    flex: 1 1 0%;
+                    background: rgb(255, 255, 255);
+                    grid-area: phoneNumber / phoneNumber / phoneNumber / phoneNumber;
+                    a{
+                        color: rgb(74, 74, 74);
+                        margin: 0px;
+                        svg{
+                            position: relative;
+                            margin-right: 0.625rem;
+                            vertical-align: middle;
+                        }
+                    }
+                }
+                .hours{
+                    box-sizing: border-box;
+                    padding-top: 10px;
+                    padding-bottom: 10px;
+                    flex: 1 1 0%;
+                    background: rgb(255, 255, 255);
+                    grid-area: openHours / openHours / openHours / openHours;
+                    .closed-day{
+                        color: rgb(255, 51, 102) !important;
+                    }
+                    dl:nth-of-type(1) dt{
+                        color: rgb(0, 205, 190);
+                        font-weight: 600;
+                    }
+                    dl{
+                        box-sizing: border-box;
+                        display: flex;
+                        color: rgb(74, 74, 74);
+                        font-size: 0.875rem;
+                        line-height: 1.375rem;
+                        padding-left: 1.75rem;
+                        position: relative;
+                        text-align: left;
+                        svg{
+                            vertical-align: middle;
+                            position: absolute;
+                            top: 0px;
+                            right: auto;
+                            bottom: auto;
+                            left: 0px;
+                        }
+                        
+                        dt{
+                            width: 5.5rem;
+                            font-weight: 400;
+                            margin-bottom: 0.25rem;
+                            text-transform: uppercase;
+                            white-space: nowrap;
+                            color: #4a4a4a;
+                        }
+                        dd{
+                            box-sizing: border-box;
+                            color: rgb(74, 74, 74);
+                            text-transform: uppercase;
+                            width: 9.5rem;
+                        }
+                    }
+                }
+                .email{
+                    box-sizing: border-box;
+                    padding-top: 10px;
+                    padding-bottom: 10px;
+                    color: rgb(74, 74, 74);
+                    flex: 1 1 0%;
+                    background: rgb(255, 255, 255);
+                    grid-area: email / email / email / email;
+                    a{
+                        color: rgb(74, 74, 74);
+                        margin: 0px;
+                        svg{
+                            margin-right: 0.625rem;
+                            vertical-align: middle;
+                        }
+                    }
+                }
+                .website{
+                    box-sizing: border-box;
+                    padding-top: 10px;
+                    padding-bottom: 10px;
+                    color: rgb(74, 74, 74);
+                    display: inline-block;
+                    max-width: 100%;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    overflow-wrap: normal;
+                    flex: 1 1 0%;
+                    background: rgb(255, 255, 255);
+                    grid-area: website / website / website / website;
+                    overflow: hidden;
+                    a{
+                        color: rgb(74, 74, 74);
+                        margin: 0px;
+                        svg{
+                            margin-right: 0.625rem;
+                            vertical-align: middle;
+                        }
+                    }
+                }
+                .social-media{
+                    box-sizing: border-box;
+                    padding-top: 10px;
+                    padding-bottom: 10px;
+                    flex: 1 1 0%;
+                    background: rgb(255, 255, 255);
+                    grid-area: socialMedia / socialMedia / socialMedia / socialMedia;
+                }
+            }
+        }
+    }
     .bakery-nav-container{
         background-color: rgb(255, 255, 255);
         box-shadow: rgb(230, 229, 229) 0px 0.0625rem 0px inset, rgb(230, 229, 229) 0px -0.0625rem 0px inset;
@@ -932,6 +1197,21 @@
             
         }
     }
+    @media only screen and (min-width: 832px){
+        .bakery-details-container{
+            flex-direction: row;
+            -webkit-box-pack: justify;
+            justify-content: space-between;
+            padding-top: 0.5rem;
+            main{
+                width: calc(50% - 1rem);
+            }
+            aside{
+                width: calc(50% - 1rem);
+                background: transparent;
+            }
+        }
+    }
 }
 .bakery-menu-index-container{
     box-sizing: border-box;
@@ -961,12 +1241,73 @@
                     font-weight: 600;
                     margin: 0.5rem 0px 1rem;
                 }
-                .categories{
+                .categories-container{
                     border-bottom: 0.0625rem solid rgb(204, 204, 204);
                     box-sizing: border-box;
                     flex-direction: column;
                     display: flex;
                     position: relative;
+                    button{
+                        box-shadow: none;
+                        display: flex;
+                        -webkit-box-align: center;
+                        align-items: center;
+                        -webkit-box-pack: justify;
+                        justify-content: space-between;
+                        text-align: left;
+                        font-size: 1rem;
+                        line-height: 1.5;
+                        font-weight: 600;
+                        text-transform: capitalize;
+                        color: rgb(74, 74, 74);
+                        margin: 0px;
+                        padding: 1rem 0px;
+                        border-width: initial;
+                        border-style: none;
+                        border-color: initial;
+                        border-image: initial;
+                        -webkit-appearance: none;
+                        background-color: transparent;
+                        cursor: pointer;
+                        svg{
+                            margin-right: 0.25rem;
+                            transition: transform 300ms ease-in-out 0s;
+                        }
+                    }
+                    .categories{
+                        visibility: visible;
+                        box-sizing: border-box;
+                        z-index: 1;
+                        overflow: hidden;
+                        transition: all 250ms ease-in-out 0s;
+                        padding-left: 0.125rem;
+                        padding-bottom: 1rem;
+                        color: rgb(74, 74, 74);
+                        display: flex;
+                        flex-direction: column;
+                        a{
+                            font-family: proxima-nova, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+                            font-size: 1rem;
+                            line-height: 1.5;
+                            color: rgb(74, 74, 74);
+                            font-weight: normal;
+                            user-select: none;
+                            padding-top: 0.125rem;
+                            text-decoration: none;
+                        }
+                        a.active{
+                            color: rgb(74, 74, 74);
+                            font-weight: bold;
+                            text-decoration: underline;
+                        }
+                        a:hover{
+                            color: rgb(74, 74, 74);
+                            font-weight: bold;
+                            background-color: rgb(0, 205, 190);
+                            border-radius: 5px;
+                            padding-left:5px;
+                        }
+                    }
                 }
             }
             .bakery-items{
@@ -1157,6 +1498,39 @@
                             font-family: inherit;
                             font-weight: inherit;
                             color: rgb(74, 74, 74);
+                            .drop-down{
+                                max-height: 18.75rem;
+                                width: 100%;
+                                min-width: 9.375rem;
+                                position: absolute;
+                                left: 0px;
+                                background-color: rgb(255, 255, 255);
+                                box-shadow: rgba(0, 0, 0, 0.2) 0px 0.0625rem 0.1875rem 0px;
+                                overflow-y: auto;
+                                box-sizing: border-box;
+                                z-index: 10;
+                                top: 3rem;
+                                border-radius: 0.1875rem;
+                                border-width: 0.0625rem;
+                                border-style: solid;
+                                border-color: rgb(204, 204, 204);
+                                border-image: initial;
+                                a{
+                                    font-size: 1rem;
+                                    font-weight: 300;
+                                    color: rgb(74, 74, 74);
+                                    display: block;
+                                    padding: 0.5rem;
+                                }
+                                a.active{
+                                    color: rgb(255, 255, 255);
+                                    background-color: rgb(0, 205, 190);
+                                }
+                                a:hover{
+                                    color: rgb(255, 255, 255);
+                                    background-color: rgb(0, 205, 190);
+                                }
+                            }
                             button{
                                 cursor: pointer;
                                 font-weight: 600;
@@ -1273,7 +1647,7 @@
                         button:not(:nth-of-type(1)){
                             margin-left: 0.5rem;
                         }
-                        a{
+                        button{
                             flex: 0 0 auto;
                             -webkit-box-align: center;
                             align-items: center;
@@ -1294,35 +1668,16 @@
                             transition: all 150ms ease-in-out 0s;
                             border-width: 0.0625rem;
                             border-style: solid;
-                            border-color: rgb(204, 204, 204);
+                            background-color: rgb(255, 255, 255);
                             border-image: initial;
                             border-radius: 1rem;
                             padding: 0.25rem 1rem;
+                            border-color: rgb(204, 204, 204);
                         }
-                        a.active{
-                            -webkit-box-align: center;
-                            align-items: center;
-                            position: relative;
-                            display: flex;
-                            align-content: center;
-                            -webkit-box-pack: center;
-                            justify-content: center;
-                            font-family: proxima-nova, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
-                            z-index: 1;
-                            cursor: pointer;
+                        button.active, button:hover{
                             background-color: rgb(0, 205, 190);
                             color: rgb(255, 255, 255);
-                            font-size: 0.875rem;
-                            font-weight: 400;
-                            text-transform: none;
-                            height: 2rem;
-                            transition: all 150ms ease-in-out 0s;
-                            border-width: 0.0625rem;
-                            border-style: solid;
                             border-color: rgb(1, 168, 163);
-                            border-image: initial;
-                            border-radius: 1rem;
-                            padding: 0.25rem 1rem;
                         }
                     }
                 }
@@ -1362,9 +1717,6 @@
                                             -webkit-box-pack: end;
                                             justify-content: flex-end;
                                             margin-left: 30px;
-                                        }
-                                        .price-and-unit{
-
                                         }
                                     }
                                 }

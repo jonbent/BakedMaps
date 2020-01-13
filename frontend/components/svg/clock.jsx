@@ -1,11 +1,11 @@
 import React from 'react'
 
-const Clock = ({fill = '#00CDBE'}) => {
+const Clock = ({ fill = '#00CDBE', size = 16}) => {
     return (
         <svg
           className="wm-icon-clock"
-          height="16px"
-          width="16px"
+          height={`${size}px`}
+          width={`${size}px`}
           viewBox="0 0 24 24"
         >
           <path

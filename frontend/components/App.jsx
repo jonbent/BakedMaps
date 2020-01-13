@@ -4,7 +4,7 @@ import NavBarContainer from './navbar/NavBarContainer'
 import LoginFormContainer from './auth/LoginFormContainer';
 import SignupFormContainer from './auth/SignupFormContainer';
 import ImageSlideIndex from './slider/ImageSlideIndex'
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import BakeryIndex from './bakeries/BakeryIndexContainer'
 import BakeryShow from './bakeries/BakeryShowContainer'
 
@@ -12,8 +12,14 @@ const App = () => (
   <div>
     <NavBarContainer />
     {/* <ImageSlideIndex /> */}
-    <Route exact path="/bakeries" component={BakeryIndex}/>
-    <Route exact path="/bakeries/:bakerySlug" component={BakeryShow}/>
+    <Switch>
+      <Route path="/bakeries/:bakerySlug" component={BakeryShow}/>
+      <Route path="/bakeries" component={BakeryIndex}/>
+      <Route path="/deliveries/:bakerySlug" component={BakeryShow}/>
+      <Route path="/deliveries" component={BakeryIndex}/>
+      <Route path="/stores/:bakerySlug" component={BakeryShow}/>
+      <Route path="/stores" component={BakeryIndex}/>
+    </Switch>
     
   </div>
 );

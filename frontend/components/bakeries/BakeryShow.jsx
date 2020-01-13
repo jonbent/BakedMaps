@@ -7,6 +7,7 @@ import Follow from '../svg/follow';
 import Directions from "../svg/directions";
 import { NavLink, Route, Switch } from 'react-router-dom';
 import BakeryMenuContainer from './BakeryMenuContainer';
+import BakeryReviewsContainer from './BakeryReviewsContainer';
 import BakeryDetailsContainer from './BakeryDetailsContainer';
 import CopiedContainer from "./CopiedContainer";
 
@@ -238,6 +239,7 @@ export default class BakeryShow extends Component {
             </div>
               <Route exact path="/:storeType/:storeSlug/" component={BakeryMenuContainer}/>
               <Route exact path="/:storeType/:storeSlug/about" component={BakeryDetailsContainer}/>
+              <Route exact path="/:storeType/:storeSlug/reviews" component={BakeryReviewsContainer}/>
           </div>
         ) : null;
     }

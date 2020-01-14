@@ -7,11 +7,13 @@ import ImageSlideIndex from './slider/ImageSlideIndex'
 import { Route, Switch } from 'react-router-dom';
 import BakeryIndex from './bakeries/BakeryIndexContainer'
 import BakeryShow from './bakeries/BakeryShowContainer'
+import Modal from './modals/Modal';
 
 const App = () => (
   <div>
     <NavBarContainer />
     {/* <ImageSlideIndex /> */}
+    <Modal/>
     <Switch>
       <Route path="/bakeries/:bakerySlug" component={BakeryShow}/>
       <Route path="/bakeries" component={BakeryIndex}/>

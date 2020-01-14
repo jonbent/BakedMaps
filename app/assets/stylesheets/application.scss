@@ -18,6 +18,7 @@
 @import 'navbar';
 @import 'signup';
 @import 'bakeries';
+@import 'reviews.scss';
 .image-slider {
 
     width: 100%;
@@ -119,4 +120,176 @@ a {
 }
 dl, dd, dt {
     margin: 0px;
+}
+.given-stars{
+    margin: 0px 0.5rem;
+    -webkit-box-align: center;
+    align-items: center;
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    position: relative;
+    .star-container{
+        animation-fill-mode: forwards;
+        .star{
+            width: 1.25rem;
+            height: 1.25rem;
+            .empty-star{
+                width: 1.25rem;
+                height: 1.25rem;
+                position: absolute;
+                display: flex;
+                -webkit-box-align: center;
+                align-items: center;
+                -webkit-box-pack: center;
+                justify-content: center;
+            }
+            .filled-star{
+                overflow: hidden;
+                height: 1.25rem;
+                div {
+                    display: flex;
+                    -webkit-box-align: center;
+                    align-items: center;
+                    -webkit-box-pack: center;
+                    justify-content: center;
+                    position: relative;
+                    width: 1.25rem;
+                    height: 1.25rem;
+                }
+            }
+        }
+    }
+    .star-container:nth-of-type(1){
+        left: 0px;
+        animation: 550ms ease 0s 1 normal none running fmzNrq;
+    }
+    .star-container:nth-of-type(2){
+        left: 20%;
+        animation: 600ms ease 0s 1 normal none running hgUUPo;
+    }
+    .star-container:nth-of-type(3) {
+        left: 40%;
+        animation: 650ms ease 0s 1 normal none running cGnLJl;
+    }
+    .star-container:nth-of-type(4) {
+        left: 60%;
+        animation: 700ms ease 0s 1 normal none running RWjEv;
+    }
+    .star-container:nth-of-type(5) {
+        left: 60%;
+        animation: 700ms ease 0s 1 normal none running RWjEv;
+    }
+    .cBNdgk:nth-of-type(n+5) {
+        left: 80%;
+        animation: 750ms ease 0s 1 normal none running iWTZYX;
+    }
+}
+@keyframes fmzNrq{
+    0%, 0% {
+        opacity: 0;
+        transform: scale3d(0.1, 0.1, 1) rotate(180deg);
+    }
+    50% {
+        opacity: 0.5;
+        transform: scale3d(1.2, 1.2, 1) rotate(-15deg);
+    }
+    75% {
+        opacity: 0.5;
+        transform: scale3d(0.8, 0.8, 1);
+    }
+    100% {
+        opacity: 1;
+        transform: scale3d(1, 1, 1);
+    }
+}
+@keyframes hgUUPo{
+    0%, 20% {
+        opacity: 0;
+        transform: scale3d(0.1, 0.1, 1) rotate(180deg);
+    }
+    60% {
+        opacity: 0.5;
+        transform: scale3d(1.2, 1.2, 1) rotate(-15deg);
+    }
+    80% {
+        opacity: 0.5;
+        transform: scale3d(0.8, 0.8, 1);
+    }
+    100% {
+        opacity: 1;
+        transform: scale3d(1, 1, 1);
+    }
+}
+@keyframes cGnLJl{
+    0%, 40% {
+        opacity: 0;
+        transform: scale3d(0.1, 0.1, 1) rotate(180deg);
+    }
+    70% {
+        opacity: 0.5;
+        transform: scale3d(1.2, 1.2, 1) rotate(-15deg);
+    }
+    85% {
+        opacity: 0.5;
+        transform: scale3d(0.8, 0.8, 1);
+    }
+    100% {
+        opacity: 1;
+        transform: scale3d(1, 1, 1);
+    }
+}
+@keyframes RWjEv{
+    0%, 60% {
+        opacity: 0;
+        transform: scale3d(0.1, 0.1, 1) rotate(180deg);
+    }
+    80% {
+        opacity: 0.5;
+        transform: scale3d(1.2, 1.2, 1) rotate(-15deg);
+    }
+    90% {
+        opacity: 0.5;
+        transform: scale3d(0.8, 0.8, 1);
+    }
+    100% {
+        opacity: 1;
+        transform: scale3d(1, 1, 1);
+    }
+}
+@keyframes iWTZYX{
+    0%, 80% {
+        opacity: 0;
+        transform: scale3d(0.1, 0.1, 1) rotate(180deg);
+    }
+    90% {
+        opacity: 0.5;
+        transform: scale3d(1.2, 1.2, 1) rotate(-15deg);
+    }
+    95% {
+        opacity: 0.5;
+        transform: scale3d(0.8, 0.8, 1);
+    }
+    100% {
+        opacity: 1;
+        transform: scale3d(1, 1, 1);
+    }
+}
+
+
+.modal-background {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 10;
+}
+
+.modal-child {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }

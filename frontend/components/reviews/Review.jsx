@@ -1,0 +1,27 @@
+import React from 'react'
+import {Link} from 'react-router-dom'
+import GivenStars from './GivenStars'
+
+const Review = ({review, users}) => {
+    return (
+        <div className="review">
+            <Link className="user-info" to={`/users/${users[review.userId].username}`}>
+                <div className="user-img">
+                    <img src={users[review.userId].avatarUrl} alt={users[review.userId].username}/>
+                </div>
+            </Link>
+            <h3 className="review-title" order="3">
+                {review.title}
+            </h3>
+            <div className="review-stars" order="2">
+                <GivenStars numStars={ Math.round(review.rating * 10) / 10 }/>
+            </div>
+            <div className="review-body" order="4">
+                {review.body}
+            </div>
+            <div className="review-time"><time>{review.updatedAt}</time></div>
+        </div>
+    )
+}
+
+export default Review

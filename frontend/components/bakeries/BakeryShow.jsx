@@ -7,7 +7,7 @@ import Follow from '../svg/follow';
 import Directions from "../svg/directions";
 import { NavLink, Route, Switch } from 'react-router-dom';
 import BakeryMenuContainer from './BakeryMenuContainer';
-import BakeryReviewsContainer from './BakeryReviewsContainer';
+import BakeryReviewsContainer from '../reviews/BakeryReviewsContainer';
 import BakeryDetailsContainer from './BakeryDetailsContainer';
 import CopiedContainer from "./CopiedContainer";
 

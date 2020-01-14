@@ -8,6 +8,10 @@ class Api::UsersController < ApplicationController
             render json: {user: nil, errors: @user.errors.messages}, status: 422
         end
     end
+
+    def update
+
+    end
     
     private 
 

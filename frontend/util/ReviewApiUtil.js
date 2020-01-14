@@ -5,3 +5,11 @@ export const fetchReviewsByBakeryId = (bakeryId) => (
         dataType: "JSON"
     })
 )
+
+export const postReview = (post, type="bakeries") => (
+    $.ajax({
+        url: `/api/reviews/bakeries`,
+        method: "POST",
+        data: {post}
+    })
+)

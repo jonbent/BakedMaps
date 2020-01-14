@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const root = document.getElementById('root');
     window.cities = new CityUtil
     if (window.currentUser) {
+      
         const preloadedState = {
             entities: {
                 users: { [window.currentUser.id]: window.currentUser }

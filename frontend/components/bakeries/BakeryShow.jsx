@@ -1,15 +1,25 @@
-import React, { Component } from 'react'
-import Clock from '../svg/clock'
-import Phone from '../svg/phone'
-import Star from '../svg/star'
-import Share from '../svg/share'
-import Follow from '../svg/follow'
+import React, { Component } from 'react';
+import Clock from '../svg/clock';
+import Phone from '../svg/phone';
+import Star from '../svg/star';
+import Share from '../svg/share';
+import Follow from '../svg/follow';
 import Directions from "../svg/directions";
-import { NavLink } from 'react-router-dom'
+import { NavLink, Route, Switch } from 'react-router-dom';
+import BakeryMenuContainer from './BakeryMenuContainer';
+import BakeryReviewsContainer from '../reviews/BakeryReviewsContainer';
+import BakeryDetailsContainer from './BakeryDetailsContainer';
+import CopiedContainer from "./CopiedContainer";
+
 
 export default class BakeryShow extends Component {
     constructor(props) {
         super(props)
+        this.state = {
+          display: "none",
+          opacity: 0,
+          translateY: 8,
+        };
     }
     componentDidMount(){
         this.props.fetchBakery();
@@ -17,16 +27,54 @@ export default class BakeryShow extends Component {
     getNavLinkClass(path){
         return this.props.location.pathname === path ? 'active' : '';
     }
+    showCopied(){
+        const copiedInt = setInterval(() => {
+            
+            this.setState({
+              opacity: this.state.opacity + 0.075,
+              translateY: this.state.translateY - 0.66,
+              display: 'block'
+            }, () => {
+                if (this.state.opacity >= 2 || this.state.translateY <= -2){
+                    clearInterval(copiedInt);
+                    const clearCopiedInt = setInterval(() => {
+                        this.setState({
+                          opacity: this.state.opacity - 0.075,
+                          translateY: this.state.translateY + 0.66
+                        }, () => {
+                            if (this.state.opacity <= 0 || this.state.translateY >= 8){
+                                clearInterval(clearCopiedInt);
+                                this.setState({
+                                  display: "none",
+                                  translateY: 8,
+                                  opacity: 0
+                                });
+                            }
+                        });
+                    }, 50);
+                }
+
+            });
+        }, 50);
+        
+    }
     render() {
-        const {bakery} = this.props
-        let bakeryType = "";
-        if (bakery){
-            bakeryType =
-              bakery.license_type === "hybrid"
-                ? "Medical & Recreational"
-                : bakery.license_type === "recreational"
-                ? "Recreational"
-                : "Medical";
+      const {bakery} = this.props
+      let bakeryType = "";
+      let urlType = ""
+      if (bakery){
+        urlType =
+          bakery.type === "delivery"
+            ? "deliveries"
+            : bakery.type === 'store'
+            ? "stores"
+            : "bakeries";
+        bakeryType =
+          bakery.license_type === "hybrid"
+            ? "Medical & Recreational"
+            : bakery.license_type === "recreational"
+            ? "Recreational"
+            : "Medical";
         }
         return bakery && bakery.phone_number ? (
           <div className="bakery-show-container">
@@ -57,7 +105,7 @@ export default class BakeryShow extends Component {
                       </span>
                       <span className="license-type">{bakeryType}</span>
                       <div className="license-value">
-                        {bakery.licenses[0].type}: {bakery.licenses[0].number}
+                        {bakery.licenses.length ? `${bakery.licenses[0].type}: ${bakery.licenses[0].number}` : ""}
                       </div>
                       <div className="phone-number">{bakery.phone_number}</div>
                       <div className="hours">
@@ -93,6 +141,7 @@ export default class BakeryShow extends Component {
                         .join("%20")}%20${bakery.city
                         .split(" ")
                         .join("%20")}%20${bakery.state}%20${bakery.zip_code}`}`}
+                        target="_blank"
                     >
                       <div className="action-container">
                         <div className="svg-container">
@@ -109,7 +158,17 @@ export default class BakeryShow extends Component {
                         <span className="action">Review</span>
                       </div>
                     </button>
-                    <button>
+                    <button
+                      onClick={() => {
+                        navigator.clipboard.writeText(
+                          window.location.origin +
+                            this.props.location.pathname +
+                            this.props.location.search
+                        );
+                        this.showCopied()
+                        }
+                      }
+                    >
                       <div className="action-container">
                         <div className="svg-container">
                           <Share />
@@ -117,6 +176,7 @@ export default class BakeryShow extends Component {
                         <span className="action">Share</span>
                       </div>
                     </button>
+                    <CopiedContainer style={{transform: `translateX(0px) translateY(${this.state.translateY}px) translateZ(0px)`, display: this.state.display, opacity: this.state.opacity}}/>
                     <button>
                       <div className="action-container">
                         <div className="svg-container">
@@ -131,28 +191,55 @@ export default class BakeryShow extends Component {
             </div>
             <div className="bakery-nav-container">
               <div className="bakery-nav">
-                <div className={`nav-link-container ${this.getNavLinkClass(`/bakeries/${bakery.slug}`)}`}>
+                <div
+                  className={`nav-link-container ${this.getNavLinkClass(
+                    `/${urlType}/${bakery.slug}`
+                  )}`}
+                >
                   <div className="nav-link">
-                    <NavLink exact to={`/bakeries/${bakery.slug}`}>Menu</NavLink>
+                    <NavLink exact to={`/${urlType}/${bakery.slug}`}>
+                      Menu
+                    </NavLink>
                   </div>
                 </div>
-                <div className={`nav-link-container ${this.getNavLinkClass(`/bakeries/${bakery.slug}/about`)}`}>
+                <div
+                  className={`nav-link-container ${this.getNavLinkClass(
+                    `/${urlType}/${bakery.slug}/about`
+                  )}`}
+                >
                   <div className="nav-link">
-                    <NavLink exact to={`/bakeries/${bakery.slug}/about`}>Details</NavLink>
+                    <NavLink exact to={`/${urlType}/${bakery.slug}/about`}>
+                      Details
+                    </NavLink>
                   </div>
                 </div>
-                <div className={`nav-link-container ${this.getNavLinkClass(`/bakeries/${bakery.slug}/deals`)}`}>
+                <div
+                  className={`nav-link-container ${this.getNavLinkClass(
+                    `/${urlType}/${bakery.slug}/deals`
+                  )}`}
+                >
                   <div className="nav-link">
-                    <NavLink exact to={`/bakeries/${bakery.slug}/deals`}>Deals</NavLink>
+                    <NavLink exact to={`/${urlType}/${bakery.slug}/deals`}>
+                      Deals
+                    </NavLink>
                   </div>
                 </div>
-                <div className={`nav-link-container ${this.getNavLinkClass(`/bakeries/${bakery.slug}/reviews`)}`}>
+                <div
+                  className={`nav-link-container ${this.getNavLinkClass(
+                    `/${urlType}/${bakery.slug}/reviews`
+                  )}`}
+                >
                   <div className="nav-link">
-                    <NavLink exact to={`/bakeries/${bakery.slug}/reviews`}>Reviews</NavLink>
+                    <NavLink exact to={`/${urlType}/${bakery.slug}/reviews`}>
+                      Reviews
+                    </NavLink>
                   </div>
                 </div>
               </div>
             </div>
+              <Route exact path="/:storeType/:storeSlug/" component={BakeryMenuContainer}/>
+              <Route exact path="/:storeType/:storeSlug/about" component={BakeryDetailsContainer}/>
+              <Route exact path="/:storeType/:storeSlug/reviews" component={BakeryReviewsContainer}/>
           </div>
         ) : null;
     }

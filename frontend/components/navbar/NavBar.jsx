@@ -77,8 +77,8 @@ class NavBar extends Component {
               <Link to="/" className="logo">
                 <div>
                   <img
-                    src="https://weedmaps.com/static/images/wm-logo-mini-black-smile.svg"
-                    alt="weedmaps"
+                    src={bmLogo}
+                    alt="bakedMaps"
                   />
                 </div>
               </Link>

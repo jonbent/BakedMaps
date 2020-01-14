@@ -51,7 +51,6 @@ export default class BakeryMapList extends Component {
                                 
                                 return (
                                   <BakeryMapListItem
-                                    handleClick={this.props.fetchBakery}
                                     key={idx}
                                     bakery={bakeries[bakery]}
                                   />

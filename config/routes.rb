@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   namespace 'api', defaults: {format: :json} do 
     resources :users, only: :create
     resource :session, only: [:create, :destroy]
+    get '/reviews/:reviewable_type/:reviewable_id', to: 'reviews#index'
+    post '/reviews/:reviewable_type/:reviewable_id', to: 'reviews#create'
   end
   root to: "static_pages#root"
 end

@@ -18,9 +18,8 @@ export default class MarkerManager {
 
   updateMarkers(bakeries) {
     let newMarkers = {};
-    Object.keys(this.markers).forEach(key => {this.markers[key].setMap(null); delete this.markers[key]})
+    Object.keys(this.markers).forEach(key => this.markers[key].setMap(null))
     Object.keys(bakeries).forEach(key => {
-      if (!this.markers[key]) {
         let icon = this.icons.store
         if (bakeries[key].type === "delivery") icon = this.icons.car
         newMarkers[key] = new google.maps.Marker({
@@ -32,7 +31,6 @@ export default class MarkerManager {
           title: bakeries[key].name,
           icon
         });
-      }
     });
     this.markers = newMarkers;
   }

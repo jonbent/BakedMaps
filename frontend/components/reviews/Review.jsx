@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom'
 import GivenStars from './GivenStars'
 
 const Review = ({review, users}) => {
+    // debugger
     return (
         <div className="review">
             <Link className="user-info" to={`/users/${users[review.userId].username}`}>
@@ -14,7 +15,7 @@ const Review = ({review, users}) => {
                 {review.title}
             </h3>
             <div className="review-stars" order="2">
-                <GivenStars numStars={ Math.round(review.rating * 10) / 10 }/>
+                <GivenStars numStars={ review.rating }/>
             </div>
             <div className="review-body" order="4">
                 {review.body}

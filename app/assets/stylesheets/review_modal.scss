@@ -1,0 +1,302 @@
+.modal-child > div {
+    width: 512px;
+    max-width: 100vw;
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    z-index: 600;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    overflow: hidden;
+}
+.review-form-modal{
+    max-width: 100vw;
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    z-index: 600;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    overflow: hidden;
+    .body-container{
+        background-color: rgb(255, 255, 255);
+        height: calc(100% - 4rem);
+        overflow-y: auto;
+        position: relative;
+        padding: 0px;
+        .body{
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow-y: auto;
+            .form-container{
+                box-sizing: border-box;
+                display: flex;
+                -webkit-box-align: stretch;
+                align-items: stretch;
+                flex-direction: column;
+                -webkit-box-pack: justify;
+                justify-content: space-between;
+                .buttons{
+                    box-sizing: border-box;
+                    display: flex;
+                    flex-direction: column;
+                    -webkit-box-pack: end;
+                    justify-content: flex-end;
+                    text-align: center;
+                    user-select: none;
+                    button{
+                        height: 3rem;
+                        line-height: 3rem;
+                        min-height: 3rem;
+                        width: 100%;
+                    }
+                    a, button{
+                        border-width: 0px;
+                        border-style: initial;
+                        border-color: initial;
+                        border-image: initial;
+                        padding: 0px;
+                        -webkit-tap-highlight-color: initial;
+                    }
+                    .post{
+                        display: flex;
+                        align-content: center;
+                        -webkit-box-pack: center;
+                        justify-content: center;
+                        font-family: proxima-nova, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+                        font-size: 1rem;
+                        font-weight: 600;
+                        height: 2.5rem;
+                        text-transform: uppercase;
+                        cursor: pointer;
+                        width: auto;
+                        background-color: rgb(0, 205, 190);
+                        color: rgb(255, 255, 255);
+                        border-radius: 0.1875rem;
+                        border-width: 0.0625rem;
+                        border-style: solid;
+                        border-image: initial;
+                        padding: 0px 1rem;
+                        transition: all 150ms ease-in-out 0s;
+                        border-color: rgb(1, 168, 163);
+                    }
+                }
+                .form{
+                    textarea:focus {
+                        border-color: rgb(0, 205, 190);
+                    }
+                    .text-length{
+                        color: rgb(204, 204, 204);
+                        font-size: 0.75rem;
+                    }
+                    .review-body > div{
+                        display: inline-block;
+                        max-width: 100%;
+                        overflow-x: hidden;
+                        overflow-y: scroll;
+                        padding-bottom: 0.125rem;
+                        position: absolute;
+                        top: 1.6875rem;
+                        right: 0px;
+                        bottom: 0px;
+                        left: 0px;
+                        text-align: left;
+                        overflow-wrap: break-word;
+                        z-index: 1;
+                        margin: 0px;
+                        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+                        line-height: 1.4;
+                        vertical-align: top;
+                        padding: 2px;
+                    }
+                    .review-body{
+                        line-height: 1.4;
+                        position: relative;
+                        label{
+                            position: relative;
+                            z-index: 2;
+                            div{
+                                box-sizing: border-box;
+                                display: flex;
+                                -webkit-box-align: center;
+                                align-items: center;
+                                -webkit-box-pack: justify;
+                                justify-content: space-between;
+                                color: rgb(74, 74, 74);
+                                font-weight: 600;
+                                margin: 0.5rem 0px 0.25rem;
+                            }
+                            textarea{
+                                caret-color: rgb(74, 74, 74);
+                                color: transparent;
+                                margin-bottom: 1rem;
+                                overflow-y: scroll;
+                                pointer-events: auto;
+                                position: relative;
+                                z-index: 3;
+                                background: transparent;
+                                font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+                                line-height: 1.4;
+                                vertical-align: top;
+                                max-width: 100%;
+                                min-height: 12.5rem;
+                            }
+                        }
+                    }
+                    .review-title > div{
+                        display: block;
+                        max-width: 100%;
+                        overflow-x: hidden;
+                        overflow-y: visible;
+                        padding-bottom: 0.125rem;
+                        position: absolute;
+                        top: 1.6875rem;
+                        right: 0px;
+                        left: 0px;
+                        bottom: auto;
+                        text-align: left;
+                        width: calc(100% - 0.125rem);
+                        overflow-wrap: break-word;
+                        z-index: 1;
+                        margin: 0px;
+                        padding: 2px;
+                    }
+                    .review-title{
+                        line-height: 1.4;
+                        position: relative;
+                        label{
+                            position: relative;
+                            z-index: 2;
+                            textarea{
+                                caret-color: rgb(74, 74, 74);
+                                color: transparent;
+                                margin-bottom: 1rem;
+                                overflow-y: scroll;
+                                pointer-events: auto;
+                                position: relative;
+                                z-index: 3;
+                                max-height: 2.5rem;
+                                min-height: 2.5rem;
+                                background: transparent;
+                                font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+                                line-height: 1.4;
+                                vertical-align: top;
+                                max-width: 100%;
+                            }
+                            div{
+                                box-sizing: border-box;
+                                display: flex;
+                                -webkit-box-align: center;
+                                align-items: center;
+                                -webkit-box-pack: justify;
+                                justify-content: space-between;
+                                color: rgb(74, 74, 74);
+                                font-weight: 600;
+                                margin: 0.5rem 0px 0.25rem;
+                            }
+                        }
+                    }
+                    .star-rating{
+                        box-sizing: border-box;
+                        display: flex;
+                        -webkit-box-align: center;
+                        align-items: center;
+                        flex-direction: column;
+                        -webkit-box-pack: justify;
+                        justify-content: space-between;
+                        p{
+                            color: rgb(74, 74, 74);
+                            font-size: 0.875rem;
+                            font-weight: 600;
+                            text-transform: uppercase;
+                            margin: 0px 0px 0.25rem;
+                        }
+                        .stars-select{
+                            display: flex;
+                            flex-direction: row;
+                            flex-wrap: nowrap;
+                        }
+                    }
+                }
+            }
+            .form-container > div{
+                padding: 1rem;
+            }
+        }
+    }
+    .header{
+        box-sizing: border-box;
+        display: flex;
+        -webkit-box-pack: justify;
+        justify-content: space-between;
+        -webkit-box-align: center;
+        align-items: center;
+        font-weight: 600;
+        height: 4rem;
+        font-size: 1.25rem;
+        text-transform: uppercase;
+        background: rgb(255, 255, 255);
+        border-radius: 0.1875rem 0.1875rem 0px 0px;
+        border-bottom: 0.0625rem solid rgb(230, 229, 229);
+        padding: 0px 1rem;
+        .close-modal{
+            cursor: pointer;
+            outline-width: 0px;
+            svg{
+                cursor: pointer;
+                height: 0.875rem;
+                width: 0.875rem;
+                g{
+                    fill: rgb(204, 204, 204);
+                }
+            }
+        }
+    }
+}
+@media only screen and (min-width: 640px){
+    .modal-child > div{
+        box-shadow: rgba(0, 0, 0, 0.2) 0px 0.5rem 1.5rem 0px;
+        max-width: calc(100vw - 2rem);
+        position: initial;
+        height: auto;
+        border-radius: 0.1875rem;
+        margin: 5rem auto;
+    }
+    .review-form-modal {
+        box-shadow: rgba(0, 0, 0, 0.2) 0px 0.5rem 1.5rem 0px;
+        max-width: calc(100vw - 2rem);
+        position: initial;
+        height: auto;
+        border-radius: 0.1875rem;
+        .body-container{
+            height: auto;
+            overflow: visible;
+            .body{
+                height: auto;
+                overflow: visible;
+            }
+        }
+        .header{
+            color: rgb(74, 74, 74);
+            background: rgb(255, 255, 255);
+            border-bottom: 0.0625rem solid rgb(230, 229, 229);
+            h4{
+                display: inline-block;
+                max-width: 100%;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                overflow-wrap: normal;
+                font-size: 1.25rem;
+                font-weight: 600;
+                font-family: proxima-nova, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+                line-height: 1.5rem;
+                overflow: hidden;
+                margin: 0px;
+            }
+        }
+    }
+}

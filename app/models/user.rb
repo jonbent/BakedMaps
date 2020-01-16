@@ -10,6 +10,7 @@ class User < ApplicationRecord
 
   has_one_attached :image
   has_many :reviews
+  has_many :follows
 
   def ensure_session_token
     self.session_token ||= SecureRandom.urlsafe_base64

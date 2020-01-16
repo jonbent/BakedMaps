@@ -6,10 +6,18 @@ export const fetchReviewsByBakeryId = (bakeryId) => (
     })
 )
 
-export const postReview = (post, type="bakeries") => (
+export const fetchUserReviews = (userId) => (
     $.ajax({
-        url: `/api/reviews/bakeries`,
+        url: `/api/reviews/all/${userId}`,
+        method: "GET"
+    })
+)
+
+export const postReview = (review, type="bakeries") => (
+    $.ajax({
+        url: `/api/reviews`,
         method: "POST",
-        data: {post}
+        data: {review},
+        contentType: 'application/JSON'
     })
 )

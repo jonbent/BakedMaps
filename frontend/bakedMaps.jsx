@@ -14,9 +14,9 @@ document.addEventListener('DOMContentLoaded', () => {
       
         const preloadedState = {
             entities: {
-                users: { [window.currentUser.id]: window.currentUser }
+                users: { [window.currentUser.username]: window.currentUser }
             },
-            session: { id: window.currentUser.id },
+            session: { name: window.currentUser.username },
             ui: { city: { name: "San Francisco", state_id: "CA", state_name: "California", lat: 37.7562, lng: -122.443, timezone: "America/Los_Angeles", id: 1840021543 } }
         };
         window.store = store(preloadedState);

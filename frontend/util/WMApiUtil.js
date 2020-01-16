@@ -21,6 +21,24 @@ export const fetchBakery = (bakerySlug, bakeryType = "dispensaries") => {
     dataType: "JSON"
   })
 }
+export const fetchBakeriesFromFollowings = (followings) => {
+  let promises = [];
+    followings.forEach(following => {
+      let bakeryType = following.bakeryType
+      if (bakeryType === "bakeries") bakeryType = "dispensaries";
+      promises.push(
+          $.ajax({
+            url: `https://api-g.weedmaps.com/discovery/v1/listings/${bakeryType}/${following.bakeryTag}`
+          })
+        )
+  })
+  return Promise.all(promises).then(values => {
+    return values.map(bakery => bakery.data.listing)
+  })
+}
+// export const fetchBakeriesFromFollowings = (followings) => {
+//     synchronousFetchBakeries(followings).then(res => console.log(res));
+// }
 
 export const fetchMenuItems = (dispensarySlug, bakeryType="dispensaries", filter = "") => {
   if (bakeryType === "bakeries") bakeryType = "dispensaries";

@@ -10,6 +10,7 @@ import BakeryMenuContainer from './BakeryMenuContainer';
 import BakeryReviewsContainer from '../reviews/BakeryReviewsContainer';
 import BakeryDetailsContainer from './BakeryDetailsContainer';
 import CopiedContainer from "./CopiedContainer";
+import NavigationBar from '../navigation/NavigationBar'
 
 
 export default class BakeryShow extends Component {
@@ -20,49 +21,57 @@ export default class BakeryShow extends Component {
           opacity: 0,
           translateY: 8,
         };
+      this.requireLoggedIn = this.requireLoggedIn.bind(this);
     }
     componentDidMount(){
-        this.props.fetchBakery();
+      this.props.fetchBakery();
     }
-    getNavLinkClass(path){
-        return this.props.location.pathname === path ? 'active' : '';
-    }
-    showCopied(){
-        const copiedInt = setInterval(() => {
-            
-            this.setState({
-              opacity: this.state.opacity + 0.075,
-              translateY: this.state.translateY - 0.66,
-              display: 'block'
-            }, () => {
-                if (this.state.opacity >= 2 || this.state.translateY <= -2){
-                    clearInterval(copiedInt);
-                    const clearCopiedInt = setInterval(() => {
-                        this.setState({
-                          opacity: this.state.opacity - 0.075,
-                          translateY: this.state.translateY + 0.66
-                        }, () => {
-                            if (this.state.opacity <= 0 || this.state.translateY >= 8){
-                                clearInterval(clearCopiedInt);
-                                this.setState({
-                                  display: "none",
-                                  translateY: 8,
-                                  opacity: 0
-                                });
-                            }
-                        });
-                    }, 50);
-                }
 
-            });
-        }, 50);
-        
+    showCopied(){
+      const copiedInt = setInterval(() => {
+        this.setState({
+          opacity: this.state.opacity + 0.075,
+          translateY: this.state.translateY - 0.66,
+          display: 'block'
+        }, () => {
+          if (this.state.opacity >= 2 || this.state.translateY <= -2){
+            clearInterval(copiedInt);
+            const clearCopiedInt = setInterval(() => {
+                this.setState({
+                  opacity: this.state.opacity - 0.075,
+                  translateY: this.state.translateY + 0.66
+                }, () => {
+                    if (this.state.opacity <= 0 || this.state.translateY >= 8){
+                        clearInterval(clearCopiedInt);
+                        this.setState({
+                          display: "none",
+                          translateY: 8,
+                          opacity: 0
+                        });
+                    }
+                });
+            }, 50);
+          }
+        });
+      }, 50);
     }
+
+    requireLoggedIn(func, ...args){
+      if (this.props.currentUser) {
+        func(...args)
+      } else {
+        this.props.history.push('/login')
+      }
+    }
+
     render() {
       const {bakery} = this.props
       let bakeryType = "";
-      let urlType = ""
+      let urlType = "";
+      let navBarOptions;
+      let path = "";
       if (bakery){
+        
         urlType =
           bakery.type === "delivery"
             ? "deliveries"
@@ -75,6 +84,13 @@ export default class BakeryShow extends Component {
             : bakery.license_type === "recreational"
             ? "Recreational"
             : "Medical";
+        path = `/${urlType}/${bakery.slug}`;
+        navBarOptions = [
+          [`/`, "Menu"],
+          [`/about`, 'Details'],
+          [`/reviews`, "Reviews"],
+          [`/deals`, "Deals", true]
+        ]
         }
         return bakery && bakery.phone_number ? (
           <div className="bakery-show-container">
@@ -150,7 +166,7 @@ export default class BakeryShow extends Component {
                         <span className="action">Directions</span>
                       </div>
                     </a>
-                    <button>
+                    <button onClick={() => this.props.openReviewModal(bakery.id)}>
                       <div className="action-container">
                         <div className="svg-container">
                           <Star />
@@ -177,7 +193,7 @@ export default class BakeryShow extends Component {
                       </div>
                     </button>
                     <CopiedContainer style={{transform: `translateX(0px) translateY(${this.state.translateY}px) translateZ(0px)`, display: this.state.display, opacity: this.state.opacity}}/>
-                    <button>
+                    <button onClick={() => this.requireLoggedIn(this.props.postFollow, this.props.currentUser)}>
                       <div className="action-container">
                         <div className="svg-container">
                           <Follow />
@@ -189,57 +205,10 @@ export default class BakeryShow extends Component {
                 </div>
               </div>
             </div>
-            <div className="bakery-nav-container">
-              <div className="bakery-nav">
-                <div
-                  className={`nav-link-container ${this.getNavLinkClass(
-                    `/${urlType}/${bakery.slug}`
-                  )}`}
-                >
-                  <div className="nav-link">
-                    <NavLink exact to={`/${urlType}/${bakery.slug}`}>
-                      Menu
-                    </NavLink>
-                  </div>
-                </div>
-                <div
-                  className={`nav-link-container ${this.getNavLinkClass(
-                    `/${urlType}/${bakery.slug}/about`
-                  )}`}
-                >
-                  <div className="nav-link">
-                    <NavLink exact to={`/${urlType}/${bakery.slug}/about`}>
-                      Details
-                    </NavLink>
-                  </div>
-                </div>
-                <div
-                  className={`nav-link-container ${this.getNavLinkClass(
-                    `/${urlType}/${bakery.slug}/deals`
-                  )}`}
-                >
-                  <div className="nav-link">
-                    <NavLink exact to={`/${urlType}/${bakery.slug}/deals`}>
-                      Deals
-                    </NavLink>
-                  </div>
-                </div>
-                <div
-                  className={`nav-link-container ${this.getNavLinkClass(
-                    `/${urlType}/${bakery.slug}/reviews`
-                  )}`}
-                >
-                  <div className="nav-link">
-                    <NavLink exact to={`/${urlType}/${bakery.slug}/reviews`}>
-                      Reviews
-                    </NavLink>
-                  </div>
-                </div>
-              </div>
-            </div>
-              <Route exact path="/:storeType/:storeSlug/" component={BakeryMenuContainer}/>
-              <Route exact path="/:storeType/:storeSlug/about" component={BakeryDetailsContainer}/>
-              <Route exact path="/:storeType/:storeSlug/reviews" component={BakeryReviewsContainer}/>
+            <NavigationBar location={this.props.location} linkOptions={navBarOptions} path={path}/>
+            <Route exact path="/:storeType/:storeSlug/" component={BakeryMenuContainer}/>
+            <Route exact path="/:storeType/:storeSlug/about" component={BakeryDetailsContainer}/>
+            <Route exact path="/:storeType/:storeSlug/reviews" component={BakeryReviewsContainer}/>
           </div>
         ) : null;
     }

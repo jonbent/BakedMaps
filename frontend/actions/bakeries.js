@@ -20,7 +20,11 @@ export const fetchBakeries = ({
     });
 };
 export const fetchBakery = (bakerySlug, bakeryType) => dispatch => {
-         return WMApiUtil.fetchBakery(bakerySlug, bakeryType).then(res => {
-           dispatch(receiveBakery(res));
-         });
-       };
+    return WMApiUtil.fetchBakery(bakerySlug, bakeryType).then(res => {
+    dispatch(receiveBakery(res));
+    });
+};
+
+export const fetchBakeriesFromFollowings = (followings) => dispatch => {
+    return WMApiUtil.fetchBakeriesFromFollowings(followings).then(bakeries => dispatch(receiveBakeries({data: {listings: bakeries}})))
+}

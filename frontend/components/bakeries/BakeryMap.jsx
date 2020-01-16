@@ -179,7 +179,7 @@ export default class BakeryMap extends Component {
               <div className="listing-buttons">
                 <button
                   className={this.state.openNow ? "active" : ""}
-                  onClick={e => this.handleSelection("openNow")}
+                  onClick={e => {this.handleSelection("openNow"); console.log('hitting')}}
                 >
                   Open Now
                 </button>

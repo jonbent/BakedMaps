@@ -1,6 +1,13 @@
 class Api::ReviewsController < ApplicationController
     def index
-        @reviews = Review.includes(:user).where(reviewable_id: params[:reviewable_id], reviewable_type: params[:reviewable_type])
+        if params[:reviewable_type] == "all"
+            user = User.find(params[:reviewable_id])
+            @reviews = user.reviews
+            # @reviews = Review.includes(:user).where(reviewable_id: params[:reviewable_id], 
+        else
+
+            @reviews = Review.includes(:user).order(created_at: :desc).where(reviewable_id: params[:reviewable_id], reviewable_type: params[:reviewable_type])
+        end
     end
 
     def show
@@ -9,8 +16,6 @@ class Api::ReviewsController < ApplicationController
 
     def create
         @review = Review.new(review_params)
-        @review.reviewable_id = params[:reviewable_id]
-        @review.reviewable_type = params[:reviewable_type]
         if @review.save
             render :show
         else
@@ -29,6 +34,6 @@ class Api::ReviewsController < ApplicationController
     private
 
     def review_params
-        params.require(:review).permit(:title, :body, :rating, :user_id)
+        params.require(:review).permit(:title, :body, :rating, :user_id, :reviewable_id, :reviewable_type)
     end
 end

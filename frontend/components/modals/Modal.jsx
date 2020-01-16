@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 import React from 'react'
-import ReviewForm from '../reviews/ReviewForm'
+import ReviewFormContainer from '../reviews/ReviewFormContainer'
 
 import { postReview } from '../../actions/reviews'
 import {closeModal} from '../../actions/modals'
@@ -9,7 +9,7 @@ const Modal = ({ modal, closeModal}) => {
     let component;
     switch(modal){
         case "review":
-            component = <ReviewForm/>
+            component = <ReviewFormContainer/>
             break;
         default:
             return null;

@@ -38,5 +38,5 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     window.login = login
     window.logout = logout
-    ReactDOM.render(<Root store={window.store} />, root);
+    ReactDOM.render(<Root store={window.store.store} persistor={window.store.persistor}/>, root);
 })

@@ -21,12 +21,19 @@ export default class BakeryMapList extends Component {
     
     render() {
         const {bakeries} = this.props
+        const bakeryKeys = Object.values(this.props.bakeries)
         return (
             <div className="bakery-map-list-container">
                 <div className="bakery-map-list">
                     <div className="bakery-map-list-results">
                         <div className="bakery-map-list-results-num">
-                            Showing results 1 - {Object.values(this.props.bakeries).length}
+                            {bakeryKeys.length ? (
+                                <span>Showing results 1 - {bakeryKeys.length}</span>
+
+                            ) : (
+                                <span>No Results Found</span>
+                            )
+                            }
                         </div>
                         
                         <div className="bakery-map-list-results-sort">
@@ -48,7 +55,6 @@ export default class BakeryMapList extends Component {
                     <div className="bakery-map-listings-container">
                         <div className="bakery-map-listings">
                             {Object.keys(bakeries).map((bakery, idx) => {
-                                
                                 return (
                                   <BakeryMapListItem
                                     key={idx}

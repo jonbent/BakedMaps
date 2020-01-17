@@ -2,8 +2,7 @@ import React, { Component } from 'react'
 import {Link} from 'react-router-dom'
 import GivenStars from '../reviews/GivenStars'
 import CheckMark from '../svg/check_mark'
-import Octicon from '../svg/octicon'
-import LinkedinLogo from '../svg/linkedin_logo'
+import HireMe from '../HireMe'
 
 export default class Following extends Component {
     constructor(props) {
@@ -74,17 +73,7 @@ export default class Following extends Component {
         return (
             <div className="user-following">
                 {content}
-                <div className="bottom-banner-container">
-                    <div className="bottom-banner">
-                        <div className="bottom-banner-links">
-                            <h5>Hire Me</h5>
-                            <div className="links">
-                                <a href="https://github.com/jonbent"><Octicon/>GitHub</a>
-                                <a href="https://www.linkedin.com/in/jon-bent/"><LinkedinLogo/>LinkedIn</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <HireMe/>
             </div>
         )
     }

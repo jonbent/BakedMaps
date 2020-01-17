@@ -108,6 +108,16 @@ export default class BakeryMap extends Component {
             }
         })
     }
+    componentDidUpdate(prevProps) {
+      if (prevProps.city === this.props.city) return null
+      const { lat, lng } = this.props.city
+      console.log(this.props.city);
+      this.map.setCenter({ lat, lng });
+      google.maps.event.addListenerOnce(this.map, "idle", () => {
+        this.setState({ changedBounds: false })
+        this.handleSearch()
+      })
+    };
     handleSortBy(value){
         this.setState({
           sortBy: value
@@ -157,11 +167,17 @@ export default class BakeryMap extends Component {
                   <div className="arrow">
                     <NavigationArrow />
                   </div>
-                  <a>United States</a>
+                  {/* <a>United States</a> */}
+                  <span className="selected-navigation">
+                    <span>United States</span>
+                  </span>
                   <div className="arrow">
                     <NavigationArrow />
                   </div>
-                  <a>{city.state_name}</a>
+                  {/* <a>{city.state_name}</a> */}
+                  <span className="selected-navigation">
+                    <span>{city.state_name}</span>
+                  </span>
                   <div className="arrow">
                     <NavigationArrow />
                   </div>
@@ -173,7 +189,7 @@ export default class BakeryMap extends Component {
               <h1 className="listing-description">
                 <span className="listing-type">Bakery Listings </span>
                 <span>
-                  in {city.name}, {city.state_id}
+                  in {city.name}
                 </span>
               </h1>
               <div className="listing-buttons">

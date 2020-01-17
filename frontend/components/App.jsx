@@ -6,18 +6,20 @@ import UserShow from './users/UserShowContainer';
 import ImageSlideIndex from './slider/ImageSlideIndex';
 import BakeryIndex from './bakeries/BakeryIndexContainer';
 import BakeryShow from './bakeries/BakeryShowContainer';
+import HomeSplash from './home/HomeSplashContainer';
 import Modal from './modals/Modal';
 
 const App = ({location}) => (
-  <div>
+  <div className="">
     <NavBarContainer />
-    {/* <ImageSlideIndex /> */}
+    {/*  */}
     <Modal/>
     <Switch>
       <Route path="/users/:username" component={UserShow}/>
       <Route path="/:storeType/:storeSlug" component={BakeryShow}/>
       <Route path="/:storeType" component={BakeryIndex}/>
-      <Route path="/" render={() => <Redirect to="/bakeries" />}/>
+      <Route path="/" component={HomeSplash}/>
+      {/* <Route path="/" render={() => <Redirect to="/bakeries" />}/> */}
     </Switch>
     
   </div>

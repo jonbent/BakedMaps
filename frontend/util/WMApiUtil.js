@@ -1,6 +1,15 @@
+export const fetchSearchResults = (query, {lat, lng}) => (
+  $.ajax({
+    url: `https://api-g.weedmaps.com/discovery/v1/search?q=${query}&latlng=${lat}%2C${lng}&filter%5Btypes%5D%5B%5D=category&filter%5Btypes%5D%5B%5D=listing&filter%5Btypes%5D%5B%5D=brand&filter%5Btypes%5D%5B%5D=product&filter%5Bbounding_radius%5D=30mi&page_size=24`,
+    method: "GET",
+    dataType: "JSON"
+  })
+
+)
+
 export const findDispensaries = ({ lat, long, mileRadius }) => {
   return $.ajax({
-    url: `https://api-g.weedmaps.com/discovery/v1/listings?filter%5Bany_retailer_services%5D%5B%5D=storefront&filter%5Bbounding_radius%5D=${mileRadius}mi&filter%5Bbounding_latlng%5D=${lat}%2C${long}&page_size=100`,
+    url: `https://api-g.weedmaps.com/discovery/v1/listings?filter%5Bbounding_radius%5D=${mileRadius}mi&filter%5Bbounding_latlng%5D=${lat}%2C${long}&page_size=100`,
     method: "GET",
     dataType: "JSON"
   });

@@ -6,11 +6,10 @@ export default class ImageSlideIndex extends Component {
         super(props)
     
         this.state = {
-            images: [
-                
-            ],
+            images: [],
             currentItem: 0,
-            translateValue: 0
+            translateValue: 0,
+            ready: false
         }
         this.nextImage = this.nextImage.bind(this)
     }
@@ -46,9 +45,10 @@ export default class ImageSlideIndex extends Component {
             } else {
                 this.setState(
                     {
-                        images: Object.values(response.data.carousel)
+                        images: Object.values(response.data.carousel),
+                        ready: true
                     }, 
-                    () => setInterval(this.nextImage, 5000)
+                    () => this.interval = setInterval(this.nextImage, 3000)
                 )
             }
         })
@@ -56,19 +56,21 @@ export default class ImageSlideIndex extends Component {
     slideWidth() {
         return document.querySelector('.image-slide').clientWidth
     }
+    componentWillUnmount() {
+        clearInterval(this.interval)
+    }
+    
 
     render() {
+        if (!this.state.ready) return null
         return (
-            <div className="image-slider">
-                <div className="image-slider-wrapper"
-                    style={{
-                        transform: `translateX(${this.state.translateValue}px)`,
-                        transition: 'transform ease-out 0.45s'
-                    }}
-                >
-                    {this.state.images.map(image => {
-                        return <ImageSlideItem image={image} key={image.ad_id}/>
-                    })}
+            <div className="image-slider-container" style={{ backgroundColor: this.state.images[this.state.currentItem].background_color}}>
+                <div className="image-slider">
+                    <div className="image-slider-wrapper">
+                        {this.state.images.map((image, idx) => {
+                            return <ImageSlideItem key={idx} image={image} opacity={idx === this.state.currentItem ? 1 : 0}/>
+                        })}
+                    </div>
                 </div>
             </div>
         )

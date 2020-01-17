@@ -151,9 +151,9 @@ class NavBar extends Component {
                             <li
                             key={product.id}
                             className="product-list-item"
-                            // onMouseDown={e => this.handleCitySelect(cityName)}
+                            onMouseDown={e => this.props.history.push(product.attributes.web_url.split('.com')[1])}
                             >
-                              <a onMouseDown={() => this.props.history.push(product.attributes.web_url.split('.com')[1])}>
+                              <Link to={product.attributes.web_url.split('.com')[1]}>
                                 <div className="product-icon">
                                   {product.attributes.avatar_image && <img src={product.attributes.avatar_image.small_url} alt={product.attributes.name}/>}
                                 </div>
@@ -170,7 +170,7 @@ class NavBar extends Component {
                                     }
                                   </div>
                                 </div>
-                              </a>
+                              </Link>
                             </li>
                           );
                         })}

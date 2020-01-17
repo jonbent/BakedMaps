@@ -147,13 +147,17 @@ class NavBar extends Component {
                         }
                         {this.props.products && this.props.products.map(product => {
                           if (product.type !== 'listing') return null
+                          let webUrl = product.attributes.web_url.split('.com')[1];
+                          let splitWebUrl = product.attributes.web_url.split('.com')[1].split('/');
+                          if (splitWebUrl[1] === 'dispensaries') splitWebUrl[1] = 'bakeries';
+                          webUrl = splitWebUrl.join('/')
                           return (
                             <li
                             key={product.id}
                             className="product-list-item"
-                            onMouseDown={e => this.props.history.push(product.attributes.web_url.split('.com')[1])}
+                            onMouseDown={e => this.props.history.push(webUrl)}
                             >
-                              <Link to={product.attributes.web_url.split('.com')[1]}>
+                              <Link to={webUrl}>
                                 <div className="product-icon">
                                   {product.attributes.avatar_image && <img src={product.attributes.avatar_image.small_url} alt={product.attributes.name}/>}
                                 </div>

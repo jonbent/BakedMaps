@@ -9,6 +9,8 @@
 - Bakeries (dispensaries) and their menus are updated daily. and represent real information.
 - If a user finds a bakery they like, they can review or follow it. But they must sign up first.
 
+![search-gif](/searchbar-gif.gif)
+
 ## MVP Functionality
 * Splash Page with carousels
 * Bakery Map with custom markers
@@ -18,8 +20,12 @@
 * Create Reviews
 * Create Follows
 
+![user-show-page](/usershowpage.png)
+
 ## Authors
 - [Jon Bent](https://github.com/jonbent)
+
+![favorites-show-page](/favoritesshow.png)
 
 ## Dynamics
 * Schedule

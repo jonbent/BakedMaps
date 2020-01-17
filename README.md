@@ -1,8 +1,46 @@
 # [BakedMaps](http://www.baked-maps.com)
 
-**BakedMaps** is a clone of WeedMaps, utilizing the technologies found on weedmaps' page.
+**BakedMaps** is a clone of [WeedMaps](http://www.weedmaps.com), utilizing the technologies found on weedmaps' page.
 
+![page-gif](/bakedmaps-home-gif.gif)
 
+## Getting Started
+- To begin using BakedMaps anybody will be able to find bakeries in a designated area, and see what they have to offer.
+- Bakeries (dispensaries) and their menus are updated daily. and represent real information.
+- If a user finds a bakery they like, they can review or follow it. But they must sign up first.
+
+## MVP Functionality
+* Splash Page with carousels
+* Bakery Map with custom markers
+* Bakery Show Page
+* User Show Page
+* Sign up with Demo/Email
+* Create Reviews
+* Create Follows
+
+## Authors
+- [Jon Bent](https://github.com/jonbent)
+
+## Dynamics
+* Schedule
+ * 9am - 10pm
+* Stand-Up
+ * 10am
+
+* Check-In Protocol
+  * Previous work
+  * Future work
+  
+## Next Steps
+
+- MenuItem show page
+- Favorites slice
+- Posts slice
+- User settings page
+- get svg map images for carousels
+- Deals slice
+- News Slice
+- Brands Slice
 
 This README would normally document whatever steps are necessary to get the
 application up and running.

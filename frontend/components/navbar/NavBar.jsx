@@ -45,7 +45,6 @@ class NavBar extends Component {
         this.setState({
             [`${fieldType}Search`]: !this.state[`${fieldType}Search`],
         })
-
       })
     }
     focusLocationInput(e){
@@ -154,7 +153,7 @@ class NavBar extends Component {
                             className="product-list-item"
                             // onMouseDown={e => this.handleCitySelect(cityName)}
                             >
-                              <Link to={product.attributes.web_url.split('.com')[1]}>
+                              <a onMouseDown={() => this.props.history.push(product.attributes.web_url.split('.com')[1])}>
                                 <div className="product-icon">
                                   {product.attributes.avatar_image && <img src={product.attributes.avatar_image.small_url} alt={product.attributes.name}/>}
                                 </div>
@@ -171,7 +170,7 @@ class NavBar extends Component {
                                     }
                                   </div>
                                 </div>
-                              </Link>
+                              </a>
                             </li>
                           );
                         })}

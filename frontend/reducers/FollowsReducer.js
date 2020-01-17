@@ -13,9 +13,9 @@ export default (prevState = {}, action) => {
             nextState = Object.assign(nextState, prevState, action.payload.follow);
             return nextState;
         case REMOVE_FOLLOW:
-            nextState = Object.assign(nextState, prevState)
-            delete nextState[action.followId]
-            return nextState
+            nextState = Object.assign(nextState, prevState);
+            delete nextState[Object.values(action.payload.follow)[0].id];
+            return nextState;
         default:
             return prevState;
     }

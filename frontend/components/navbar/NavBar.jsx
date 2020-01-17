@@ -46,7 +46,7 @@ class NavBar extends Component {
             [`${fieldType}Search`]: !this.state[`${fieldType}Search`],
         })
 
-      }, 100)
+      })
     }
     focusLocationInput(e){
         e.currentTarget.querySelector(".location-input").focus()

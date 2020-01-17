@@ -12,6 +12,7 @@ import BakeryDetailsContainer from './BakeryDetailsContainer';
 import CopiedContainer from "./CopiedContainer";
 import NavigationBar from '../navigation/NavigationBar'
 import GivenStar from '../reviews/GivenStar'
+import CheckMark from '../svg/check_mark';
 
 
 export default class BakeryShow extends Component {
@@ -74,6 +75,7 @@ export default class BakeryShow extends Component {
       let urlType = "";
       let navBarOptions;
       let path = "";
+      let followButton;
       if (bakery){
         
         urlType =
@@ -95,6 +97,30 @@ export default class BakeryShow extends Component {
           [`/reviews`, "Reviews"],
           [`/deals`, "Deals", true]
         ]
+        let findFollow;
+        if (this.props.currentUser){
+          findFollow = this.props.follows.find(follow => follow.userId === this.props.currentUser.id)
+
+        }
+        followButton = findFollow ? (
+          <button onClick={() => this.props.deleteFollow(findFollow.id)}>
+            <div className="action-container">
+              <div className="svg-container">
+                <CheckMark fill="#01A8A3"/>
+              </div>
+              <span className="action">Follow</span>
+            </div>
+          </button>
+        ) : (
+            <button onClick={() => this.requireLoggedIn(this.props.postFollow, this.props.currentUser)}>
+              <div className="action-container">
+                <div className="svg-container">
+                  <Follow />
+                </div>
+                <span className="action">Follow</span>
+              </div>
+            </button>
+          )
         }
         return bakery && bakery.phone_number ? (
           <div className="bakery-show-container">
@@ -202,14 +228,7 @@ export default class BakeryShow extends Component {
                       </div>
                     </button>
                     <CopiedContainer style={{transform: `translateX(0px) translateY(${this.state.translateY}px) translateZ(0px)`, display: this.state.display, opacity: this.state.opacity}}/>
-                    <button onClick={() => this.requireLoggedIn(this.props.postFollow, this.props.currentUser)}>
-                      <div className="action-container">
-                        <div className="svg-container">
-                          <Follow />
-                        </div>
-                        <span className="action">Follow</span>
-                      </div>
-                    </button>
+                    {followButton}
                   </div>
                 </div>
               </div>

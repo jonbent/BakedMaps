@@ -22,7 +22,7 @@ export default GivenStar
 // numStars | num | val
 // 4.5      | 4   | 1
 // 3.5      | 4   | 0.5
-// 3.5      | 5   | 0
+// 4.5      | 5   | 0.5
 // 5        | 3   | 1
 
 // numStars > num

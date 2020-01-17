@@ -21,6 +21,189 @@
 @import 'reviews';
 @import 'review_modal';
 @import 'users';
+@import 'home';
+
+.option-carousel{
+    box-sizing: border-box;
+    -webkit-box-align: center;
+    align-items: center;
+    flex-wrap: nowrap;
+    display: flex;
+    white-space: nowrap;
+    position: relative;
+    transform: translateX(-0.3125rem);
+    width: calc(100% + 0.625rem);
+    overflow: hidden;
+    padding: 0px 1rem 0.75rem;
+    .carousel-items{
+        flex: 0 0 auto;
+        box-sizing: border-box;
+        display: grid;
+        grid-template-columns: repeat(5, minmax(0px, 1fr));
+        backface-visibility: hidden;
+        height: 100%;
+        position: static;
+        top: 0px;
+        white-space: nowrap;
+        width: 100%;
+        gap: 24px;
+        margin: 0px;
+        padding: 0.3125rem 0.3125rem 0px;
+        transition: transform 300ms ease 0s;
+        .carousel-item{
+            white-space: initial;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+            position: relative;
+            box-shadow: none;
+            min-height: 14rem;
+            overflow: hidden;
+            .carousel-body{
+                top: 0px;
+                position: absolute;
+                height: 100%;
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                padding: 1.3125rem 0px 0px;
+                .carousel-bottom{
+                    box-sizing: border-box;
+                    align-items: flex-end;
+                    justify-content: stretch;
+                    flex-wrap: nowrap;
+                    display: flex;
+                    .carousel-rating{
+                        box-sizing: border-box;
+                        -webkit-box-align: center;
+                        align-items: center;
+                        flex-wrap: nowrap;
+                        display: flex;
+                        -webkit-box-flex: 1;
+                        flex-grow: 1;
+                    }
+                }
+                .carousel-bottom{
+                    position: static;
+                    display: flex;
+                    flex-direction: column;
+                    -webkit-box-pack: justify;
+                    justify-content: space-between;
+                    -webkit-box-flex: 1;
+                    flex-grow: 1;
+                    padding: 0px;
+                }
+                .carousel-type{
+                    color: rgb(124, 124, 124);
+                    font-size: 0.75rem;
+                    letter-spacing: 0.0125rem;
+                    margin-bottom: 0.25rem;
+                    line-height: 1.4;
+                    text-transform: capitalize;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    padding: 0px;
+                    overflow: hidden;
+                }
+                .carousel-name{
+                    height: auto;
+                    max-height: 2.5rem;
+                    -webkit-box-orient: vertical;
+                    -webkit-line-clamp: 2;
+                    color: rgb(74, 74, 74);
+                    display: block;
+                    font-size: 1.125rem;
+                    font-weight: 500;
+                    line-height: 1.25rem;
+                    margin-bottom: 0.25rem;
+                    text-overflow: ellipsis;
+                    white-space: normal;
+                    padding: 0px;
+                    overflow: hidden;
+                }
+                .carousel-location{
+                    font-size: 0.75rem;
+                    color: rgb(124, 124, 124);
+                    letter-spacing: 0.0125rem;
+                    line-height: 1.2;
+                    text-transform: capitalize;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                    padding: 0px;
+                    overflow: hidden;
+                    margin: 0.625rem 0px 0.25rem;
+                }
+                .carousel-img-container{
+                    box-sizing: border-box;
+                    display: flex;
+                    margin-top: 0.625rem;
+                    -webkit-box-pack: justify;
+                    justify-content: space-between;
+                    align-items: flex-end;
+                    padding: 0px 0.5rem;
+                    .carousel-img{
+                        box-shadow: rgba(0, 0, 0, 0.25) 0px 1px 3px;
+                        background: rgb(255, 255, 255);
+                        display: flex;
+                        -webkit-box-align: center;
+                        align-items: center;
+                        align-self: center;
+                        -webkit-box-pack: center;
+                        justify-content: center;
+                        width: 48px;
+                        height: 48px;
+                        position: relative;
+                        border-radius: 0px;
+                        overflow: hidden;
+                        img{
+                            width: auto;
+                            height: auto;
+                            object-fit: fill;
+                            border-radius: 0px;
+                        }
+                    }
+                }
+            }
+            .carousel-header{
+                box-sizing: border-box;
+                display: flex;
+                position: relative;
+                height: 4.3125rem;
+                width: 100%;
+                overflow: hidden;
+                background-color: #999999;
+            }
+        }
+    }
+    .closed{
+        box-sizing: border-box;
+        display: grid;
+        grid-template-columns: repeat(5, minmax(0px, 1fr));
+        backface-visibility: hidden;
+        height: 100%;
+        position: absolute;
+        top: 0px;
+        white-space: nowrap;
+        width: 100%;
+        gap: 24px;
+        margin: 0px;
+        padding: 0.3125rem 0.3125rem 0px;
+        transition: transform 300ms ease 0s;
+    }
+    .current{
+        box-sizing: border-box;
+        display: grid;
+        grid-template-columns: repeat(5, minmax(0px, 1fr));
+        backface-visibility: hidden;
+        height: 100%;
+        position: absolute;
+        top: 0px;
+        white-space: nowrap;
+        width: 100%;
+        gap: 24px;
+        margin: 0px;
+        padding: 0.3125rem 0.3125rem 0px;
+        transition: transform 300ms ease 0s;
+    }
+}
 .open-status.open{
     font-weight: 600;
     font-size: 0.75rem;
@@ -197,6 +380,12 @@
         }
     }
 }
+.image-slider-container {
+    width:100%;
+    display: flex;
+    justify-content: center;
+    transition: background-color 1s ease-in-out;
+}
 .image-slider {
 
     width: 100%;
@@ -204,18 +393,80 @@
     position: relative;
     overflow: hidden;
     z-index: 1;
+    max-width: 74.375rem;
 }
 .image-slider-wrapper{
     width: 100%;
     height: 100%;
-    float: left;
     display: flex;
     flex-wrap: nowrap;
 }
 .image-slide {
-    flex: 0 0 100%;
+    transition: opacity 1s ease-in-out;
+    flex:0 0 auto;
+    position: absolute;
+    color: black;
     width: 100%;
-    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    height: 14.5rem;
+    // padding-left: 1.5rem;
+    margin: 0px auto;
+    .options{
+        align-self: center;
+        width: 100%;
+        z-index: 2;
+        font-family: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+        grid-area: 1 / 1 / span 6 / span 5;
+        .title{
+            box-sizing: border-box;
+            display: flex;
+            font-size: 0.875rem;
+            line-height: 1.375rem;
+        }
+        .body{
+            box-sizing: border-box;
+            font-family: weedmaps-sans, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+            height: 100%;
+            line-height: 5rem;
+            font-size: 2.3125rem;
+            font-weight: 900;
+            line-break: auto;
+            text-transform: uppercase;
+            margin-bottom: 0.25rem;
+            padding: 0px;
+        }
+        a, button{
+            -webkit-box-align: center;
+            align-items: center;
+            position: relative;
+            display: flex;
+            align-content: center;
+            -webkit-box-pack: center;
+            justify-content: center;
+            font-family: proxima-nova, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+            height: 40px;
+            text-transform: uppercase;
+            cursor: pointer;
+            background-color: black;
+            color: white;
+            min-width: 6.25rem;
+            max-width: 8.25rem;
+            font-size: 0.875rem;
+            line-height: 0.875rem;
+            font-weight: 600;
+            text-align: center;
+            z-index: 2;
+            border-width: 1px;
+            border-style: solid;
+            border-image: initial;
+            border-color: rgb(204, 204, 204);
+            transition: all 150ms ease-in-out 0s;
+            padding: 0.375rem 1rem;
+            border-radius: 6.25rem;
+        }
+    }
 }
 .cursor-text:hover{
     cursor: text;
@@ -647,6 +898,11 @@ mark.errors{
         }
     }
 }
+@media only screen and (min-width: 1023px){
+    .option-carousel .carousel-items .carousel-item{
+        min-height: 14.25rem;
+    }
+}
 @media screen and (min-width: 832px){
     .app-footer {
         flex-direction: column;
@@ -670,6 +926,17 @@ mark.errors{
     }
 }
 @media only screen and (min-width: 640px){
+    .image-slide{
+        height: 25rem;
+        .options{
+            .title{
+                font-size: 1.625rem;
+                line-height: 1.625rem;
+                margin-bottom: 1rem;
+            }
+
+        }
+    }
     .app-footer{
         flex-direction: column;
         padding-top: 3rem;
@@ -731,7 +998,7 @@ mark.errors{
     padding-left: 0px;
     padding-right: 0px;
     display: flex;
-    max-width: 75rem;
+    align-items: center;
     width: 100%;
     .inner-info{
         box-sizing: border-box;
@@ -742,6 +1009,7 @@ mark.errors{
         padding-right: 1rem;
         display: flex;
         width: 100%;
+        max-width: 75rem;
         .socials{
             box-sizing: border-box;
             flex-direction: row;

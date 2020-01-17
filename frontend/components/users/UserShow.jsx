@@ -4,19 +4,23 @@ import {Route, Switch} from 'react-router-dom';
 import Reviews from '../reviews/Reviews'
 import Following from './FollowingContainer'
 import Footer from '../navbar/Footer'
+import HireMe from '../HireMe'
 export default class UserShow extends Component {
     constructor(props) {
         super(props)
+        this.state = {
+            ready: false
+        }
     }
     componentDidMount(){
-        this.props.fetchUserInfo()
+        this.props.fetchUserInfo().then(() => this.setState({ ready: true }));
     }
     componentDidUpdate(prevProps){
-        if (prevProps.match.params.username !== this.props.match.params.username) this.props.fetchUserInfo();
+        if (prevProps.match.params.username !== this.props.match.params.username) this.props.fetchUserInfo()
     }
     render() {
         const { user, userReviews, userFollows } = this.props
-        if (!user || !user.reviewIds || (userReviews[0] === undefined && userReviews.length !== 0)) return null;
+        if (!this.state.ready) return null;
         const path = `/users/${user.username}`;
         const linkOptions = [
             ['/', 'Reviews'],
@@ -47,9 +51,12 @@ export default class UserShow extends Component {
                     <Route path="/users/:username/following" render={props => <Following follows={userFollows}/>}/>
                     <Route path="/users/:username/" render={() => (
                         <div className="user-reviews-container">
-                            <div className="reviews-container">
-                                <Reviews reviews={userReviews} users={{ [user.id]: user }} />
+                            <div style={{width: '100%'}}>
+                                <div className="reviews-container">
+                                    <Reviews reviews={userReviews} users={{ [user.id]: user }} />
+                                </div>
                             </div>
+                            <HireMe />
                         </div>
                     )}/>
                 </Switch>

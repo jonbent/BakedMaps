@@ -8,8 +8,8 @@ import { receiveReviewAmount } from '../../actions/filters'
 const mapStateToProps = ({entities}, {match}) => {
     let bakeryId = undefined
     let storeType = match.params.storeType 
+    if (storeType === "deliveries" || storeType === "stores") storeType = "bakeries"
     if (entities[storeType][match.params.storeSlug]) bakeryId = entities[storeType][match.params.storeSlug].id
-    if (match.params.storeType === "deliveries" || match.params.storeType === "stores") storeType = "bakeries"
     return {
         bakeryId,
         object: entities[storeType][match.params.storeSlug],

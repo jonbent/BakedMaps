@@ -1,15 +1,21 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 
-const ImageSlideItem = ({image}) => {
+const ImageSlideItem = ({ image, opacity}) => {
     const styles = {
         backgroundImage: `url(${image.image_url})`,
-        backgroundSize: 'cover',
+        backgroundSize: 'contain',
+        backgroundPosition: 'right bottom',
         backgroundRepeat: 'no-repeat',
-        backgroundPosition: '50% 60%'
+        opacity
     }
     return (
         <div className="image-slide" style={styles}>
-            
+            <div className="options">
+                <div className="title">{image.subtitle_text}</div>
+                <div className="body">{image.header_text}</div>
+                <Link to="/bakeries">{image.button_text}</Link>
+            </div>
         </div>
     )
 }

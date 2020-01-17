@@ -47,11 +47,7 @@
 - Deals slice
 - News Slice
 - Brands Slice
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
+- Change from Showing Dispensary information to Bakery Information.
 
 * Ruby version
   * ruby 2.5.1
@@ -111,4 +107,3 @@ Things you may want to cover:
   * `exit`
   * `cd /var/www/myapp/code`
   * `rvmsudo bundle exec passenger start`
-* ...

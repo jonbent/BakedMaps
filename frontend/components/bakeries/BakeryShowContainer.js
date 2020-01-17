@@ -9,6 +9,7 @@ import { receiveReviewAmount } from '../../actions/filters'
 const mapStateToProps = ({ entities, ui, session }, {match}) => {
   let bakeryId = undefined;
   let storeType = match.params.storeType 
+  if (storeType === "deliveries" || storeType === "stores") storeType = "bakeries"
   if (entities[storeType][match.params.storeSlug]) bakeryId = entities[storeType][match.params.storeSlug].id
   return {
     currentUser: entities.users[session.name],

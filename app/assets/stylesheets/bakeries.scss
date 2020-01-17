@@ -1092,6 +1092,36 @@
                         box-sizing: border-box;
                         flex-direction: row;
                         display: flex;
+                        .given-stars{
+                            display: flex;
+                            margin: 0px;
+                            .star-container{
+                                width: 14px;
+                                height: 14px;
+                                .star{
+                                    height: 100%;
+                                    width: 100%;
+                                    .empty-star{
+                                        height: 14px;
+                                        width: 14px;
+                                    }
+                                  .filled-star {
+                                      height: 100%;
+                                      div{
+                                            display: flex;
+                                            -webkit-box-align: center;
+                                            align-items: center;
+                                            -webkit-box-pack: center;
+                                            justify-content: center;
+                                            position: relative;
+                                            width: 14px;
+                                            height: 14px;
+                                            overflow: hidden;
+                                      }
+                                  }
+                                } 
+                            }
+                        }
                         .rating-and-count{
                             font-size: 0.75rem;
                             font-weight: 600;

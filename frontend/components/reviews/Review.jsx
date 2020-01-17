@@ -15,7 +15,7 @@ const Review = ({review, users}) => {
                 {review.title}
             </h3>
             <div className="review-stars" order="2">
-                <GivenStars numStars={ review.rating }/>
+                <GivenStars numStars={ review.rating + 1 }/>
             </div>
             <div className="review-body" order="4">
                 {review.body}

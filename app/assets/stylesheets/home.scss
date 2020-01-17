@@ -1,0 +1,132 @@
+.home-container{
+    max-width: 75rem;
+    margin: auto;
+    padding: 0px 0px 1.25rem;
+    .carousel-container{
+        box-sizing: border-box;
+        flex-direction: column;
+        display: flex;
+        padding-top: 0.5rem;
+        max-width: 100%;
+        min-width: 100%;
+        position: relative;
+        user-select: none;
+        .carousel-headers{
+            box-sizing: border-box;
+            -webkit-box-align: center;
+            align-items: center;
+            -webkit-box-pack: justify;
+            justify-content: space-between;
+            display: flex;
+            margin: 0px 1rem 1rem;
+            padding-left: 1rem;
+            .header-buttons > a{
+                -webkit-box-align: center;
+                align-items: center;
+                display: inline-flex;
+                justify-content: space-around;
+                position: relative;
+                height: 2.5rem;
+                color: rgb(102, 102, 102);
+                font-family: proxima-nova, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+                font-size: 0.875rem;
+                font-weight: 600;
+                text-transform: uppercase;
+                user-select: none;
+                white-space: nowrap;
+                width: auto;
+                background: rgb(255, 255, 255);
+                border-width: 0.0625rem;
+                border-style: solid;
+                border-color: rgb(221, 221, 221);
+                border-image: initial;
+                border-radius: 0.25rem;
+                transition: all 300ms ease 0s;
+                padding: 0px 1rem;
+            }
+            .header-buttons{
+                box-sizing: border-box;
+                -webkit-box-align: center;
+                align-items: center;
+                flex-wrap: nowrap;
+                display: flex;
+                white-space: nowrap;
+                .carousel-nav.disabled{
+                    cursor: auto;
+                }
+                .carousel-nav{
+                    cursor: pointer;
+                    -webkit-box-align: center;
+                    align-items: center;
+                    display: inline-flex;
+                    justify-content: space-around;
+                    position: relative;
+                    height: 2.5rem;
+                    width: 2.75rem;
+                    background: rgb(255, 255, 255);
+                    border-width: 0.0625rem;
+                    border-style: solid;
+                    border-color: rgb(221, 221, 221);
+                    border-image: initial;
+                    border-radius: 0.25rem;
+                    transition: all 300ms ease 0s;
+                }
+                .prev-button{
+                    margin-left: 0.5rem;
+                    transform: translateX(0.0625rem);
+                    border-radius: 0.25rem 0px 0px 0.25rem;
+                    svg{
+                        transform: rotate(90deg);
+                    }
+                }
+                .next-button{
+                    border-radius: 0px 0.25rem 0.25rem 0px;
+                    svg{
+                        transform: rotate(270deg);
+                    }
+                }
+            }
+            h2{
+                box-sizing: border-box;
+                align-items: flex-start;
+                flex-direction: column;
+                -webkit-box-pack: center;
+                justify-content: center;
+                display: flex;
+                color: rgb(74, 74, 74);
+                line-height: 1.25;
+                padding-right: 0.5rem;
+            }
+        }
+    }
+}
+@media only screen and (min-width: 1024px){
+    .home-container {
+        padding: 0px 0px 2rem;
+        .carousel-container{
+            padding-top: 1.5rem;
+        }
+    }
+}
+@media only screen and (min-width: 1200px){
+    .home-container {
+        padding-left: 0px;
+        padding-right: 0px;
+        .carousel-container{
+            margin-left: 1rem;
+            margin-right: 1rem;
+            max-width: calc(100% - 2rem);
+            min-width: calc(100% - 2rem);
+            overflow: unset;
+            .carousel-headers{
+                margin-left: 0px;
+                margin-right: 0px;
+            }
+        }
+    }
+}
+@media only screen and (min-width: 640px){
+    .carousel-container {
+        padding-top: 1rem;
+    }
+}

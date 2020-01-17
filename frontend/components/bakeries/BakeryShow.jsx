@@ -11,6 +11,7 @@ import BakeryReviewsContainer from '../reviews/BakeryReviewsContainer';
 import BakeryDetailsContainer from './BakeryDetailsContainer';
 import CopiedContainer from "./CopiedContainer";
 import NavigationBar from '../navigation/NavigationBar'
+import GivenStar from '../reviews/GivenStar'
 
 
 export default class BakeryShow extends Component {
@@ -25,6 +26,9 @@ export default class BakeryShow extends Component {
     }
     componentDidMount(){
       this.props.fetchBakery();
+    }
+    componentDidUpdate(prevProps){
+      if (this.props.location.pathname !== prevProps.location.pathname) this.props.fetchBakery();
     }
 
     showCopied(){
@@ -108,8 +112,13 @@ export default class BakeryShow extends Component {
                   <div className="bakery-name-and-info">
                     <h1>{bakery.name}</h1>
                     <div className="reviews">
+                      <div className="given-stars">
+                        {[...Array(5).keys()].map(el => {
+                          return <GivenStar key={el} num={el + 1} numStars={Math.round(bakery.rating * 10) / 10} />
+                        })}
+                      </div>
                       <span className="rating-and-count">
-                        Rating: {Math.round(bakery.rating * 10) / 10}
+                        {Math.round(bakery.rating * 10) / 10}
                         <span className="reviews-count">
                           ({bakery.reviews_count})
                         </span>

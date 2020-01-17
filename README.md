@@ -49,6 +49,8 @@
 - Brands Slice
 - Change from Showing Dispensary information to Bakery Information.
 
+## Setup and Information
+
 * Ruby version
   * ruby 2.5.1
   * rails 5.2.4.1

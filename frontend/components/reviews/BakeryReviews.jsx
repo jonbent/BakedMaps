@@ -27,6 +27,13 @@ export default class BakeryReviews extends Component {
             numStarsHovered: 0
         })
     }
+    requireLoggedIn(func, ...args) {
+        if (this.props.currentUser) {
+            func(...args)
+        } else {
+            this.props.history.push('/login')
+        }
+    }
     
     render() {
         const {object} = this.props
@@ -44,7 +51,7 @@ export default class BakeryReviews extends Component {
                                             resetStars={this.resetStars} 
                                             onHover={() => this.handleStarHover(num + 1)} 
                                             hovered={this.state.numStarsHovered >= num + 1} 
-                                            onClick={() => this.props.openReviewModal({ reviewAmount: num + 1, reviewableType: this.props.match.params.storeType, reviewableId: this.props.bakeryId})}
+                                            onClick={() => this.requireLoggedIn(() => this.props.openReviewModal({ reviewAmount: num + 1, reviewableType: this.props.match.params.storeType, reviewableId: this.props.bakeryId}))}
                                         />
                                     )
                                 })}

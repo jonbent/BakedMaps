@@ -1,6 +1,14 @@
 import { UPDATE_BOUNDS, RECEIVE_REVIEW_AMOUNT, RECEIVE_REVIEW_TYPE, RECEIVE_SEARCH_PRODUCTS } from '../actions/filters';
+const nullState = {
+    bounds: {},
+    reviewAmount: {},
+    reviewableType: {},
+    reviewableId: {},
+    products: {}
 
-export default (prevState = {}, action) => {
+}
+
+export default (prevState = nullState, action) => {
     Object.freeze(prevState);
     
     let nextState = {};

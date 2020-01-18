@@ -2,13 +2,25 @@ import {createStore, applyMiddleware} from 'redux';
 import ReduxThunk from 'redux-thunk';
 import ReduxLogger from 'redux-logger';
 import RootReducer from '../reducers/RootReducer';
-import { persistStore, persistReducer } from 'redux-persist';
+import FiltersReducer from '../reducers/FiltersReducer';
+import { persistStore, persistReducer, createTransform } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-
+import { createBlacklistFilter } from 'redux-persist-transform-filter';
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['ui']
+  blacklist: ['entities', 'session', 'errors'],
+  transforms: [
+    createBlacklistFilter('UIReducer', ['filters', 'menuItemSize']),
+  //   createTransform(
+  //     state => state,
+  //     state => {
+  //       return Object.assign({}, state, {
+  //         ui: state.session,
+  //       })
+  //     }
+  //   ),
+  ],
 }
 const persistedReducer = persistReducer(persistConfig, RootReducer)
 

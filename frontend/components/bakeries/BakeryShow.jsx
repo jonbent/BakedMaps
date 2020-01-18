@@ -201,7 +201,7 @@ export default class BakeryShow extends Component {
                         <span className="action">Directions</span>
                       </div>
                     </a>
-                    <button onClick={() => this.requireLoggedIn(() => this.props.openReviewModal({ reviewAmount: num + 1, reviewableType: this.props.match.params.storeType, reviewableId: this.props.bakeryId }))}>
+                    <button onClick={() => this.requireLoggedIn(() => this.props.openReviewModal({ reviewAmount: 0, reviewableType: this.props.match.params.storeType, reviewableId: this.props.bakeryId }))}>
                       <div className="action-container">
                         <div className="svg-container">
                           <Star />

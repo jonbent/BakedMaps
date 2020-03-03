@@ -57,3 +57,12 @@ img{
 ol li, ul li {
     font-size: inherit;
 }
+input[type="radio" i] {
+    background-color: initial;
+    cursor: default;
+    -webkit-appearance: radio;
+    box-sizing: border-box;
+    margin: 3px 0.5ex;
+    padding: initial;
+    border: initial;
+}

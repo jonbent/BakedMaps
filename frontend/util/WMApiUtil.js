@@ -57,6 +57,24 @@ export const fetchMenuItems = (dispensarySlug, bakeryType="dispensaries", filter
     dataType: "JSON"
   });
 };
+
+export const fetchAddresses = (searchTerm) => {
+  // https://api-g.weedmaps.com/wm/v1/geocode?query=23&proximity=-122.3014%2C37.9154&include=region
+  return $.ajax({
+    url: `https://api-g.weedmaps.com/wm/v1/geocode?query=${searchTerm}`,
+    method: "GET",
+    dataType: "JSON"
+  })
+};
+
+export const fetchReviewableDistribution = (reviewableSlug, reviewableType) => {
+  return $.ajax({
+    url: `https://api-g.weedmaps.com/wm/v1/reviews?reviewable_id=${reviewableSlug}&reviewable_type=${reviewableType}&page=1&page_size=1&include=distribution`,
+    method: "GET",
+    dataType: "JSON"
+  })
+}
+
 export const bakeryNames = [
   "Ahead of Bread",
   "Awake & Bake",

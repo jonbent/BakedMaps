@@ -7,7 +7,7 @@ import NavBar from './NavBar'
 
 const mapStateToProps = ({entities, ui, session}) => ({
     currentUser: entities.users[session.name],
-    products: ui.filters.products,
+    products: Object.values(ui.filters.products),
     city: ui.city
 })
 const mapDispatchToProps = (dispatch) => ({

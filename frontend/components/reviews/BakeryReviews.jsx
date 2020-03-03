@@ -10,8 +10,9 @@ export default class BakeryReviews extends Component {
             numStarsHovered: 0,
             ready: false
         }
-        this.handleStarHover = this.handleStarHover.bind(this)
-        this.resetStars = this.resetStars.bind(this)
+        this.handleStarHover = this.handleStarHover.bind(this);
+        this.resetStars = this.resetStars.bind(this);
+        this.requireLoggedIn = this.requireLoggedIn.bind(this);
     }
     
     componentDidMount(){
@@ -36,7 +37,7 @@ export default class BakeryReviews extends Component {
     }
     
     render() {
-        const {object} = this.props
+        const {object} = this.props;
         return (
             <div className="reviews-container">
                 <div className="reviews-and-form">
@@ -51,7 +52,16 @@ export default class BakeryReviews extends Component {
                                             resetStars={this.resetStars} 
                                             onHover={() => this.handleStarHover(num + 1)} 
                                             hovered={this.state.numStarsHovered >= num + 1} 
-                                            onClick={() => this.requireLoggedIn(() => this.props.openReviewModal({ reviewAmount: num + 1, reviewableType: this.props.match.params.storeType, reviewableId: this.props.bakeryId}))}
+                                            onClick={() => this.requireLoggedIn(
+                                                    () => {
+                                                        return this.props.openReviewModal({
+                                                            reviewAmount: num + 1,
+                                                            reviewableType: this.props.match.params.storeType,
+                                                            reviewableId: this.props.bakeryId
+                                                        })
+                                                    }
+                                                )
+                                            }
                                         />
                                     )
                                 })}

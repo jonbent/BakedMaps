@@ -4,12 +4,36 @@ import ReviewFormContainer from '../reviews/ReviewFormContainer'
 
 import { postReview } from '../../actions/reviews'
 import {closeModal} from '../../actions/modals'
+import AddressEdit from "../users/AddressEdit";
+import NameEdit from "../users/NameEdit";
+import BirthdayEdit from "../users/BirthdayEdit";
+import GenderEdit from "../users/GenderEdit";
+import EmailEdit from "../users/EmailEdit";
+import PasswordEdit from "../users/PasswordEdit";
 
 const Modal = ({ modal, closeModal}) => {
     let component;
     switch(modal){
         case "review":
-            component = <ReviewFormContainer/>
+            component = <ReviewFormContainer/>;
+            break;
+        case "addressEdit":
+            component = <AddressEdit closeModal={closeModal}/>;
+            break;
+        case "nameEdit":
+            component = <NameEdit closeModal={closeModal}/>;
+            break;
+        case "birthdayEdit":
+            component = <BirthdayEdit closeModal={closeModal}/>;
+            break;
+        case "genderEdit":
+            component = <GenderEdit closeModal={closeModal}/>;
+            break;
+        case "emailEdit":
+            component = <EmailEdit closeModal={closeModal}/>;
+            break;
+        case "passwordEdit":
+            component = <PasswordEdit closeModal={closeModal}/>;
             break;
         default:
             return null;

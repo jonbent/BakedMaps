@@ -1,17 +1,22 @@
 import {connect} from 'react-redux';
 import BakeryIndex from './BakeryIndex'
 
-import {updateBounds} from '../../actions/filters'
+import {receiveReviewAmount, updateBounds} from '../../actions/filters'
 import { fetchBakeries, fetchBakery } from "../../actions/bakeries";
+import {fetchReviewableDistribution} from "../../actions/reviews";
 
-const mapStateToProps = ({entities, ui}) => ({
+const mapStateToProps = ({entities, ui, session}) => ({
     bakeries: entities.bakeries,
     bounds: ui.filters.bounds,
-    city: ui.city
+    city: ui.city,
+    currentUser: entities.users[session.name],
+    reviewDistribution: ui.reviewDistribution
 })
 const mapDispatchToProps = dispatch => ({
     fetchBakeries: (bounds, filter) => dispatch(fetchBakeries(bounds, filter)),
-    fetchBakery: (bakerySlug) => dispatch(fetchBakery(bakerySlug)),
-    updateBounds: (bounds) => dispatch(updateBounds(bounds))
+    fetchBakery: (bakerySlug, storeType) => dispatch(fetchBakery(bakerySlug, storeType)),
+    openReviewModal: (payload) => dispatch(receiveReviewAmount(payload)),
+    updateBounds: (bounds) => dispatch(updateBounds(bounds)),
+    fetchReviewableDistribution: (reviewableSlug, reviewableId) => dispatch(fetchReviewableDistribution(reviewableSlug, reviewableId))
 });
 export default connect(mapStateToProps, mapDispatchToProps)(BakeryIndex);

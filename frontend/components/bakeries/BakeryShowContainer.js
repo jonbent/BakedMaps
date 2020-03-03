@@ -20,7 +20,7 @@ const mapStateToProps = ({ entities, ui, session }, {match}) => {
 };
 const mapDispatchToProps = (dispatch, ownProps) => ({
   fetchBakery: () => dispatch(fetchBakery(ownProps.match.params.storeSlug, ownProps.match.params.storeType)),
-  openReviewModal: (reviewableId) => dispatch(receiveReviewAmount({ reviewAmount: 0, reviewableType: ownProps.match.params.storeType, reviewableId })),
+  openReviewModal: (payload) => dispatch(receiveReviewAmount(payload)),
   postFollow: (user) => dispatch(postFollow({ userId: user.id, bakeryTag: ownProps.match.params.storeSlug, bakeryType: ownProps.match.params.storeType})),
   deleteFollow: (followId) => dispatch(deleteFollow(followId))
 });

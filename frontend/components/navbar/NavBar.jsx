@@ -3,11 +3,11 @@ import ProfileAvatarSvg from '../svg/profile_avatar_dark'
 import MarkerIcon from '../svg/marker_icon'
 import Crosshair from '../svg/crosshair'
 import { Link, NavLink, withRouter } from 'react-router-dom';
-import { debounce } from 'lodash'
+import { debounce } from 'lodash';
 import CityUtil from '../../util/city_recommendations/CityStateUtil';
-import UserInfoModal from '../users/UserInfoModal'
+import UserInfoModal from '../users/UserInfoModal';
 import OutsideClickHandler from "../OutsideClickHandler";
-import reverse from 'reverse-geocode'
+import reverse from 'reverse-geocode';
 
 class NavBar extends Component {
     constructor(props){
@@ -95,8 +95,8 @@ class NavBar extends Component {
     }
 
     render(){
-        const {locationSearch, productSearch} = this.state
-        const { currentUser, logout } = this.props;
+        const {locationSearch, productSearch} = this.state;
+        const { currentUser, logout, products } = this.props;
         return (
           <nav className="nav-bar">
             <div>
@@ -138,14 +138,13 @@ class NavBar extends Component {
                     )}
                     {productSearch && (
                       <ul className="bakery-drop-down">
-                        {!this.props.products && 
-                          <li className="product-list-item">
-                          <div className="product-icon">
-                          </div>
-                          <div className="product-name">No Found Products</div>
-                        </li>
+                        {!this.props.products.length &&
+                            <li className="product-list-item">
+                              <div className="product-icon"></div>
+                              <div className="product-name">No Found Products</div>
+                            </li>
                         }
-                        {this.props.products && this.props.products.map(product => {
+                        {!!this.props.products.length && this.props.products.map(product => {
                           if (product.type !== 'listing') return null
                           let webUrl = product.attributes.web_url.split('.com')[1];
                           let splitWebUrl = product.attributes.web_url.split('.com')[1].split('/');

@@ -2,7 +2,7 @@ import React from 'react'
 
 import {Link} from 'react-router-dom'
 
-const BakeryMapListItem = ({bakery}) => {
+const BakeryMapListItem = ({bakery, handleBakerySelect}) => {
     const urlType = 
       bakery.type === "delivery"
         ? "deliveries" 
@@ -18,7 +18,7 @@ const BakeryMapListItem = ({bakery}) => {
     return (
       <div className="bakery-map-listing-item">
         <div className="bakery-map-listing-item-card">
-          <Link to={`/${urlType}/${bakery.slug}`}>
+          <button onClick={() => handleBakerySelect(bakery.slug)}>
             <div>
               <div className="item-card-picture-container">
                 <img
@@ -42,7 +42,7 @@ const BakeryMapListItem = ({bakery}) => {
                 <div className="item-card-info-closing"></div>
               </div>
             </div>
-          </Link>
+          </button>
         </div>
       </div>
     );

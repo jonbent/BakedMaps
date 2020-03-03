@@ -74,6 +74,7 @@
 }
 
 .nav-user-info{
+    position: relative;
     height: 24px;
     width: 24px;
     padding-right: 0.5rem
@@ -195,6 +196,7 @@
     width: 100%;
 }
 .bakery-drop-down > li {
+    cursor: pointer;
     height: 3rem;
     padding: 0.5rem 0.5rem 0.5rem 1rem;
     border-radius: 0.1875rem;
@@ -276,8 +278,10 @@
     line-height: 1.5rem;
     color: rgb(74, 74, 74);
     outline: 0px;
-    
-    
+    a:hover{
+      color: rgb(74, 74, 74);
+      background: rgb(242, 245, 245);
+    }
 }
 .list-user-info-modal > a {
     padding: 0.5rem;

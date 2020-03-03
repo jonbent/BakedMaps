@@ -1,10 +1,16 @@
-import React, { Component } from 'react'
-import NavigationBar from '../navigation/NavigationBar'
+import React, { Component } from 'react';
+import NavigationBar from '../navigation/NavigationBar';
 import {Route, Switch} from 'react-router-dom';
-import Reviews from '../reviews/Reviews'
-import Following from './FollowingContainer'
-import Footer from '../navbar/Footer'
-import HireMe from '../HireMe'
+import Reviews from '../reviews/Reviews';
+import Following from './FollowingContainer';
+import Footer from '../navbar/Footer';
+import HireMe from '../HireMe';
+const linkOptions = [
+    ['/', 'Reviews'],
+    ['/following', 'Following'],
+    ['/favorites', 'Favorites', true],
+    ['/posts', 'Posts', true]
+];
 export default class UserShow extends Component {
     constructor(props) {
         super(props)
@@ -22,12 +28,7 @@ export default class UserShow extends Component {
         const { user, userReviews, userFollows } = this.props
         if (!this.state.ready) return null;
         const path = `/users/${user.username}`;
-        const linkOptions = [
-            ['/', 'Reviews'],
-            ['/following', 'Following'],
-            ['/favorites', 'Favorites', true],
-            ['/posts', 'Posts', true]
-        ]
+
         return (
             <div className="user-show-container">
                 <div className="user-header">

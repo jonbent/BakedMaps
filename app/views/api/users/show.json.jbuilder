@@ -1,5 +1,9 @@
 json.user do
+    json.name @user.name
     json.email @user.email
+    json.address @user.address
+    json.birthday @user.birthday
+    json.gender @user.gender
     json.partial! 'user', user: @user
 end
 if @extra_info

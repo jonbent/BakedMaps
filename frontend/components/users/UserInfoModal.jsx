@@ -27,8 +27,9 @@ const UserInfoModal = ({ user, logout, closeModal }) => {
           <li className="list-user-info-modal" onClick={closeModal}>
             <Link to={`/users/${user.username}/following`}>Following</Link>
           </li>
-          <li className="list-user-info-modal" onClick={closeModal}>
-            <Link to={`/users/${user.username}/favorites`}>Favorites</Link>
+          <li className="list-user-info-modal">
+            {/*<Link to={`/users/${user.username}/favorites`}>Favorites</Link>*/}
+            <div className="dummy-link">Favorites</div>
           </li>
           <li className="separator"></li>
           <li className="list-user-info-modal" onClick={closeModal}>

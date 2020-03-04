@@ -6,6 +6,7 @@ import { AuthRoute } from '../util/RouteUtil';
 import SignupFormContainer from './auth/SignupFormContainer';
 import LoginFormContainer from './auth/LoginFormContainer';
 import { PersistGate } from 'redux-persist/integration/react'
+import Hamburger from "./modals/Hamburger";
 export default ({ store, persistor }) => (
   <Provider store={store}>
     <PersistGate loading={null} persistor={persistor}>
@@ -15,6 +16,7 @@ export default ({ store, persistor }) => (
           <AuthRoute path="/login" component={LoginFormContainer} />
           <Route path="/" component={App} />
         </Switch>
+        <Hamburger/>
       </HashRouter>
     </PersistGate>
   </Provider>

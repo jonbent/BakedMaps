@@ -5,7 +5,7 @@ export const fetchSearchResults = (query, {lat, lng}) => (
     dataType: "JSON"
   })
 
-)
+);
 
 export const findDispensaries = ({ lat, long, mileRadius }) => {
   return $.ajax({
@@ -26,6 +26,14 @@ export const fetchBakery = (bakerySlug, bakeryType = "dispensaries") => {
   if (bakeryType === "bakeries") bakeryType = "dispensaries";
   return $.ajax({
     url: `https://api-g.weedmaps.com/discovery/v1/listings/${bakeryType}/${bakerySlug}`,
+    method: "GET",
+    dataType: "JSON"
+  })
+}
+export const fetchMenuItem = (bakerySlug, bakeryType = "dispensaries", menuItemSlug) => {
+  if (bakeryType === "bakeries") bakeryType = "dispensaries";
+  return $.ajax({
+    url: `https://api-g.weedmaps.com/discovery/v1/listings/${bakeryType}/${bakerySlug}/menu_items/${menuItemSlug}`,
     method: "GET",
     dataType: "JSON"
   })
@@ -57,6 +65,24 @@ export const fetchMenuItems = (dispensarySlug, bakeryType="dispensaries", filter
     dataType: "JSON"
   });
 };
+
+export const fetchAddresses = (searchTerm) => {
+  // https://api-g.weedmaps.com/wm/v1/geocode?query=23&proximity=-122.3014%2C37.9154&include=region
+  return $.ajax({
+    url: `https://api-g.weedmaps.com/wm/v1/geocode?query=${searchTerm}`,
+    method: "GET",
+    dataType: "JSON"
+  })
+};
+
+export const fetchReviewableDistribution = (reviewableSlug, reviewableType) => {
+  return $.ajax({
+    url: `https://api-g.weedmaps.com/wm/v1/reviews?reviewable_id=${reviewableSlug}&reviewable_type=${reviewableType}&page=1&page_size=1&include=distribution`,
+    method: "GET",
+    dataType: "JSON"
+  })
+}
+
 export const bakeryNames = [
   "Ahead of Bread",
   "Awake & Bake",

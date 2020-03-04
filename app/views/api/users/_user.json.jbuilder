@@ -1,4 +1,4 @@
-json.extract! user, :id, :username
+json.extract! user, :id, :username, :email
 json.review_ids user.reviews.ids
 json.follow_ids user.follows.ids
 if user.image.attached?

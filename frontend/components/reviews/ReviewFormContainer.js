@@ -9,10 +9,10 @@ const mapStateToProps = ({ui, entities, session, errors}) => ({
     reviewableId: ui.filters.reviewableId,
     currentUserId: entities.users[session.name].id,
     errors: errors.reviews
-})
+});
 const mapDispatchToProps = (dispatch) => ({
     postReview: (formReview) => dispatch(postReview(formReview)),
     closeModal: () => dispatch(closeModal())
-})
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(ReviewForm)

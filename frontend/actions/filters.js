@@ -21,4 +21,5 @@ export const receiveSearchProducts = payload => ({
 
 export const fetchSearchResults = (query, city) => dispatch => {
   return WMApiUtil.fetchSearchResults(query, city).then((payload) => dispatch(receiveSearchProducts(payload)))
-}
+};
+

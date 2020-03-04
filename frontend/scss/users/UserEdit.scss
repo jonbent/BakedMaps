@@ -1,0 +1,116 @@
+.UserEdit{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  -webkit-box-flex: 1;
+  flex-grow: 1;
+  height: 100%;
+  box-sizing: border-box;
+  .header{
+    h3{
+      text-align: left;
+      font-size: 1.5rem;
+      line-height: 1.5rem;
+      text-transform: uppercase;
+      font-weight: bold;
+      max-width: 75rem;
+      color: rgb(74, 74, 74);
+      z-index: 12;
+      padding: 3rem 1rem;
+      margin: 0px auto;
+    }
+  }
+  .edit-content-container{
+    box-shadow: rgb(230, 229, 229) 0px 0.0625rem 0px inset, rgb(230, 229, 229) 0px -0.0625rem 0px inset;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(255, 255, 255);
+    .edit-content{
+      box-sizing: border-box;
+      padding-left: 12px;
+      padding-right: 12px;
+      margin-bottom: 120px;
+      .user-settings{
+        max-width: 48rem;
+        margin-top: 1rem;
+        background-color: rgb(255, 255, 255);
+        box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 3px;
+        border-radius: 3px;
+        overflow: hidden;
+        .user-setting-item:not(:nth-of-type(1)){
+          border-top: 0.0625rem solid rgb(230, 229, 229);
+        }
+        .user-setting-item{
+          color: rgb(74, 74, 74);
+          display: flex;
+          flex-direction: row;
+          background: rgb(255, 255, 255);
+          padding: 1rem;
+          .value-container{
+            box-sizing: border-box;
+            overflow-wrap: break-word;
+            flex: 1 1 0%;
+            overflow: hidden;
+            padding: 0.25rem 0;
+            .value-title{
+              color: rgb(155, 155, 155);
+              font-family: proxima-nova, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+              font-size: 0.875rem;
+              text-transform: uppercase;
+              line-height: 1.5rem;
+              letter-spacing: 1px;
+            }
+          }
+          .edit-button-container{
+            box-sizing: border-box;
+            margin-left: 12px;
+            button{
+              color: rgb(74, 74, 74);
+              display: flex;
+              align-content: center;
+              -webkit-box-pack: center;
+              justify-content: center;
+              font-family: proxima-nova, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+              font-size: 1rem;
+              font-weight: 600;
+              height: 2.5rem;
+              text-transform: uppercase;
+              cursor: pointer;
+              width: 5.875rem;
+              border-radius: 0.1875rem;
+              border-width: 0.0625rem;
+              border-style: solid;
+              border-color: rgb(204, 204, 204);
+              border-image: initial;
+              padding: 0px 1rem;
+              transition: all 150ms ease-in-out 0s;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 639px){
+  .UserEdit{
+    .header{
+      h3{
+        font-size: 1rem;
+        padding: 1.5rem 1rem;
+      }
+    }
+  }
+}
+@media only screen and (min-width: 640px){
+  .UserEdit{
+    .edit-content-container{
+      .edit-content{
+        .user-settings{
+          margin: 2rem auto;
+        }
+      }
+    }
+  }
+}

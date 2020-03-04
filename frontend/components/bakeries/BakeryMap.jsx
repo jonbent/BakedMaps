@@ -118,7 +118,7 @@ export default class BakeryMap extends Component {
         const { lat, lng } = this.props.city;
         this.map.setCenter({ lat, lng });
         google.maps.event.addListenerOnce(this.map, "idle", () => {
-            this.setState({ changedBounds: false })
+            this.setState({ changedBounds: false, selectedBakery: null })
             this.handleSearch()
         })
     };

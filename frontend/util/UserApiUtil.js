@@ -5,5 +5,15 @@ export const fetchUserInfo = (username, extraInfo = false) => {
         url: url,
         method: "GET",
         dataType: "JSON"
-    })
-}
+    });
+};
+
+export const saveUserField = (username, fieldVal) => {
+    return $.ajax({
+        url: `/api/users/${username}/`,
+        method: "PATCH",
+        data: fieldVal,
+        dataType: "JSON",
+        contentType: "application/json"
+    });
+};

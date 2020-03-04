@@ -20,8 +20,8 @@ export default class BakeryMapList extends Component {
     }
     
     render() {
-        const {bakeries} = this.props
-        const bakeryKeys = Object.values(this.props.bakeries)
+        const {bakeries, handleBakerySelect} = this.props;
+        const bakeryKeys = Object.values(this.props.bakeries);
         return (
             <div className="bakery-map-list-container">
                 <div className="bakery-map-list">
@@ -59,6 +59,7 @@ export default class BakeryMapList extends Component {
                                   <BakeryMapListItem
                                     key={idx}
                                     bakery={bakeries[bakery]}
+                                    handleBakerySelect={handleBakerySelect}
                                   />
                                 );
                             })}

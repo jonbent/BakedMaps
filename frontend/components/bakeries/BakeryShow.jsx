@@ -96,7 +96,7 @@ export default class BakeryShow extends Component {
           [`/about`, 'Details'],
           [`/reviews`, "Reviews"],
           [`/deals`, "Deals", true]
-        ]
+        ];
         let findFollow;
         if (this.props.currentUser){
           findFollow = this.props.follows.find(follow => follow.userId === this.props.currentUser.id)

@@ -1,4 +1,4 @@
-import {RECEIVE_MENU_ITEMS} from '../actions/menuItems';
+import {RECEIVE_MENU_ITEMS, RECEIVE_MENU_ITEM} from '../actions/menuItems';
 
 export default (prevState = {}, action) => {
     Object.freeze(prevState);
@@ -11,6 +11,9 @@ export default (prevState = {}, action) => {
             });
             // nextState = Object.assign({}, prevState, menuItems);
             nextState = menuItems;
+            return nextState;
+        case RECEIVE_MENU_ITEM:
+            nextState = Object.assign(nextState, prevState, {[action.payload.menuItem.slug]: action.payload.menuItem})
             return nextState;
         default:
             return prevState;

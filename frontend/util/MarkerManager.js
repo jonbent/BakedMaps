@@ -1,6 +1,7 @@
 export default class MarkerManager {
-  constructor(map) {
+  constructor(map, handleBakerySelect) {
     this.map = map;
+    this.handleBakerySelect = handleBakerySelect;
     this.markers = {};
     this.icons = {
       car: {
@@ -18,7 +19,7 @@ export default class MarkerManager {
 
   updateMarkers(bakeries) {
     let newMarkers = {};
-    Object.keys(this.markers).forEach(key => this.markers[key].setMap(null))
+    Object.keys(this.markers).forEach(key => this.markers[key].setMap(null));
     Object.keys(bakeries).forEach(key => {
         let icon = this.icons.store
         if (bakeries[key].type === "delivery") icon = this.icons.car
@@ -31,6 +32,7 @@ export default class MarkerManager {
           title: bakeries[key].name,
           icon
         });
+        google.maps.event.addDomListener(newMarkers[key], 'click', () => this.handleBakerySelect(bakeries[key].slug))
     });
     this.markers = newMarkers;
   }

@@ -22,13 +22,14 @@ const persistConfig = {
   //   ),
   ],
 }
-const persistedReducer = persistReducer(persistConfig, RootReducer)
-
+const persistedReducer = persistReducer(persistConfig, RootReducer);
+const middlewares = [ReduxThunk];
+if (process.env.NODE_ENV === 'development') middlewares.push(ReduxLogger);
 export default (preloadedState = {}) =>{
   let store = createStore(
     persistedReducer,
     preloadedState,
-    applyMiddleware(ReduxThunk, ReduxLogger)
+    applyMiddleware(...middlewares)
     );
     let persistor = persistStore(store)
   return {persistor, store}

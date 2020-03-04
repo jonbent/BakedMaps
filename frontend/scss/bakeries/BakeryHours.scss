@@ -1,0 +1,48 @@
+.hours{
+    box-sizing: border-box;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    flex: 1 1 0%;
+    background: rgb(255, 255, 255);
+    grid-area: openHours / openHours / openHours / openHours;
+    .closed-day{
+        color: rgb(255, 51, 102) !important;
+    }
+    dl:nth-of-type(1) dt{
+        color: rgb(0, 205, 190);
+        font-weight: 600;
+    }
+    dl{
+        box-sizing: border-box;
+        display: flex;
+        color: rgb(74, 74, 74);
+        font-size: 0.875rem;
+        line-height: 1.375rem;
+        padding-left: 1.75rem;
+        position: relative;
+        text-align: left;
+        svg{
+            vertical-align: middle;
+            position: absolute;
+            top: 0px;
+            right: auto;
+            bottom: auto;
+            left: 0px;
+        }
+
+        dt{
+            width: 5.5rem;
+            font-weight: 400;
+            margin-bottom: 0.25rem;
+            text-transform: uppercase;
+            white-space: nowrap;
+            color: #4a4a4a;
+        }
+        dd{
+            box-sizing: border-box;
+            color: rgb(74, 74, 74);
+            text-transform: uppercase;
+            width: 9.5rem;
+        }
+    }
+}

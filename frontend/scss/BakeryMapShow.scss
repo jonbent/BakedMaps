@@ -1,0 +1,573 @@
+.BakeryMapShow{
+    z-index: 490;
+    display: flex;
+    flex-direction: column;
+    padding-top: 1rem;
+    position: absolute;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 0.0625rem 0.1875rem 0px;
+    user-select: none;
+    background: rgb(255, 255, 255);
+    border-radius: 0.25rem;
+    pointer-events: auto;
+    width: 100%;
+    .content-container{
+        box-sizing: border-box;
+        flex-direction: column;
+        display: flex;
+        background-color: rgb(255, 255, 255);
+        overflow-y: scroll;
+        flex: 1 0 0%;
+        .content{
+            height: 100%;
+            .view-full-container{
+                .view-full{
+                    align-content: center;
+                    -webkit-box-align: baseline;
+                    align-items: baseline;
+                    justify-self: start;
+                    -webkit-box-pack: center;
+                    justify-content: center;
+                    display: flex;
+                    line-height: 2.5rem;
+                    text-align: left;
+                    position: relative;
+                    font-family: proxima-nova, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+                    font-weight: 600;
+                    height: 2.5rem;
+                    text-transform: uppercase;
+                    cursor: pointer;
+                    white-space: nowrap;
+                    background-color: rgb(0, 205, 190);
+                    color: rgb(255, 255, 255);
+                    font-size: 0.875rem;
+                    border-radius: 0.1875rem;
+                    border-width: 0.0625rem;
+                    border-style: solid;
+                    border-image: initial;
+                    padding: 0px 1rem;
+                    transition: all 150ms ease-in-out 0s;
+                    border-color: rgb(1, 168, 163);
+                    margin: 1rem;
+                }
+            }
+            .review-summary-container{
+                display: grid;
+                padding: 1rem;
+                grid-row-gap: 1rem;
+                border-bottom: 0.0625rem solid rgb(230, 229, 229);
+                .all-reviews{
+                    text-align: center;
+                    margin-bottom: 0.5rem;
+                }
+                .review-summary{
+                    box-sizing: border-box;
+                    flex-direction: column;
+                    -webkit-box-align: center;
+                    align-items: center;
+                    justify-content: space-around;
+                    display: flex;
+                }
+                .total-review-stats-container{
+                    width: 100%;
+
+                    .no-reviews{
+                        font-size: 1.5rem;
+                        line-height: 1.5;
+                        display: flex;
+                        justify-content: center;
+                        text-align: center;
+                    }
+                    .total-review-stats{
+                        box-sizing: border-box;
+                        font-family: proxima-nova, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+                        font-size: 0.875rem;
+                        margin-top: 1.25rem;
+                        width: 100%;
+                        flex-basis: 100%;
+                        display: flex;
+                        padding: 0px 1rem;
+                        ol:nth-of-type(1) {
+                            flex-basis: 15%;
+                            text-align: right;
+                        }
+                        ol:nth-of-type(2){
+                            flex-basis: 7%;
+                        }
+                        ol{
+                            margin: 0px;
+                            display: flex;
+                            flex-direction: column;
+                            -webkit-box-pack: justify;
+                            justify-content: space-between;
+                            margin: 0.25rem 0;
+                            li{
+                                height: 0.75rem;
+                                white-space: nowrap;
+                                margin: 0.3125rem 0px;
+                            }
+                        }
+                        .review-stats{
+                            display: flex;
+                            flex-direction: column;
+                            flex-basis: 88%;
+                            -webkit-box-pack: justify;
+                            justify-content: space-between;
+                            margin: 0.25rem 1rem;
+                            .star-visualizer{
+                                background-color: rgb(230, 230, 230);
+                                height: 0.75rem;
+                                border-radius: 1rem;
+                                margin: 0.3125rem 0px;
+                                overflow: hidden;
+                                transition: width 1.5s ease 0s;
+                                .fillAmount{
+                                    height: 100%;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                .review-circle-container{
+                    position: relative;
+                    text-align: center;
+                    margin-top: 1.125rem;
+                    .review-circle-stats{
+                        position: absolute;
+                        top: 25%;
+                        width: 100%;
+                        span{
+                            font-size: 2.5rem;
+                            line-height: 3.125rem;
+                            color: rgb(124, 124, 124);
+                        }
+                        .stars-container{
+                            height: 0.75rem;
+                            width: 5rem;
+                            margin: 0px auto;
+                        }
+                    }
+                }
+                .review-summary-header{
+                    display: flex;
+                    -webkit-box-pack: start;
+                    justify-content: flex-start;
+                    -webkit-box-align: center;
+                    align-items: center;
+                    font-weight: 600;
+                    font-size: 1.125rem;
+                    svg{
+                        width: 20px;
+                        height: 20px;
+                        path{
+                            fill: rgb(249, 174, 25);
+
+                        }
+                    }
+                    h3{
+                        box-sizing: border-box;
+                        display: flex;
+                        font-size: 1.125rem;
+                        font-weight: 600;
+                        margin-left: 0.5rem;
+                        flex: 1 1 0%;
+                    }
+                    button{
+                        -webkit-box-align: center;
+                        align-items: center;
+                        position: relative;
+                        display: flex;
+                        align-content: center;
+                        -webkit-box-pack: center;
+                        justify-content: center;
+                        font-family: proxima-nova, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+                        z-index: 1;
+                        cursor: pointer;
+                        background-color: rgb(255, 255, 255);
+                        color: rgb(74, 74, 74);
+                        font-size: 0.875rem;
+                        font-weight: 400;
+                        text-transform: none;
+                        height: 2rem;
+                        transition: all 150ms ease-in-out 0s;
+                        border-width: 0.0625rem;
+                        border-style: solid;
+                        border-color: rgb(204, 204, 204);
+                        border-image: initial;
+                        border-radius: 1rem;
+                        padding: 0.25rem 1rem;
+                    }
+                }
+            }
+            .hours-of-operation{
+                display: grid;
+                padding: 1rem;
+                grid-row-gap: 1rem;
+                border-bottom: 0.0625rem solid rgb(230, 229, 229);
+                .hours{
+                    grid-area: auto;
+                }
+                .header{
+                    display: flex;
+                    -webkit-box-pack: start;
+                    justify-content: flex-start;
+                    -webkit-box-align: center;
+                    align-items: center;
+                    font-weight: 600;
+                    font-size: 1.125rem;
+                }
+            }
+            .bakery-actions{
+                border-bottom: 0.0625rem solid rgb(230, 229, 229);
+                button{
+                    position: relative;
+                }
+                .actions-container{
+                    box-sizing: border-box;
+                    flex-direction: column;
+                    display: flex;
+                    padding: 0px 16px 16px;
+                    .actions{
+                        box-sizing: border-box;
+                        flex-direction: row;
+                        display: flex;
+                        -webkit-box-pack: justify;
+                        justify-content: space-between;
+                        margin: 0px 0px 0.75rem;
+                        .copied-container{
+                            position: absolute;
+                            will-change: transform;
+                            top: -60px;
+                            left: 0px;
+                            z-index: 5;
+                            .copied{
+                                background-color: rgb(255, 255, 255);
+                                box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 3px;
+                                border-radius: 0.1875rem;
+                                padding: 1rem;
+                                span{
+                                    color: rgb(51, 51, 51);
+                                }
+                                div{
+                                    left: 52px;
+                                    bottom: 0px;
+                                    margin-bottom: -0.5rem;
+                                    filter: drop-shadow(rgba(0, 0, 0, 0.2) 0px 1px 0.5px);
+                                    width: 0px;
+                                    height: 0px;
+                                    border-top-color: rgb(255, 255, 255);
+                                    border-right-color: transparent;
+                                    border-bottom-color: transparent;
+                                    border-left-color: transparent;
+                                    border-width: 8px 6px 0px;
+                                    border-style: solid;
+                                }
+                            }
+                        }
+                        path{
+                            fill: #01A8A3;
+                        }
+                        button{
+                            padding: 0px;
+                            background: none;
+                            border:none;
+                            outline: none;
+                        }
+                        .action-container{
+                            position: relative;
+                            box-sizing: border-box;
+                            -webkit-box-align: center;
+                            align-items: center;
+                            flex-direction: column;
+                            display: flex;
+                            height: auto;
+                            background-color: transparent;
+                            width: 3.4375rem;
+                            max-width: 3.4375rem;
+                            cursor: pointer;
+                            border-width: initial;
+                            border-style: none;
+                            border-color: initial;
+                            border-image: initial;
+                            margin: 0px 0.0625rem;
+                            padding: 0.25rem 0px 0px;
+                            border-radius: 3.125rem;
+                            .svg-container{
+                                box-sizing: border-box;
+                                -webkit-box-pack: center;
+                                justify-content: center;
+                                -webkit-box-align: center;
+                                align-items: center;
+                                display: flex;
+                                width: 2.5rem;
+                                height: 2.5rem;
+                                margin-bottom: 0.5rem;
+                                border-radius: 50%;
+                                border-width: 0.0625rem;
+                                border-style: solid;
+                                border-color: rgb(204, 204, 204);
+                                border-image: initial;
+                                transition: border-color 300ms ease-in-out 0s;
+                            }
+                            .svg-container.email{
+                                position: relative;
+                                svg{
+                                    position: absolute;
+                                    top: 35%;
+                                    height: 16px;
+                                    width: 16px;
+                                }
+                            }
+                            .action{
+                                font-size: 0.75rem;
+                                color: rgb(74, 74, 74);
+                                line-height: 1rem;
+                            }
+                        }
+                        @media only screen and (min-width: 360px){
+                            .action-container{
+                                margin: 0px 0.3125rem;
+
+                            }
+                        }
+                    }
+                    .view-menu{
+                        a {
+                            -webkit-box-align: center;
+                            align-items: center;
+                            background-color: rgb(255, 255, 255);
+                            position: relative;
+                            color: rgb(74, 74, 74);
+                            display: flex;
+                            align-content: center;
+                            -webkit-box-pack: center;
+                            justify-content: center;
+                            font-family: proxima-nova, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+                            font-weight: 600;
+                            height: 40px;
+                            text-transform: uppercase;
+                            z-index: 1;
+                            cursor: pointer;
+                            font-size: 0.875rem;
+                            border-radius: 3px;
+                            border-width: 1px;
+                            border-style: solid;
+                            border-image: initial;
+                            border-color: rgb(204, 204, 204);
+                            padding: 0px 16px;
+                            transition: all 150ms ease-in-out 0s;
+                        }
+                        a:hover{
+                            color: rgb(1, 168, 163);
+                        }
+                    }
+                }
+                .bakery-header-container{
+                    width: 100%;
+                    a{
+                        box-sizing: border-box;
+                        -webkit-box-align: stretch;
+                        align-items: stretch;
+                        -webkit-box-pack: center;
+                        justify-content: center;
+                        flex-direction: column;
+                        display: flex;
+                        cursor: pointer;
+                        outline: none;
+                        .bakery-header{
+                            box-sizing: border-box;
+                            -webkit-box-align: center;
+                            align-items: center;
+                            justify-content: stretch;
+                            display: flex;
+                            padding: 1rem;
+                            .bakery-avatar-container{
+                                display: flex;
+                                -webkit-box-align: center;
+                                align-items: center;
+                                align-self: center;
+                                -webkit-box-pack: center;
+                                justify-content: center;
+                                width: 96px;
+                                height: 96px;
+                                position: relative;
+                                border-radius: 0px;
+                                overflow: hidden;
+                                img{
+                                    width: auto;
+                                    height: auto;
+                                    object-fit: fill;
+                                    border-radius: 0px;
+                                }
+                            }
+                            .bakery-info-container{
+                                -webkit-box-flex: 1;
+                                flex-grow: 1;
+                                margin-left: 1rem;
+                                max-width: calc(100% - 7rem);
+                                .bakery-name-and-info{
+                                    box-sizing: border-box;
+                                    margin-bottom: 0.625rem;
+                                    flex-direction: column;
+                                    -webkit-box-align: start;
+                                    align-items: start;
+                                    display: flex;
+                                    overflow: hidden;
+                                    .bakery-info{
+                                        box-sizing: border-box;
+                                        display: flex;
+                                        flex-direction: column;
+                                        -webkit-box-align: start;
+                                        align-items: start;
+                                        font-size: 0.75rem;
+                                        line-height: 1.125rem;
+                                        .bakery-type{
+                                            box-sizing: border-box;
+                                            -webkit-box-align: center;
+                                            align-items: center;
+                                            -webkit-box-pack: start;
+                                            justify-content: flex-start;
+                                            display: flex;
+                                            color: rgb(102, 102, 102);
+                                            font-size: 0.75rem;
+                                            text-overflow: ellipsis;
+                                            white-space: nowrap;
+                                            width: 100%;
+                                            overflow: hidden;
+                                            text-transform: capitalize;
+                                        }
+                                        .open-now{
+                                            box-sizing: border-box;
+                                            flex-direction: row;
+                                            display: flex;
+                                            span{
+                                                color: rgb(74, 74, 74);
+                                                font-weight: 500;
+                                                white-space: nowrap;
+                                                background: rgb(230, 229, 229);
+                                                border-radius: 0.1875rem;
+                                                margin: 0.25rem 0.25rem 0px 0px;
+                                                padding: 0px 0.25rem;
+                                            }
+                                        }
+                                    }
+                                    h1 {
+                                        color: rgb(74, 74, 74);
+                                        font-size: 1rem;
+                                        font-weight: 600;
+                                        line-height: 1.25;
+                                        transform: translateY(-0.125rem);
+                                        text-overflow: ellipsis;
+                                        white-space: nowrap;
+                                        overflow: hidden;
+                                        width: 100%;
+                                    }
+                                    .reviews{
+                                        box-sizing: border-box;
+                                        flex-direction: row;
+                                        display: flex;
+                                        .given-stars{
+                                            display: flex;
+                                            margin: 0px;
+                                            .star-container{
+                                                width: 14px;
+                                                height: 14px;
+                                                .star{
+                                                    height: 100%;
+                                                    width: 100%;
+                                                    .empty-star{
+                                                        height: 14px;
+                                                        width: 14px;
+                                                    }
+                                                  .filled-star {
+                                                      height: 100%;
+                                                      div{
+                                                            display: flex;
+                                                            -webkit-box-align: center;
+                                                            align-items: center;
+                                                            -webkit-box-pack: center;
+                                                            justify-content: center;
+                                                            position: relative;
+                                                            width: 14px;
+                                                            height: 14px;
+                                                            overflow: hidden;
+                                                      }
+                                                  }
+                                                }
+                                            }
+                                        }
+                                        .rating-and-count{
+                                            font-size: 0.75rem;
+                                            font-weight: 600;
+                                            margin-left: 0.25rem;
+                                            color: rgb(249, 174, 25);
+                                            .reviews-count{
+                                                margin-left: 0.25rem;
+                                                color: rgb(124, 124, 124);
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .back-to-results{
+        box-sizing: border-box;
+        display: flex;
+        background-color: rgb(242, 245, 245);
+        padding-left: 1rem;
+        -webkit-box-pack: justify;
+        justify-content: space-between;
+        -webkit-box-align: center;
+        align-items: center;
+        height: 3rem;
+        border-bottom: 0.0625rem solid rgb(230, 229, 229);
+        flex: 0 0 auto;
+        button{
+            -webkit-box-align: center;
+            align-items: center;
+            position: relative;
+            color: rgb(74, 74, 74);
+            display: flex;
+            align-content: center;
+            -webkit-box-pack: center;
+            justify-content: center;
+            font-family: proxima-nova, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+            height: 40px;
+            z-index: 1;
+            cursor: pointer;
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-transform: unset;
+            border-radius: 3px;
+            padding: 0px;
+            transition: all 150ms ease-in-out 0s;
+            background: none;
+            border-width: initial;
+            border-style: none;
+            border-color: initial;
+            border-image: initial;
+            svg{
+                width: 14px;
+            }
+        }
+    }
+}
+@media only screen and (min-width: 832px){
+  .BakeryMapShow {
+      opacity: 1;
+      padding-top: 0px;
+      width: 375px;
+      top: 2rem;
+      bottom: 2rem;
+      left: 2rem;
+      height: auto;
+      transform: none !important;
+      transition: opacity 300ms ease 0s;
+      overflow: hidden;
+  }
+}

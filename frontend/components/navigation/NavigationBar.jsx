@@ -12,7 +12,7 @@ const NavigationBar = ({ linkOptions = [], path, location}) => {
                     return (
                         <div key={idx} className={`nav-link-container ${getNavLinkClass(path + link[0])}`}>
                             <div className="nav-link">
-                                <NavLink exact to={path + link[0]} onClick={(e) => link[2] ? e.preventDefault() : null}>
+                                <NavLink exact to={path + link[0]} onClick={(e) => link[2] ? e.preventDefault() : null} className={link[2] ? "dummy-link" : ""}>
                                     {link[1]}
                                 </NavLink>
                             </div>

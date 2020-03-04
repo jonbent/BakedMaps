@@ -17,10 +17,16 @@
     <%= favicon_link_tag asset_path('logo.png') %>
     <% if current_user %>
       <script>
-        window.currentUser = <%= render(
-      "api/users/user.json.jbuilder",
-      user: current_user
-    ).html_safe %>
+        window.currentUser = {
+            id: "<%= current_user.id %>",
+            username: "<%= current_user.username %>",
+            name: "<%= current_user.name %>",
+            email: "<%= current_user.email %>",
+            birthday: "<%= current_user.birthday %>",
+            gender: "<%= current_user.gender %>",
+            address: "<%= current_user.address %>",
+            avatarUrl: "<%= current_user.image.attached? ? url_for(current_user.image) : asset_path('image_missing.png') %>"
+        }
       </script>
     <% end %>
     <script>
@@ -28,7 +34,6 @@
       window.bmLogo = "<%= asset_path('logo.png') %>"
       window.storeSvg = "<%= asset_path('store.svg')%>"
     </script>
-    
   </head>
 
   <body>

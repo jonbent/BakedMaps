@@ -11,12 +11,13 @@ const BakeryMenuItem = ({menuItem, bakery}) => {
                 <span className="price">${menuItem.prices.unit.price}</span>
             </div>
         );
-    } else if (menuItem.prices.ounce){
-        unit = menuItem.prices.ounce && menuItem.prices.ounce.map(price => {
+    } else if (menuItem.prices.ounce || menuItem.prices.gram){
+        const array = menuItem.prices.ounce ? menuItem.prices.ounce : menuItem.prices.gram;
+        unit = array && array.map(price => {
             return (
                 <div key={price.price} className="price-and-unit">
                     <div className="unit">
-                        <span>{price.units}</span>
+                        <span>{price.units}{menuItem.prices.gram ? "G" : ""}</span>
                     </div>
                     <span className="price">${price.price}</span>
                 </div>

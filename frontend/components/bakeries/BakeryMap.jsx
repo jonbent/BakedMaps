@@ -8,31 +8,33 @@ import FiltersModal from "./FiltersModal"
 import BakeryMapList from './BakeryMapList'
 import BakeryMapResetBounds from "./BakeryMapResetBounds";
 import OutsideClickHandler from '../OutsideClickHandler'
+import BakeryMapShow from "./BakeryMapShow";
 
 
 export default class BakeryMap extends Component {
     
     constructor(props) {
-        super(props)
+        super(props);
         
         const queryStringParams = queryString.parse(props.location.search);
         
         this.state = {
-          mapBounds: {
-            southWest: {
-              lat: 0,
-              lng: 0
+            mapBounds: {
+                southWest: {
+                    lat: 0,
+                    lng: 0
+                },
+                northEast: {
+                    lat: 0,
+                    lng: 0
+                },
+                changedBounds: false,
+                openFilters: false,
             },
-            northEast: {
-              lat: 0,
-              lng: 0
-            },
-            changedBounds: false,
-            openFilters: false,
-          },
-          openNow: 'openNow' in queryStringParams,
-          storefronts: 'storefronts' in queryStringParams,
-          delivery: 'delivery' in queryStringParams
+            openNow: 'openNow' in queryStringParams,
+            storefronts: 'storefronts' in queryStringParams,
+            delivery: 'delivery' in queryStringParams,
+            selectedBakery: null
         };
         this.firstMount = true;
         this.filters = {
@@ -43,9 +45,11 @@ export default class BakeryMap extends Component {
         this.handleSelection = this.handleSelection.bind(this);
         this.handleSearch = this.handleSearch.bind(this);
         this.handleSortBy = this.handleSortBy.bind(this);
+        this.handleBakerySelect = this.handleBakerySelect.bind(this);
     }
+
     componentDidMount() {
-        const {city} = this.props
+        const {city} = this.props;
         // switch(queryStringParams.mode){}
         const mapOptions = {
           center: { lat: city.lat, lng: city.lng }, // this is SF
@@ -54,7 +58,7 @@ export default class BakeryMap extends Component {
         };
         // wrap this.mapNode in a Google Map
         this.map = new google.maps.Map(this.mapNode, mapOptions);
-        this.MarkerManager = new MarkerManager(this.map);
+        this.MarkerManager = new MarkerManager(this.map, this.handleBakerySelect);
         google.maps.event.addListenerOnce(this.map, "idle", () => {
             let bounds = this.map.getBounds();
             this.setState(
@@ -109,19 +113,25 @@ export default class BakeryMap extends Component {
         })
     }
     componentDidUpdate(prevProps) {
-      if (prevProps.city === this.props.city) return null
-      const { lat, lng } = this.props.city
-      console.log(this.props.city);
-      this.map.setCenter({ lat, lng });
-      google.maps.event.addListenerOnce(this.map, "idle", () => {
-        this.setState({ changedBounds: false })
-        this.handleSearch()
-      })
+        if (prevProps.match.url !== this.props.match.url) this.props.closeHamburger();
+        if (prevProps.city === this.props.city) return null;
+        const { lat, lng } = this.props.city;
+        this.map.setCenter({ lat, lng });
+        google.maps.event.addListenerOnce(this.map, "idle", () => {
+            this.setState({ changedBounds: false })
+            this.handleSearch()
+        })
     };
     handleSortBy(value){
         this.setState({
           sortBy: value
         },this.handleSearch)
+    }
+
+    handleBakerySelect(bakerySlug){
+        this.setState({
+            selectedBakery: bakerySlug
+        });
     }
     
     handleSelection(field){
@@ -155,7 +165,8 @@ export default class BakeryMap extends Component {
         this.props.history.push(this.props.location.pathname + filter);
     }
     render() {
-        const {city} = this.props
+        const {city, bakeries, fetchBakery} = this.props;
+        const {selectedBakery} = this.state;
         const appliedFilters = {};
         Object.keys(this.filters).forEach(arg => appliedFilters[arg] = this.state[arg]);
         return (
@@ -187,10 +198,7 @@ export default class BakeryMap extends Component {
                 </div>
               </div>
               <h1 className="listing-description">
-                <span className="listing-type">Bakery Listings </span>
-                <span>
-                  in {city.name}
-                </span>
+                <span className="listing-type">Bakery Listings</span> <span>in {city.name}</span>
               </h1>
               <div className="listing-buttons">
                 <button
@@ -235,10 +243,11 @@ export default class BakeryMap extends Component {
             </div>
             <div id="bakery-map-container">
               <div id="bakery-map" ref={map => (this.mapNode = map)}></div>
-              <BakeryMapList {...this.props} handleSortBy={this.handleSortBy}/>
-              {this.state.changedBounds && (
-                <BakeryMapResetBounds handleSearch={this.handleSearch} />
-              )}
+                {!selectedBakery && <BakeryMapList {...this.props} handleSortBy={this.handleSortBy} handleBakerySelect={this.handleBakerySelect}/>}
+                {selectedBakery && <BakeryMapShow {...this.props} bakery={bakeries[selectedBakery]} handleBakerySelect={() => this.handleBakerySelect(null)}/>}
+                {this.state.changedBounds && (
+                    <BakeryMapResetBounds handleSearch={this.handleSearch} />
+                )}
             </div>
           </div>
         );

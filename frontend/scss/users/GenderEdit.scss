@@ -1,0 +1,271 @@
+.GenderEdit{
+  width: 512px;
+  overflow: visible;
+  max-width: 100vw;
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  z-index: 600;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  .form-container{
+    display: flex;
+    flex-direction: column;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    flex: 1 1 0%;
+    height: calc(100% - 4rem);
+    .form{
+      height:100%;
+      background-color: rgb(255, 255, 255);
+      overflow-y: auto;
+      position: relative;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      fieldset{
+        display: block;
+        margin-inline-start: 2px;
+        margin-inline-end: 2px;
+        padding-block-start: 0.35em;
+        padding-inline-start: 0.75em;
+        padding-inline-end: 0.75em;
+        padding-block-end: 0.625em;
+        min-inline-size: min-content;
+        border-width: 0px;
+        border-style: initial;
+        border-color: initial;
+        border-image: initial;
+        margin: 0px;
+        padding: 0px;
+        .custom-gender-input{
+          margin-top: 1.25rem;
+          position: relative;
+          text-align: left;
+          input{
+            color: rgb(102, 102, 102);
+            margin: 0px;
+            box-shadow: rgba(0, 0, 0, 0.1) 0px 0.0625rem 0.125rem inset;
+            display: block;
+            font-family: inherit;
+            font-size: 100%;
+            width: -webkit-fill-available;
+            border-width: 0.0625rem;
+            border-style: solid;
+            border-color: rgb(204, 204, 204);
+            border-image: initial;
+            border-radius: 0.1875rem;
+            outline: initial;
+            overflow: visible;
+            padding: 0.5rem;
+            transition: box-shadow 500ms ease 0s, border-color 250ms ease-in-out 0s;
+          }
+        }
+        .field-container{
+          box-sizing: border-box;
+          -webkit-box-align: center;
+          align-items: center;
+          display: flex;
+          margin-bottom: 1rem;
+          label{
+            box-sizing: border-box;
+            width: auto;
+            justify-content: left;
+            flex-direction: row;
+            text-transform: capitalize;
+            display: flex;
+            -webkit-box-align: center;
+            align-items: center;
+            font-size: 1rem;
+            line-height: 1.5rem;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+            cursor: pointer;
+            color: rgb(0, 0, 0);
+            input {
+              opacity: 0;
+              position: absolute;
+              cursor: pointer;
+            }
+            .label-val{
+              box-sizing: border-box;
+              margin-left: 12px;
+            }
+            .visible-input{
+              margin-left: 0px;
+              height: 1rem;
+              width: 1rem;
+              box-sizing: border-box;
+              cursor: pointer;
+              flex-shrink: 0;
+              border-radius: 50%;
+              border-width: 0.125rem;
+              border-style: solid;
+              border-image: initial;
+              transition: box-shadow 250ms ease 0s;
+              border-color: rgb(0, 205, 190);
+              .selected-radio{
+                height: 0.5rem;
+                width: 0.5rem;
+                position: relative;
+                top: 0.125rem;
+                left: 0.125rem;
+                background-color: rgb(0, 205, 190);
+                box-sizing: border-box;
+                border-radius: 50%;
+              }
+            }
+          }
+        }
+      }
+      .actions{
+        display: flex;
+        flex-direction: column;
+        .save{
+          display: flex;
+          align-content: center;
+          -webkit-box-pack: center;
+          justify-content: center;
+          font-family: proxima-nova, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+          font-size: 1rem;
+          font-weight: 600;
+          height: 2.5rem;
+          text-transform: uppercase;
+          cursor: pointer;
+          width: auto;
+          background-color: rgb(0, 205, 190);
+          color: rgb(255, 255, 255);
+          border-radius: 0.1875rem;
+          border-width: 0.0625rem;
+          border-style: solid;
+          border-image: initial;
+          padding: 0px 1rem;
+          transition: all 150ms ease-in-out 0s;
+          border-color: rgb(1, 168, 163);
+        }
+        .cancel{
+          color: rgb(74, 74, 74);
+          display: flex;
+          align-content: center;
+          -webkit-box-pack: center;
+          justify-content: center;
+          font-family: proxima-nova, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+          font-size: 1rem;
+          font-weight: 600;
+          height: 2.5rem;
+          text-transform: uppercase;
+          cursor: pointer;
+          border-radius: 0.1875rem;
+          border-width: 0.0625rem;
+          border-style: solid;
+          border-color: rgb(204, 204, 204);
+          border-image: initial;
+          padding: 0px 1rem;
+          transition: all 150ms ease-in-out 0s;
+        }
+        button{
+          width: 100%;
+          display: block;
+          margin-left: 0px;
+          margin-top: 0.5rem;
+          -webkit-tap-highlight-color: initial;
+        }
+      }
+    }
+  }
+
+  .header{
+    box-sizing: border-box;
+    display: flex;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    align-items: center;
+    font-size: 1.25rem;
+    font-weight: 600;
+    height: 4rem;
+    background: rgb(255, 255, 255);
+    border-radius: 0.1875rem 0.1875rem 0px 0px;
+    border-bottom: 0.0625rem solid rgb(230, 229, 229);
+    padding: 0px 1rem;
+    h4{
+      display: inline-block;
+      max-width: 100%;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow-wrap: normal;
+      font-size: 1.25rem;
+      font-weight: 600;
+      font-family: proxima-nova, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+      line-height: 1.5rem;
+      overflow: hidden;
+      margin: 0px;
+    }
+    .close-modal{
+      cursor: pointer;
+      box-sizing: border-box;
+      outline-width: 0px;
+      svg{
+        cursor: pointer;
+        height: 0.875rem;
+        width: 0.875rem;
+      }
+    }
+  }
+}
+@media only screen and (max-width: 639px) {
+  .modal-child {
+    min-width: 100vw;
+    min-height: 100vh;
+    .GenderEdit {
+      min-width: 100vw;
+    }
+  }
+}
+
+
+@media only screen and (min-width: 640px) {
+  .GenderEdit {
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 0.5rem 1.5rem 0px;
+    max-width: calc(100vw - 2rem);
+    position: initial;
+    height: auto;
+    border-radius: 0.1875rem;
+    margin: 5rem auto;
+    overflow: visible !important;
+    .form-container{
+      height: auto;
+      overflow: visible;
+      .form{
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        -webkit-box-pack: justify;
+        justify-content: space-between;
+        flex: 1 1 0%;
+        overflow: visible !important;
+        .actions{
+          flex-direction: row;
+          margin-top: 1rem;
+          button{
+            width: auto;
+          }
+          button:nth-of-type(2){
+            margin-left: 0.5rem;
+          }
+        }
+      }
+    }
+    .header {
+      color: rgb(255, 255, 255);
+      background: rgb(0, 0, 0);
+      border-bottom: none;
+      .close-modal{
+        svg{
+          height: 0.75rem;
+          width: 0.75rem;
+        }
+      }
+    }
+  }
+}

@@ -318,27 +318,39 @@
     line-height: 1.5rem;
     color: rgb(74, 74, 74);
     outline: 0px;
-    a:hover{
+    a:hover, .dummy-link:hover{
       color: rgb(74, 74, 74);
       background: rgb(242, 245, 245);
     }
+  .dummy-link{
+    cursor: default !important;
+  }
+  .dummy-link:after{
+    content: " Coming Soon";
+    font-size: 0.65rem;
+    font-style: italic;
+    color: red;
+    cursor: default;
+  }
 }
-.list-user-info-modal > a {
+.list-user-info-modal > a, .list-user-info-modal > .dummy-link {
     padding: 0.5rem;
     border-radius: 0.1875rem;
     text-decoration: none;
     color: rgb(51, 51, 51);
+    cursor: pointer;
+
 }
 .list-user-info-modal > a > div {
-    display: grid;
-    grid-template-columns: 3rem 1fr;
-    grid-template-rows: 1.5rem 1fr;
-    grid-template-areas:
-    "avatar username"
-    "avatar view-profile";
-    width: 100%;
-    
-}
+      display: grid;
+      grid-template-columns: 3rem 1fr;
+      grid-template-rows: 1.5rem 1fr;
+      grid-template-areas:
+      "avatar username"
+      "avatar view-profile";
+      width: 100%;
+
+  }
 
 .separator{
     border-bottom: 1px solid rgb(230, 229, 229);

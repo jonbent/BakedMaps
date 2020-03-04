@@ -64,7 +64,7 @@ export default class ImageSlideIndex extends Component {
     render() {
         if (!this.state.ready) return null
         return (
-            <div className="image-slider-container" style={{ backgroundColor: this.state.images[this.state.currentItem].background_color}}>
+            <div className="image-slider-container" style={{ backgroundColor: this.state.images[this.state.currentItem].background_color, color: this.state.images[this.state.currentItem].background_color === "#000000" ? "#FFFFFF" : "#000000"}}>
                 <div className="image-slider">
                     <div className="image-slider-wrapper">
                         {this.state.images.map((image, idx) => {

@@ -340,9 +340,20 @@
             box-sizing: border-box;
             -webkit-box-flex: 0 !important;
             flex-grow: 0 !important;
+            .dummy-link{
+              cursor: default;
+            }
+            .dummy-link:after{
+              content: " Coming Soon";
+              color: red;
+              font-style: italic;
+              font-size: 0.65rem;
+              text-transform: capitalize;
+            }
             .nav-link{
                 width: 100%;
                 a{
+                    justify-content: space-evenly;
                     font-weight: 600;
                     color: rgb(74, 74, 74) !important;
                     font-size: 0.875rem;
@@ -387,6 +398,7 @@
     display: flex;
     justify-content: center;
     transition: background-color 1s ease-in-out;
+    transition: color 1s ease-in-out;
 }
 .image-slider {
 
@@ -407,7 +419,6 @@
     transition: opacity 1s ease-in-out;
     flex:0 0 auto;
     position: absolute;
-    color: black;
     width: 100%;
     display: grid;
     grid-template-columns: repeat(6, 1fr);
@@ -416,6 +427,7 @@
     // padding-left: 1.5rem;
     margin: 0px auto;
     .options{
+        padding: 0 2rem;
         align-self: center;
         width: 100%;
         z-index: 2;

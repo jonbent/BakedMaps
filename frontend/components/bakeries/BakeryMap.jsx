@@ -113,8 +113,9 @@ export default class BakeryMap extends Component {
         })
     }
     componentDidUpdate(prevProps) {
-        if (prevProps.city === this.props.city) return null
-        const { lat, lng } = this.props.city
+        if (prevProps.match.url !== this.props.match.url) this.props.closeHamburger();
+        if (prevProps.city === this.props.city) return null;
+        const { lat, lng } = this.props.city;
         this.map.setCenter({ lat, lng });
         google.maps.event.addListenerOnce(this.map, "idle", () => {
             this.setState({ changedBounds: false })

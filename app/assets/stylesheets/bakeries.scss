@@ -75,6 +75,11 @@
     }
 
 }
+@media only screen and (max-width: 1023px){
+    .bakery-map-container > div{
+      height: calc(100vh - 80px)
+    }
+}
 #map-header .listing-buttons button{
     margin: 0;
 }

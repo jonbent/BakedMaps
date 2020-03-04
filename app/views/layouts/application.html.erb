@@ -25,6 +25,7 @@
             birthday: "<%= current_user.birthday %>",
             gender: "<%= current_user.gender %>",
             address: "<%= current_user.address %>",
+            avatarUrl: "<%= current_user.image.attached? ? url_for(current_user.image) : asset_path('image_missing.png') %>"
         }
       </script>
     <% end %>

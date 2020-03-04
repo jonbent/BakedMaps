@@ -5,7 +5,7 @@ export const fetchSearchResults = (query, {lat, lng}) => (
     dataType: "JSON"
   })
 
-)
+);
 
 export const findDispensaries = ({ lat, long, mileRadius }) => {
   return $.ajax({
@@ -26,6 +26,14 @@ export const fetchBakery = (bakerySlug, bakeryType = "dispensaries") => {
   if (bakeryType === "bakeries") bakeryType = "dispensaries";
   return $.ajax({
     url: `https://api-g.weedmaps.com/discovery/v1/listings/${bakeryType}/${bakerySlug}`,
+    method: "GET",
+    dataType: "JSON"
+  })
+}
+export const fetchMenuItem = (bakerySlug, bakeryType = "dispensaries", menuItemSlug) => {
+  if (bakeryType === "bakeries") bakeryType = "dispensaries";
+  return $.ajax({
+    url: `https://api-g.weedmaps.com/discovery/v1/listings/${bakeryType}/${bakerySlug}/menu_items/${menuItemSlug}`,
     method: "GET",
     dataType: "JSON"
   })

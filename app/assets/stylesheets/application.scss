@@ -22,7 +22,9 @@
 @import 'review_modal';
 @import 'users';
 @import 'home';
-
+.App{
+    transition-duration: 0.5s;
+}
 .option-carousel{
     box-sizing: border-box;
     -webkit-box-align: center;
@@ -897,6 +899,24 @@ mark.errors{
             max-width: 75rem;
         }
     }
+}
+@media only screen and (max-width: 1023px){
+  .slide-out {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      transform: translate3d(17.5rem, 0px, 0px);
+      transition-duration: 0.5s;
+      backface-visibility: hidden;
+      perspective: 62.5rem;
+    .overlay{
+      background-color: rgba(0, 0, 0, 0.4);
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      z-index: 10000;
+    }
+  }
 }
 @media only screen and (min-width: 1023px){
     .option-carousel .carousel-items .carousel-item{

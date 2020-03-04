@@ -3,6 +3,7 @@ import FiltersReducer from "./FiltersReducer";
 import CityReducer from './CityReducer';
 import MenuItemSizeReducer from './MenuItemSizeReducer';
 import ModalReducer from './ModalReducer';
+import hamburger from './HamburgerReducer';
 import ReviewDistributionReducer from './ReviewDistributionReducer';
 
 export default combineReducers({
@@ -10,5 +11,6 @@ export default combineReducers({
     city: CityReducer,
     menuItemSize: MenuItemSizeReducer,
     reviewDistribution: ReviewDistributionReducer,
-    modal: ModalReducer
+    modal: ModalReducer,
+    hamburger
 })

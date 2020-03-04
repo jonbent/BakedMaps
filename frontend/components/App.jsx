@@ -1,4 +1,5 @@
 import React from 'react'
+import {connect} from 'react-redux'
 import {AuthRoute, ProtectedRoute} from '../util/RouteUtil';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import NavBarContainer from './navbar/NavBarContainer';
@@ -7,11 +8,14 @@ import UserEdit from './users/UserEditContainer';
 import ImageSlideIndex from './slider/ImageSlideIndex';
 import BakeryIndex from './bakeries/BakeryIndexContainer';
 import BakeryShow from './bakeries/BakeryShowContainer';
+import MenuItemShow from './menu/MenuItemShowContainer';
 import HomeSplash from './home/HomeSplashContainer';
 import Modal from './modals/Modal';
+import Hamburger from "./modals/Hamburger";
+import {closeHamburger} from "../actions/hamburger";
 
-const App = ({location}) => (
-  <div>
+const App = ({location, hamburger, closeHamburger}) => (
+  <div className={`App ${hamburger ? "slide-out" : ""}`}>
       <div dangerouslySetInnerHTML={{__html:
       `<svg xmlns="http://www.w3.org/2000/svg" style="height:0;width:0;position:absolute">
           <clipPath id="ui-solid-stars-clip-path">
@@ -113,13 +117,14 @@ const App = ({location}) => (
           </defs>
       </svg>`
       }}></div>
-
+    {hamburger && <div className="overlay" onClick={closeHamburger}></div>}
     <NavBarContainer />
     {/*  */}
     <Modal/>
     <Switch>
       <Route path="/users/:username" component={UserShow}/>
       <Route path="/account/edit" component={UserEdit}/>
+      <Route path="/:storeType/:storeSlug/menu/:menuItemSlug" component={MenuItemShow}/>
       <Route path="/:storeType/:storeSlug" component={BakeryShow}/>
       <Route path="/:storeType" component={BakeryIndex}/>
       <Route path="/" component={HomeSplash}/>
@@ -128,6 +133,11 @@ const App = ({location}) => (
     
   </div>
 );
+const mapStateToProps = ({ui}) => ({
+    hamburger: ui.hamburger
+});
+const mapDispatchToProps = (dispatch) => ({
+    closeHamburger: () => dispatch(closeHamburger())
+});
 
-
-export default App;
+export default connect(mapStateToProps, mapDispatchToProps)(App);

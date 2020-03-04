@@ -4,6 +4,7 @@ import BakeryIndex from './BakeryIndex'
 import {receiveReviewAmount, updateBounds} from '../../actions/filters'
 import { fetchBakeries, fetchBakery } from "../../actions/bakeries";
 import {fetchReviewableDistribution} from "../../actions/reviews";
+import {closeHamburger} from "../../actions/hamburger";
 
 const mapStateToProps = ({entities, ui, session}) => ({
     bakeries: entities.bakeries,
@@ -17,6 +18,7 @@ const mapDispatchToProps = dispatch => ({
     fetchBakery: (bakerySlug, storeType) => dispatch(fetchBakery(bakerySlug, storeType)),
     openReviewModal: (payload) => dispatch(receiveReviewAmount(payload)),
     updateBounds: (bounds) => dispatch(updateBounds(bounds)),
-    fetchReviewableDistribution: (reviewableSlug, reviewableId) => dispatch(fetchReviewableDistribution(reviewableSlug, reviewableId))
+    fetchReviewableDistribution: (reviewableSlug, reviewableId) => dispatch(fetchReviewableDistribution(reviewableSlug, reviewableId)),
+    closeHamburger: () => dispatch(closeHamburger())
 });
 export default connect(mapStateToProps, mapDispatchToProps)(BakeryIndex);

@@ -1,0 +1,185 @@
+.Hamburger{
+  backface-visibility: hidden;
+  background-color: rgb(255, 255, 255);
+  color: rgb(153, 153, 153);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  height: 100%;
+  min-height: 100%;
+  padding-top: 0px;
+  perspective: 62.5rem;
+  position: fixed;
+  transform: translate3d(-17.5rem, 0px, 0px);
+  transition-duration: 0.5s;
+  width: 17.5rem;
+  z-index: 10;
+  overflow: hidden;
+  .absolute-hamburger{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    .site-links{
+      background-color: rgb(255, 255, 255);
+      bottom: 0px;
+      display: flex;
+      flex-direction: column;
+      height: auto;
+      -webkit-box-pack: justify;
+      position: absolute;
+      top: 6rem;
+      width: 100%;
+      overflow: scroll;
+      padding: 0.9375rem 0px;
+      a{
+        -webkit-box-align: center;
+        align-items: center;
+        color: rgb(74, 74, 74);
+        cursor: pointer;
+        display: flex;
+        font-size: 0.8125rem;
+        font-weight: 500;
+        flex-direction: row;
+        -webkit-box-pack: start;
+        justify-content: flex-start;
+        line-height: 2.8125rem;
+        vertical-align: middle;
+        padding: 0px 1.625rem;
+      }
+    }
+    .session-actions-container{
+      background-color: white;
+      color: rgb(255, 255, 255);
+      display: flex;
+      flex-wrap: nowrap;
+      height: 6rem;
+      -webkit-box-pack: justify;
+      justify-content: space-between;
+      position: fixed;
+      top: 0px;
+      width: 100%;
+      z-index: 20;
+      border-bottom: 0.0625rem solid rgb(230, 229, 229);
+      overflow: hidden;
+      padding: 0px 0px 0px 0.625rem;
+      .session-actions{
+        box-sizing: border-box;
+        padding-left: 0.5rem;
+        display: flex;
+        padding-top: 1.875rem;
+        margin-right: 0.5rem;
+        .login{
+          display: flex;
+          -webkit-box-align: center;
+          align-items: center;
+          color: rgb(102, 102, 102);
+          cursor: pointer;
+          font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+          font-size: 0.875rem;
+          font-weight: 500;
+          height: 2rem;
+          white-space: nowrap;
+          border-radius: 1rem;
+          margin: 0px;
+        }
+        .signup{
+          display: flex;
+          -webkit-box-align: center;
+          align-items: center;
+          cursor: pointer;
+          font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+          font-size: 0.875rem;
+          font-weight: 500;
+          height: 2rem;
+          white-space: nowrap;
+          color: rgb(255, 255, 255);
+          border-radius: 1rem;
+          margin: 0px 0.4375rem;
+          border-width: initial;
+          border-style: none;
+          border-color: initial;
+          border-image: initial;
+          background: rgb(0, 169, 157);
+          padding: 0px 1rem;
+        }
+      }
+    }
+    .user-card{
+      background-color: white;
+      color: rgb(255, 255, 255);
+      display: flex;
+      flex-wrap: nowrap;
+      height: 6rem;
+      -webkit-box-pack: justify;
+      justify-content: space-between;
+      position: fixed;
+      top: 0px;
+      width: 100%;
+      z-index: 20;
+      border-bottom: 0.0625rem solid rgb(230, 229, 229);
+      overflow: hidden;
+      padding: 0px 0px 0px 0.625rem;
+      .username-container{
+        color: rgb(102, 102, 102);
+        padding-left: 1.25rem;
+        -webkit-box-pack: center;
+        justify-content: center;
+        padding-right: 0.3125rem;
+        display: flex;
+        flex-direction: column;
+        -webkit-box-flex: 1;
+        flex-grow: 1;
+        overflow: hidden;
+        .username{
+          cursor: default;
+          font-size: 1.125rem;
+          font-weight: 600;
+          line-height: 1.25;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          overflow: hidden;
+        }
+        .view-profile{
+          a {
+            color: rgb(102, 102, 102);
+            font-size: 0.75rem;
+          }
+        }
+      }
+      .user-avatar:after{
+        content: "";
+        display: block;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0px;
+        left: 0px;
+        box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 0.25rem inset;
+        border-radius: 50%;
+      }
+      .user-avatar{
+        display: flex;
+        -webkit-box-align: center;
+        align-items: center;
+        align-self: center;
+        -webkit-box-pack: center;
+        justify-content: center;
+        width: 55px;
+        height: 55px;
+        position: relative;
+        border-radius: 50%;
+        overflow: hidden;
+        img{
+          width: 100%;
+          height: 100%;
+          object-fit: fill;
+          border-radius: 50%;
+        }
+      }
+    }
+  }
+}
+.Hamburger.slide-in{
+  backface-visibility: hidden;
+  perspective: 62.5rem;
+  transform: translate3d(0px, 0px, 0px);
+  transition-duration: 0.5s;
+}

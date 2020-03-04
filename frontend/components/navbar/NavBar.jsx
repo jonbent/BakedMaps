@@ -8,6 +8,7 @@ import CityUtil from '../../util/city_recommendations/CityStateUtil';
 import UserInfoModal from '../users/UserInfoModal';
 import OutsideClickHandler from "../OutsideClickHandler";
 import reverse from 'reverse-geocode';
+import Hamburger from "../svg/hamburger";
 
 class NavBar extends Component {
     constructor(props){
@@ -96,7 +97,7 @@ class NavBar extends Component {
 
     render(){
         const {locationSearch, productSearch} = this.state;
-        const { currentUser, logout, products } = this.props;
+        const { currentUser, logout, products, openHamburger } = this.props;
         return (
           <nav className="nav-bar">
             <div>
@@ -108,6 +109,12 @@ class NavBar extends Component {
                   />
                 </div>
               </Link>
+              <div className="hamburger-menu">
+                  <button className="hamburger-button" onClick={openHamburger}>
+                      <span className="hamburger-placeholder">Menu</span>
+                      <Hamburger/>
+                  </button>
+              </div>
               <div className="header-content">
                 <div className="bakery-search">
                   <div className="bakery-search-bar">
@@ -138,13 +145,13 @@ class NavBar extends Component {
                     )}
                     {productSearch && (
                       <ul className="bakery-drop-down">
-                        {!this.props.products.length &&
+                        {!products.length &&
                             <li className="product-list-item">
                               <div className="product-icon"></div>
                               <div className="product-name">No Found Products</div>
                             </li>
                         }
-                        {!!this.props.products.length && this.props.products.map(product => {
+                        {!!products.length && products.map(product => {
                           if (product.type !== 'listing') return null
                           let webUrl = product.attributes.web_url.split('.com')[1];
                           let splitWebUrl = product.attributes.web_url.split('.com')[1].split('/');
@@ -218,7 +225,11 @@ class NavBar extends Component {
                       )}
                     </div>
                   </div>
-                  {currentUser && (
+
+                </div>
+              </div>
+            <div className="actions">
+                {currentUser && (
                     <div className="nav-user-info">
                       <div
                         className="nav-user-icon-container"
@@ -243,22 +254,21 @@ class NavBar extends Component {
                       <Link to="/signup">SIGN UP</Link>
                     </div>
                   )}
-                </div>
-                <div className="search-options">
-                  <NavLink activeClassName="active-param" to="/bakeries">
-                    Bakeries
-                  </NavLink>
-                  {/* <NavLink activeClassName="active-param" to="/products">
-                    Products
-                  </NavLink>
-                  <NavLink activeClassName="active-param" to="/deals">
-                    Deals
-                  </NavLink> */}
-                  <NavLink activeClassName="active-param" to="/maps">
-                    Maps
-                  </NavLink>
-                </div>
-              </div>
+            </div>
+            <div className="search-options">
+              <NavLink activeClassName="active-param" to="/bakeries">
+                Bakeries
+              </NavLink>
+              {/* <NavLink activeClassName="active-param" to="/products">
+                Products
+              </NavLink>
+              <NavLink activeClassName="active-param" to="/deals">
+                Deals
+              </NavLink> */}
+              <NavLink activeClassName="active-param" to="/maps">
+                Maps
+              </NavLink>
+            </div>
             </div>
           </nav>
         );

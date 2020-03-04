@@ -81,5 +81,5 @@ test:
 production:
   <<: *default
   database: baked_maps_production
-  username: baked_maps
+  username: baked-maps
   password: <%= ENV['DB_PASSWORD'] %>

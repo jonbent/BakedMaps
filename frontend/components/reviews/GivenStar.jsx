@@ -7,7 +7,7 @@ const GivenStar = ({num, numStars}) => {
         <div className="star-container">
             <div className="star">
                 <div className="empty-star"><EmptyStar /></div>
-                <div className="filled-star" style={numStars > num ? { width: '100%' } : numStars + 1 > num ? { width: `${parseInt((num - numStars) * 100)}%` } : { width: '0%' }}>
+                <div className="filled-star" style={numStars > num ? { width: '100%' } : numStars + 1 > num ? { width: `${parseInt(100 -((num - numStars) * 100))}%` } : { width: '0%' }}>
                     <div>
                         <FullStar />
                     </div>

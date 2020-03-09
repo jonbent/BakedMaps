@@ -231,7 +231,7 @@ class BakeryMapShow extends Component{
                                     <ReviewCircle strokeOffset={Math.abs(5 - bakery.rating) * 20}/>
                                     <div className="review-circle-stats">
                                         <span>{bakery.rating !== 0 ? (Math.round(bakery.rating * 10) / 10).toFixed(1) : "n/a"}</span>
-                                        <div className="stars-container"><Fillable5Stars fillAmount={(bakery.rating / 5) * 100}/></div>
+                                        <div className="stars-container"><Fillable5Stars fillAmount={(bakery.rating / 5) * 100 + (bakery.rating > 1 ? 3 : 0)}/></div>
                                     </div>
                                 </div>
                                 <div className="total-review-stats-container">

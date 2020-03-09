@@ -29,14 +29,12 @@ export default class OptionCarouselHolder extends Component {
                 <div className="carousel-headers">
                     <h2>{header}</h2>
                     <div className="header-buttons">
-                        <div className="header-buttons">
-                            <Link to={link}><span>View All</span></Link>
-                            <div onClick={() => this.changeIndex(currentIndex - 1, numDivs)} className={`prev-button carousel-nav ${currentIndex === 0 ? "disabled" : ""}`}>
-                                <Arrow fill={currentIndex === 0 ? "#DDDDDD" : "#666666"}/>
-                            </div>
-                            <div onClick={() => this.changeIndex(currentIndex + 1, numDivs)} className={`next-button carousel-nav ${currentIndex === numDivs - 1 ? "disabled" : ""}`}>
-                                <Arrow fill={currentIndex === numDivs - 1 ? "#DDDDDD" : "#666666"}/>
-                            </div>
+                        <Link to={link}><span>View All</span></Link>
+                        <div onClick={() => this.changeIndex(currentIndex - 1, numDivs)} className={`prev-button carousel-nav ${currentIndex === 0 ? "disabled" : ""}`}>
+                            <Arrow fill={currentIndex === 0 ? "#DDDDDD" : "#666666"}/>
+                        </div>
+                        <div onClick={() => this.changeIndex(currentIndex + 1, numDivs)} className={`next-button carousel-nav ${currentIndex === numDivs - 1 ? "disabled" : ""}`}>
+                            <Arrow fill={currentIndex === numDivs - 1 ? "#DDDDDD" : "#666666"}/>
                         </div>
                     </div>
                 </div>

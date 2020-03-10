@@ -21,8 +21,6 @@ export default (prevState = _nullState, action) => {
             if (!action.payload) return _nullState;
             if (Object.entries(action.payload.ui.city).length === 0) return _nullState;
             return action.payload.ui.city;
-        case CLEAR_CITY:
-            return {};
         default:
 
             return prevState;

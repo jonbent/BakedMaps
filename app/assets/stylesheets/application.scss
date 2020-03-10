@@ -25,6 +25,7 @@
 .App{
     transition-duration: 0.5s;
 }
+
 .option-carousel{
     box-sizing: border-box;
     -webkit-box-align: center;
@@ -60,118 +61,101 @@
             min-height: 14rem;
             overflow: hidden;
             .carousel-body{
-                top: 0px;
-                position: absolute;
-                height: 100%;
-                width: 100%;
+                box-sizing: border-box;
                 display: flex;
                 flex-direction: column;
-                padding: 1.3125rem 0px 0px;
+                padding-top: 0.75rem;
+                height: 7.375rem;
+                position: relative;
                 .carousel-bottom{
                     box-sizing: border-box;
-                    align-items: flex-end;
-                    justify-content: stretch;
-                    flex-wrap: nowrap;
                     display: flex;
-                    .carousel-rating{
-                        box-sizing: border-box;
-                        -webkit-box-align: center;
-                        align-items: center;
-                        flex-wrap: nowrap;
-                        display: flex;
-                        -webkit-box-flex: 1;
-                        flex-grow: 1;
+                    -webkit-box-align: center;
+                    align-items: center;
+                    min-height: 0.875rem;
+                    -webkit-box-pack: start;
+                    justify-content: flex-start;
+                    position: absolute;
+                    bottom:0px;
+                    span{
+                        align-items: flex-end;
+                        color: rgb(102, 102, 102);
+                        font-size: 0.6875rem;
+                        font-weight: 600;
+                        line-height: 0.6875rem;
+                        margin-left: 0.1875rem;
                     }
-                }
-                .carousel-bottom{
-                    position: static;
-                    display: flex;
-                    flex-direction: column;
-                    -webkit-box-pack: justify;
-                    justify-content: space-between;
-                    -webkit-box-flex: 1;
-                    flex-grow: 1;
-                    padding: 0px;
+                    svg{
+                        height: 12px;
+                        width: 60px;
+                    }
                 }
                 .carousel-type{
                     color: rgb(124, 124, 124);
                     font-size: 0.75rem;
-                    letter-spacing: 0.0125rem;
                     margin-bottom: 0.25rem;
-                    line-height: 1.4;
-                    text-transform: capitalize;
+                    display: inline-block;
+                    max-width: 100%;
                     text-overflow: ellipsis;
                     white-space: nowrap;
-                    padding: 0px;
+                    overflow-wrap: normal;
                     overflow: hidden;
                 }
                 .carousel-name{
-                    height: auto;
-                    max-height: 2.5rem;
-                    -webkit-box-orient: vertical;
-                    -webkit-line-clamp: 2;
                     color: rgb(74, 74, 74);
-                    display: block;
+                    max-width: 100%;
+                    text-overflow: ellipsis;
+                    display: -webkit-box;
                     font-size: 1.125rem;
                     font-weight: 500;
+                    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
                     line-height: 1.25rem;
                     margin-bottom: 0.25rem;
-                    text-overflow: ellipsis;
+                    -webkit-line-clamp: 2;
+                    -webkit-box-orient: vertical;
                     white-space: normal;
-                    padding: 0px;
+                    overflow-wrap: break-word;
                     overflow: hidden;
                 }
                 .carousel-location{
-                    font-size: 0.75rem;
                     color: rgb(124, 124, 124);
-                    letter-spacing: 0.0125rem;
-                    line-height: 1.2;
-                    text-transform: capitalize;
-                    white-space: nowrap;
+                    font-size: 0.75rem;
+                    margin-bottom: 0.25rem;
+                    display: inline-block;
+                    max-width: 100%;
                     text-overflow: ellipsis;
-                    padding: 0px;
+                    white-space: nowrap;
+                    overflow-wrap: normal;
                     overflow: hidden;
-                    margin: 0.625rem 0px 0.25rem;
-                }
-                .carousel-img-container{
-                    box-sizing: border-box;
-                    display: flex;
-                    margin-top: 0.625rem;
-                    -webkit-box-pack: justify;
-                    justify-content: space-between;
-                    align-items: flex-end;
-                    padding: 0px 0.5rem;
-                    .carousel-img{
-                        box-shadow: rgba(0, 0, 0, 0.25) 0px 1px 3px;
-                        background: rgb(255, 255, 255);
-                        display: flex;
-                        -webkit-box-align: center;
-                        align-items: center;
-                        align-self: center;
-                        -webkit-box-pack: center;
-                        justify-content: center;
-                        width: 48px;
-                        height: 48px;
-                        position: relative;
-                        border-radius: 0px;
-                        overflow: hidden;
-                        img{
-                            width: auto;
-                            height: auto;
-                            object-fit: fill;
-                            border-radius: 0px;
-                        }
-                    }
                 }
             }
             .carousel-header{
-                box-sizing: border-box;
-                display: flex;
+                padding-bottom: 100%;
                 position: relative;
-                height: 4.3125rem;
                 width: 100%;
-                overflow: hidden;
-                background-color: #999999;
+                border-bottom: none;
+                overflow: inherit;
+                svg{
+                    position: absolute;
+                    bottom: -1rem;
+                    max-width: 2.5rem;
+                    max-height: 3.4375rem;
+                }
+                div{
+                    position: absolute;
+                    top: 0px;
+                    right: 0px;
+                    bottom: 0px;
+                    left: 0px;
+                    img{
+                        max-height: 100%;
+                        max-width: 100%;
+                        min-height: 100%;
+                        min-width: 100%;
+                        object-fit: cover;
+                        border-radius: 0px;
+                    }
+                }
             }
         }
     }
@@ -422,7 +406,7 @@
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     grid-template-rows: repeat(6, 1fr);
-    height: 14.5rem;
+    height: 100%;
     // padding-left: 1.5rem;
     margin: 0px auto;
     .options{
@@ -935,6 +919,19 @@ mark.errors{
     }
 }
 @media screen and (min-width: 832px){
+    .option-carousel {
+        .carousel-items {
+            .carousel-item {
+                .carousel-header {
+                    .carousel-marker {
+                        bottom: -1.5rem;
+                        max-width: 3.375rem;
+                        max-height: 3.75rem;
+                    }
+                }
+            }
+        }
+    }
     .app-footer {
         flex-direction: column;
         padding-top: 3rem;

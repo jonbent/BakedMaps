@@ -44,14 +44,9 @@ document.addEventListener('DOMContentLoaded', () => {
           }
         });
     }
-    const clearCity = () => ({
-        type: CLEAR_CITY
-    })
     if (process.env.NODE_ENV === "development") {
         window.login = login;
         window.logout = logout;
-        window.clearCity = () => window.store.store.dispatch(clearCity());
     }
     ReactDOM.render(<Root store={window.store.store} persistor={window.store.persistor}/>, root);
 })
-export const CLEAR_CITY = "CLEAR_CITY";

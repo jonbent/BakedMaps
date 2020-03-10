@@ -1,6 +1,7 @@
 import React from 'react';
 
 const Fillable5Stars = ({fillAmount = 0}) => {
+    if (fillAmount > 100) fillAmount = 100;
     return (
         <svg width="100%" height="100%" viewBox="0 0 132 20" xmlns="http://www.w3.org/2000/svg">
             <rect height="100%" x={`${fillAmount}%`} width={`${100 - fillAmount}%`} clipPath="url(#ui-solid-stars-clip-path)" fill="#E6E6E6"></rect>

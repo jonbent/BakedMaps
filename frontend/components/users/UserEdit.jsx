@@ -5,9 +5,12 @@ import dateformat from 'dateformat';
 
 import HireMe from "../HireMe";
 class UserEdit extends Component {
+    componentDidMount(){
+
+    }
     render() {
         const {user, openModal} = this.props;
-        const userBirthday = user.birthday.split('-');
+        const userBirthday = user.birthday ? user.birthday.split('-') : [];
         return (
             <div className="UserEdit">
                 <div className="header">
@@ -37,7 +40,7 @@ class UserEdit extends Component {
                             <div className="user-setting-item">
                                 <div className="value-container">
                                     <h4 className="value-title">Birthday</h4>
-                                    {userBirthday && `${userBirthday[1]}/${userBirthday[2]}/${userBirthday[0]}`}
+                                    {!!userBirthday.length && `${userBirthday[1]}/${userBirthday[2]}/${userBirthday[0]}`}
                                 </div>
                                 <div className="edit-button-container">
                                     <button onClick={() => openModal("birthdayEdit")}>Edit</button>

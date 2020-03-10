@@ -123,7 +123,7 @@ const App = ({location, hamburger, closeHamburger}) => (
     <Modal/>
     <Switch>
       <Route path="/users/:username" component={UserShow}/>
-      <Route path="/account/edit" component={UserEdit}/>
+      <ProtectedRoute path="/account/edit" component={UserEdit}/>
       <Route path="/:storeType/:storeSlug/menu/:menuItemSlug" component={MenuItemShow}/>
       <Route path="/:storeType/:storeSlug" component={BakeryShow}/>
       <Route path="/:storeType" component={BakeryIndex}/>

@@ -1,13 +1,13 @@
-import React, { Component } from 'react'
+import React from 'react'
 import CarouselItem from './CarouselItem'
-export default class CarouselItemHolder extends Component {
-    render() {
-        return (
-            <div className="carousel-items" style={{transform: this.props.transformX}}>
-                    {this.props.items.map(item => {
-                        return <CarouselItem key={item.id} item={item} rendered={this.props.rendered}/>
-                    })}
-            </div>
-        )
-    }
-}
+const CarouselItemHolder = ({idx, items, transformX, rendered}) => {
+    return (
+        <div className="carousel-items" style={{transform: transformX}}>
+                {items.map((item, jdx) => {
+                    return <CarouselItem key={item.id} item={item} idx={idx} jdx={jdx} rendered={rendered}/>
+                })}
+        </div>
+    )
+};
+
+export default CarouselItemHolder

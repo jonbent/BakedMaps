@@ -40,7 +40,7 @@ class UserEdit extends Component {
                             <div className="user-setting-item">
                                 <div className="value-container">
                                     <h4 className="value-title">Birthday</h4>
-                                    {!!userBirthday.length && `${userBirthday[1]}/${userBirthday[2]}/${userBirthday[0]}`}
+                                    {userBirthday.length !== 0 && `${userBirthday[1]}/${userBirthday[2]}/${userBirthday[0]}`}
                                 </div>
                                 <div className="edit-button-container">
                                     <button onClick={() => openModal("birthdayEdit")}>Edit</button>

@@ -1,6 +1,10 @@
 import React, { Component } from 'react'
 import {Link} from 'react-router-dom'
 import GivenStars from '../reviews/GivenStars'
+import Fillable5Stars from "../svg/fillable_5_stars";
+import DeliveryMarker from "../svg/delivery_marker";
+import StorefrontMarker from "../svg/storefront_marker";
+const fills = ["#FFB700", "#0E93B4", "#E07000", "#00CDBE"];
 export default class CarouselItem extends Component {
     constructor(props) {
         super(props)
@@ -23,17 +27,22 @@ export default class CarouselItem extends Component {
     }
     
     render() {
-        const { item } = this.props
+        const { item, idx, jdx } = this.props;
         if (this.state.shouldRender) return (
             <div className="carousel-item">
                 <Link to={item.web_url.split(".com")[1]}>
-                    <div className="carousel-header"></div>
-                    <div className="carousel-body">
-                        <div className="carousel-img-container">
-                            <div className="carousel-img">
-                                <img src={item.avatar_image.small_url} style={{height: '40px', width: '40px'}}/>
-                            </div>
+                    <div className="carousel-header" >
+                        <div>
+                            <img src={item.avatar_image.small_url} alt={item.name}/>
                         </div>
+                        {/*<img className="carousel-marker" alt={item.type} src={item.type === "delivery" ? window.deliveryMarker : window.storefrontMarker} />*/}
+                        {item.type === "delivery" ?
+                            <DeliveryMarker fill={jdx <= 3 && idx === 0 ? fills[jdx] : fills[3]}/>
+                            :
+                            <StorefrontMarker fill={jdx <= 3 && idx === 0 ? fills[jdx] : fills[3]}/>
+                        }
+                    </div>
+                    <div className="carousel-body">
                         <div className="carousel-location">
                             {item.city}, <span>{this.props, item.state}</span>
                         </div>
@@ -46,10 +55,9 @@ export default class CarouselItem extends Component {
                                 : item.license_type === "recreational"
                                     ? "Recreational" : "Medical"}
                         </div>
+
                         <div className="carousel-bottom">
-                            <div className="carousel-rating">
-                                <GivenStars numStars={item.rating}/>
-                            </div>
+                            <Fillable5Stars fillAmount={(item.rating / 5) * 100 + (item.rating > 1 ? 3 : 0)}/><span>{item.rating.toFixed(1)}</span>
                         </div>
                     </div>
                 </Link>

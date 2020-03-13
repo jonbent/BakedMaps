@@ -223,7 +223,7 @@ class BakeryMapShow extends Component{
                             <div className='review-summary-header'>
                                 <Star/>
                                 <h3>Review Summary</h3>
-                                <button>Write A Review</button>
+                                <button onClick={() => this.requireLoggedIn(() => this.props.openReviewModal({ reviewAmount: 0, reviewableType: urlType, reviewableId: bakery.id }))}>Write A Review</button>
                             </div>
 
                             <div className="review-summary">

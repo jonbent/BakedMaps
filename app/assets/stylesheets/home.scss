@@ -19,7 +19,7 @@
             justify-content: space-between;
             display: flex;
             margin: 0px 1rem 1rem;
-            padding-left: 1rem;
+            padding: 0 1rem;
             .header-buttons > a{
                 -webkit-box-align: center;
                 align-items: center;
@@ -51,7 +51,7 @@
                 flex-wrap: nowrap;
                 display: flex;
                 white-space: nowrap;
-                padding-right: 1rem;
+                padding-right: 0.625rem;
                 .carousel-nav.disabled{
                     cursor: auto;
                 }

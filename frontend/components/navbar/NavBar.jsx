@@ -192,7 +192,7 @@ class NavBar extends Component {
                     </div>
                     <input
                       type="text"
-                      placeholder="Search for Bakeries, or products"
+                      placeholder="Search for Bakeries, or products, ex: Purple Star"
                       onClick={this.focusProductInput}
                       onChange={this.handleSearchInputChange}
                       onFocus={e => this.handleSearchInputFocus("product")}

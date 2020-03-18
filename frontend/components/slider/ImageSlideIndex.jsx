@@ -37,9 +37,9 @@ export default class ImageSlideIndex extends Component {
         return $.ajax({
             url: "https://api-g.weedmaps.com/discovery/v1/homepage?latlng=37.9257851%2C-122.3220782&include%5B%5D=carousel",
             method: "GET",
-            dataType: "JSON"
+            dataType: "JSON",
         }).then(response => {
-            const carousel = Object.values(response.data.carousel)
+            const carousel = Object.values(response.data.carousel);
             if (!carousel.length){ 
                 this.fetchImages();
             } else {
@@ -48,7 +48,7 @@ export default class ImageSlideIndex extends Component {
                         images: Object.values(response.data.carousel),
                         ready: true
                     }, 
-                    () => this.interval = setInterval(this.nextImage, 3000)
+                    () => this.interval = setInterval(this.nextImage, 4000)
                 )
             }
         })

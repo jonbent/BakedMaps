@@ -213,12 +213,12 @@ class BakeryMapShow extends Component{
                                 </div>
                             </div>
                         </div>
-                        <div className="hours-of-operation">
+                        {!!bakery.business_hours && <div className="hours-of-operation">
                             <div className="header">
                                 <h3>Hours of Operation</h3>
                             </div>
                             <BakeryHours bakery={bakery}/>
-                        </div>
+                        </div>}
                         <div className="review-summary-container">
                             <div className='review-summary-header'>
                                 <Star/>

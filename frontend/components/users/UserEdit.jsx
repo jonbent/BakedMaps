@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import CheckMark from "../svg/check_mark";
 import '../../scss/users/UserEdit.scss';
-import dateformat from 'dateformat';
 
 import HireMe from "../HireMe";
 class UserEdit extends Component {

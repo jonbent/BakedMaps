@@ -192,7 +192,7 @@ class NavBar extends Component {
                     </div>
                     <input
                       type="text"
-                      placeholder="Search for Bakeries, or products, ex: Purple Star"
+                      placeholder="Search for Bakeries ex: Purple Star"
                       onClick={this.focusProductInput}
                       onChange={this.handleSearchInputChange}
                       onFocus={e => this.handleSearchInputFocus("product")}
@@ -265,9 +265,9 @@ class NavBar extends Component {
               <NavLink activeClassName="active-param" to="/deals">
                 Deals
               </NavLink> */}
-              <NavLink activeClassName="active-param" to="/maps">
-                Maps
-              </NavLink>
+              {/*<NavLink activeClassName="active-param" to="/maps">*/}
+              {/*  Maps*/}
+              {/*</NavLink>*/}
             </div>
             </div>
           </nav>

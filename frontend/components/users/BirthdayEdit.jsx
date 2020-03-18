@@ -4,13 +4,13 @@ import {connect} from "react-redux";
 
 import '../../scss/users/BirthdayEdit.scss';
 import {saveUserField} from "../../actions/users";
+import dateformat from 'dateformat'
 const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 class BirthdayEdit extends Component {
     constructor(props) {
         let userBirthdate;
         if (props.user.birthday){
-            userBirthdate = new Date(props.user.birthday);
-            userBirthdate.setDate(userBirthdate.getDate() + 1);
+            userBirthdate = new Date(dateformat(props.user.birthday, 'mm/dd/yyyy'));
         } else {
             userBirthdate = new Date();
             userBirthdate.setFullYear(userBirthdate.getFullYear() - 21);
@@ -22,7 +22,7 @@ class BirthdayEdit extends Component {
             curYear: userBirthdate.getFullYear(),
             curMonth: userBirthdate.getMonth(),
             lastDay: new Date(userBirthdate.getFullYear(), userBirthdate.getMonth() + 1, 0).getDate()
-        }
+        };
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
@@ -62,9 +62,8 @@ class BirthdayEdit extends Component {
         const todaysDate = new Date();
         todaysDate.setFullYear(todaysDate.getFullYear() - 21);
         const startingYear = todaysDate.getFullYear();
-        const savedUserBirthday = user.birthday ? new Date(user.birthday) : null;
+        const savedUserBirthday = user.birthday ? new Date(dateformat(user.birthday, 'mm/dd/yyyy')) : null;
         if (savedUserBirthday) {
-            savedUserBirthday.setDate(savedUserBirthday.getDate() + 1);
             savedUserBirthday.setHours(0,0,0,0);
         }
         return (
@@ -104,7 +103,7 @@ class BirthdayEdit extends Component {
                             </div>
                         </div>
                         <div className="actions">
-                            <button className="save" disabled={savedUserBirthday.getTime() === new Date(curYear, curMonth, curDate).getTime()} onClick={this.handleSubmit}>Save</button>
+                            <button className="save" disabled={!savedUserBirthday && new Date(todaysDate.getFullYear(), todaysDate.getMonth(), todaysDate.getDate()).getTime() === new Date(curYear, curMonth, curDate).getTime()} onClick={this.handleSubmit}>Save</button>
                             <button className="cancel" onClick={closeModal}>Cancel</button>
                         </div>
                     </div>

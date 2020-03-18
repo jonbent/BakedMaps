@@ -18,7 +18,7 @@ export default (prevState = _nullState, action) => {
             nextState = action.city;
             return nextState;
         case "persist/REHYDRATE":
-            if (!action.payload) return _nullState;
+            if (!action.payload || !action.payload.ui) return _nullState;
             if (Object.entries(action.payload.ui.city).length === 0) return _nullState;
             return action.payload.ui.city;
         default:

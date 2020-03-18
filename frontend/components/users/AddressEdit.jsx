@@ -15,7 +15,7 @@ class AddressEdit extends Component {
             inputVal: props.user.address,
             dropDown: false,
             addresses: [],
-            selectedAddress: null
+            selectedAddress: ""
         };
         this.emitInputChangeDebounce = debounce(this.emitInputChange.bind(this), 250);
         this.handleInput = this.handleInput.bind(this);

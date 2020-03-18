@@ -1,5 +1,6 @@
 export const fetchSearchResults = (query, {lat, lng}) => (
   $.ajax({
+    crossDomain: true,
     url: `https://api-g.weedmaps.com/discovery/v1/search?q=${query}&latlng=${lat}%2C${lng}&filter%5Btypes%5D%5B%5D=category&filter%5Btypes%5D%5B%5D=listing&filter%5Btypes%5D%5B%5D=brand&filter%5Btypes%5D%5B%5D=product&filter%5Bbounding_radius%5D=30mi&page_size=24`,
     method: "GET",
     dataType: "JSON"
@@ -9,6 +10,7 @@ export const fetchSearchResults = (query, {lat, lng}) => (
 
 export const findDispensaries = ({ lat, long, mileRadius }) => {
   return $.ajax({
+    crossDomain: true,
     url: `https://api-g.weedmaps.com/discovery/v1/listings?filter%5Bbounding_radius%5D=${mileRadius}mi&filter%5Bbounding_latlng%5D=${lat}%2C${long}&page_size=100`,
     method: "GET",
     dataType: "JSON"
@@ -16,6 +18,7 @@ export const findDispensaries = ({ lat, long, mileRadius }) => {
 };
 export const findBoundingBoxDispensaries = ({ lat1, long1, lat2, long2, filter = "" }) => {
   return $.ajax({
+    crossDomain: true,
     url: `https://api-g.weedmaps.com/discovery/v1/listings?filter%5Bbounding_box%5D=${lat1}%2C${long1}%2C${lat2}%2C${long2}&page_size=100&page=1${filter}`,
     method: "GET",
     dataType: "JSON"
@@ -25,6 +28,7 @@ export const findBoundingBoxDispensaries = ({ lat1, long1, lat2, long2, filter =
 export const fetchBakery = (bakerySlug, bakeryType = "dispensaries") => {
   if (bakeryType === "bakeries") bakeryType = "dispensaries";
   return $.ajax({
+    crossDomain: true,
     url: `https://api-g.weedmaps.com/discovery/v1/listings/${bakeryType}/${bakerySlug}`,
     method: "GET",
     dataType: "JSON"
@@ -33,6 +37,7 @@ export const fetchBakery = (bakerySlug, bakeryType = "dispensaries") => {
 export const fetchMenuItem = (bakerySlug, bakeryType = "dispensaries", menuItemSlug) => {
   if (bakeryType === "bakeries") bakeryType = "dispensaries";
   return $.ajax({
+    crossDomain: true,
     url: `https://api-g.weedmaps.com/discovery/v1/listings/${bakeryType}/${bakerySlug}/menu_items/${menuItemSlug}`,
     method: "GET",
     dataType: "JSON"
@@ -45,6 +50,7 @@ export const fetchBakeriesFromFollowings = (followings) => {
       if (bakeryType === "bakeries") bakeryType = "dispensaries";
       promises.push(
           $.ajax({
+            crossDomain: true,
             url: `https://api-g.weedmaps.com/discovery/v1/listings/${bakeryType}/${following.bakeryTag}`
           })
         )
@@ -60,6 +66,7 @@ export const fetchBakeriesFromFollowings = (followings) => {
 export const fetchMenuItems = (dispensarySlug, bakeryType="dispensaries", filter = "") => {
   if (bakeryType === "bakeries") bakeryType = "dispensaries";
   return $.ajax({
+    crossDomain: true,
     url: `https://api-g.weedmaps.com/discovery/v1/listings/${bakeryType}/${dispensarySlug}/menu_items?${filter}`,
     method: "GET",
     dataType: "JSON"
@@ -69,6 +76,7 @@ export const fetchMenuItems = (dispensarySlug, bakeryType="dispensaries", filter
 export const fetchAddresses = (searchTerm) => {
   // https://api-g.weedmaps.com/wm/v1/geocode?query=23&proximity=-122.3014%2C37.9154&include=region
   return $.ajax({
+    crossDomain: true,
     url: `https://api-g.weedmaps.com/wm/v1/geocode?query=${searchTerm}`,
     method: "GET",
     dataType: "JSON"
@@ -77,6 +85,7 @@ export const fetchAddresses = (searchTerm) => {
 
 export const fetchReviewableDistribution = (reviewableSlug, reviewableType) => {
   return $.ajax({
+    crossDomain: true,
     url: `https://api-g.weedmaps.com/wm/v1/reviews?reviewable_id=${reviewableSlug}&reviewable_type=${reviewableType}&page=1&page_size=1&include=distribution`,
     method: "GET",
     dataType: "JSON"

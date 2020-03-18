@@ -136,6 +136,7 @@ export default class BakeryMap extends Component {
     
     handleSelection(field){
         this.setState({
+          selectedBakery: null,
           [field]: !this.state[field]
         }, this.handleSearch);
     }

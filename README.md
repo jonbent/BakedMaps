@@ -75,8 +75,6 @@
 ## Authors
 - [Jon Bent](https://github.com/jonbent)
 
-![favorites-show-page](/favoritesshow.png)
-
 ## Dynamics
 * Schedule
  * 9am - 10pm

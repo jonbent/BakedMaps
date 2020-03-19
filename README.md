@@ -39,15 +39,15 @@
   
 ## Next Steps
 
-[x] MenuItem show page
-[ ] Favorites slice
-[ ] Posts slice
-[x] User settings page
-[x] get svg map images for carousels
-[ ] Deals slice
-[ ] News Slice
-[ ] Brands Slice
-[ ] Change from Showing Dispensary information to Bakery Information.
+- [x] MenuItem show page
+- [ ] Favorites slice
+- [ ] Posts slice
+- [x] User settings page
+- [x] get svg map images for carousels
+- [ ] Deals slice
+- [ ] News Slice
+- [ ] Brands Slice
+- [ ] Change from Showing Dispensary information to Bakery Information.
 
 ## Setup and Information
 

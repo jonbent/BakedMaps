@@ -8,13 +8,12 @@ export default class OptionCarouselHolder extends Component {
 
         this.state = {
             currentIndex: 0
-
-        }
+        };
         this.changeIndex = this.changeIndex.bind(this)
     }
 
     changeIndex(num, numDivs){
-        if (num < 0 || num === numDivs) return null
+        if (num < 0 || num === numDivs) return null;
         this.setState({
             currentIndex: num
         })
@@ -22,7 +21,7 @@ export default class OptionCarouselHolder extends Component {
     render(){
         const { header, link, items } = this.props;
         const {currentIndex} = this.state;
-        const numDivs = items.length % 5 === 0 ? items.length / 5 : items.length % 5
+        const numDivs = items.length % 5 === 0 ? items.length / 5 : items.length % 5;
         if (items.length === 0) return null;
         return (
             <div className="carousel-container">

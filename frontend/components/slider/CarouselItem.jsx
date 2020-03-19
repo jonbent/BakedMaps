@@ -7,7 +7,7 @@ import StorefrontMarker from "../svg/storefront_marker";
 const fills = ["#FFB700", "#0E93B4", "#E07000", "#00CDBE"];
 export default class CarouselItem extends Component {
     constructor(props) {
-        super(props)
+        super(props);
         
         this.state = {
             shouldRender: this.props.rendered
@@ -44,7 +44,7 @@ export default class CarouselItem extends Component {
                     </div>
                     <div className="carousel-body">
                         <div className="carousel-location">
-                            {item.city}, <span>{this.props, item.state}</span>
+                            {item.city}, <span>{item.state}</span>
                         </div>
                         <div className="carousel-name">
                             {item.name}

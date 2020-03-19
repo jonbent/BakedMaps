@@ -62,7 +62,7 @@ export default class CarouselItem extends Component {
                     </div>
                 </Link>
             </div>
-        )
+        );
         return null
     }
 }

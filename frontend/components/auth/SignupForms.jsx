@@ -1,8 +1,8 @@
 import React from 'react'
 
 import queryString from 'query-string';
-import EmailForm from './EmailForm'
-import SignupOptions from './SignupOptions'
+import EmailForm from './EmailForm';
+import SignupOptions from './SignupOptions';
 
 const SignupForms = (props) => {
     const queryStringParams = queryString.parse(props.location.search);
@@ -15,14 +15,15 @@ const SignupForms = (props) => {
                 formType={props.formType}
                 errors={props.errors}
                 clearErrors={props.clearErrors}
+                history={props.history}
               />
             );
             break;
         default:
-            returnedForm = <SignupOptions/>
+            returnedForm = <SignupOptions/>;
             break;
     }
     return returnedForm;
-}
+};
 
-export default SignupForms
+export default SignupForms;

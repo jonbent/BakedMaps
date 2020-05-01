@@ -5,7 +5,11 @@ import '../../scss/modals/Hamburger.scss';
 import {Link} from "react-router-dom";
 import {logout} from "../../actions/session";
 
+import {useHistory, useLocation} from 'react-router-dom';
+
 const Hamburger = ({openStatus, loggedIn, user, logout}) => {
+    const history = useHistory();
+    const location = useLocation();
     return (
         <div className={`Hamburger ${openStatus ? "slide-in" : ""}`}>
             <div className="absolute-hamburger">
@@ -24,10 +28,10 @@ const Hamburger = ({openStatus, loggedIn, user, logout}) => {
                 </div>}
                 {!loggedIn && <div className="session-actions-container">
                     <div className="session-actions">
-                        <Link to="/login">
+                        <Link to="/login" state={{ prevPath: location.pathname }}>
                             <button className="login">Log in</button>
                         </Link>
-                        <Link to="/signup">
+                        <Link to="/signup" state={{ prevPath: location.pathname }}>
                             <button className="signup">Sign up</button>
                         </Link>
                     </div>

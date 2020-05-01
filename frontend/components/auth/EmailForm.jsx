@@ -3,14 +3,14 @@ import { Link } from "react-router-dom";
 
 export default class EmailForm extends Component {
     constructor(props) {
-        super(props)
+        super(props);
     
         this.state = {
              email: '',
              username: '',
              password: '',
              email_or_username: ''
-        }
+        };
         this.handleSubmit = this.handleSubmit.bind(this);
     }
     handleInput(e, field){
@@ -19,8 +19,8 @@ export default class EmailForm extends Component {
         })
     }
     handleSubmit(e){
-        e.preventDefault()
-        this.props.processForm(this.state)
+        e.preventDefault();
+        this.props.processForm({formUser: this.state, history: this.props.history})
     }
 
     componentWillUnmount() {
@@ -45,8 +45,9 @@ export default class EmailForm extends Component {
                                     { password: this.state.password + first[0] },
                                     () => {
                                         if (!password.length) {
-                                            clearInterval(passwordInterval)
-                                            this.props.processForm(this.state)
+                                            clearInterval(passwordInterval);
+                                            console.log(this.props.history)
+                                            this.props.processForm({formUser: this.state, history: this.props.history})
                                         } 
                                         
                                     }
@@ -59,7 +60,7 @@ export default class EmailForm extends Component {
         }
     }
     render() {
-        const {formType, errors} = this.props
+        const {formType, errors} = this.props;
         const emailField =
           formType === "Sign up" ? (
             <div className="field-container">

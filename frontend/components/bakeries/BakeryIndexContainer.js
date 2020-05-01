@@ -1,7 +1,7 @@
 import {connect} from 'react-redux';
-import BakeryIndex from './BakeryIndex'
+import BakeryIndex from './BakeryIndex';
 
-import {receiveReviewAmount, updateBounds} from '../../actions/filters'
+import {receiveReviewAmount, updateBounds} from '../../actions/filters';
 import { fetchBakeries, fetchBakery } from "../../actions/bakeries";
 import {fetchReviewableDistribution} from "../../actions/reviews";
 import {closeHamburger} from "../../actions/hamburger";
@@ -12,7 +12,7 @@ const mapStateToProps = ({entities, ui, session}) => ({
     city: ui.city,
     currentUser: entities.users[session.name],
     reviewDistribution: ui.reviewDistribution
-})
+});
 const mapDispatchToProps = dispatch => ({
     fetchBakeries: (bounds, filter) => dispatch(fetchBakeries(bounds, filter)),
     fetchBakery: (bakerySlug, storeType) => dispatch(fetchBakery(bakerySlug, storeType)),

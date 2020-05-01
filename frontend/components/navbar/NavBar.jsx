@@ -148,15 +148,15 @@ class NavBar extends Component {
                         {!products.length &&
                             <li className="product-list-item">
                               <div className="product-icon"></div>
-                              <div className="product-name">No Found Products</div>
+                              <div className="product-name">No Found Bakeries</div>
                             </li>
                         }
                         {!!products.length && products.map(product => {
-                          if (product.type !== 'listing') return null
-                          let webUrl = product.attributes.web_url.split('.com')[1];
+                          // if (product.type !== 'listing' && product.type !== 'product') return null;
+                          // if (product.type !== 'listing') return null;
                           let splitWebUrl = product.attributes.web_url.split('.com')[1].split('/');
                           if (splitWebUrl[1] === 'dispensaries') splitWebUrl[1] = 'bakeries';
-                          webUrl = splitWebUrl.join('/')
+                          const webUrl = splitWebUrl.join('/');
                           return (
                             <li
                             key={product.id}
@@ -250,8 +250,8 @@ class NavBar extends Component {
                   )}
                   {!currentUser && (
                     <div className="auth-links">
-                      <Link to="/login">LOG IN</Link>
-                      <Link to="/signup">SIGN UP</Link>
+                      <Link to={{pathname: "/login", state: {prevPath: this.props.location.pathname}}}>LOG IN</Link>
+                      <Link to={{pathname: "/signup", state: {prevPath: this.props.location.pathname}}}>SIGN UP</Link>
                     </div>
                   )}
             </div>

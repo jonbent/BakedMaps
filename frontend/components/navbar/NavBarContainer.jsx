@@ -9,7 +9,7 @@ import {openHamburger} from "../../actions/hamburger";
 const mapStateToProps = ({entities, ui, session}) => {
     return {
         currentUser: entities.users[session.name],
-        products: Object.values(ui.filters.products),
+        products: Object.values(ui.filters.products).filter(product => product.type === "listing"),
         city: ui.city
     }
 };

@@ -5,7 +5,6 @@ class Api::ReviewsController < ApplicationController
             @reviews = user.reviews
             # @reviews = Review.includes(:user).where(reviewable_id: params[:reviewable_id], 
         else
-
             @reviews = Review.includes(:user).order(created_at: :desc).where(reviewable_id: params[:reviewable_id], reviewable_type: params[:reviewable_type])
         end
     end

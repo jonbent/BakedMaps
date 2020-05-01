@@ -28,8 +28,8 @@ export const fetchReviewableDistribution = (reviewableSlug, reviewableType) => d
   return WMApiUtil.fetchReviewableDistribution(reviewableSlug, reviewableType).then(res => dispatch(receiveReviewDistribution(res.meta.distribution)));
 };
 
-export const fetchReviewsByBakeryId = (bakeryId) => dispatch => {
-    return ReviewApiUtil.fetchReviewsByBakeryId(bakeryId).then(reviews => dispatch(receiveReviews(reviews)))
+export const fetchReviewsByBakeryId = (bakeryId, bakeryType) => dispatch => {
+    return ReviewApiUtil.fetchReviewsByBakeryId(bakeryId, bakeryType).then(reviews => dispatch(receiveReviews(reviews)))
 };
 export const fetchUserReviews = (userId) => dispatch => {
     return ReviewApiUtil.fetchUserReviews(userId).then(reviews => dispatch(receiveReviews(reviews)))

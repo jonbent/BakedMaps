@@ -7,7 +7,7 @@ const LoginForms = (props) => {
     const demoUser = {
         email_or_username: "demo@bakedmaps.com",
         password: 'password'
-    }
+    };
     let returnedForm;
     switch (queryStringParams.mode) {
       case "email":
@@ -17,6 +17,7 @@ const LoginForms = (props) => {
             formType={props.formType}
             errors={props.errors}
             clearErrors={props.clearErrors}
+            history={props.history}
           />
         );
         break;
@@ -28,14 +29,15 @@ const LoginForms = (props) => {
             errors={props.errors}
             demoUser={demoUser}
             clearErrors={props.clearErrors}
+            history={props.history}
           />
         );
         break;
       default:
-        returnedForm = <LoginOptions />;
+        returnedForm = <LoginOptions {...props}/>;
         break;
     }
     return returnedForm;
-}
+};
 
 export default LoginForms

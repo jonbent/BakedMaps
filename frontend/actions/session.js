@@ -17,16 +17,16 @@ export const receiveSessionErrors = (payload) => ({
   payload
 });
 
-export const signup = formUser => dispatch =>
-         SessionApiUtil.signup(formUser).then(
+export const signup = formUserAndHistory => dispatch =>
+         SessionApiUtil.signup(formUserAndHistory.formUser).then(
            payload => dispatch(receiveCurrentUser(payload)),
            payload => dispatch(receiveSessionErrors(payload.responseJSON))
-         );
-export const login = formUser => dispatch =>
-         SessionApiUtil.login(formUser).then(
+         ).then(() => formUserAndHistory.history.go(-2));
+export const login = formUserAndHistory => dispatch =>
+         SessionApiUtil.login(formUserAndHistory.formUser).then(
            payload => dispatch(receiveCurrentUser(payload)),
            payload => dispatch(receiveSessionErrors(payload.responseJSON))
-         );
+         ).then(() => formUserAndHistory.history.go(-2));
 export const logout = () => dispatch =>
          SessionApiUtil.logout().then(
            () => dispatch(logoutCurrentUser()),

@@ -10,7 +10,7 @@ const mapStateToProps = state => ({
   formType: "Log in"
 });
 const mapDispatchToProps = dispatch => ({
-  processForm: formUser => dispatch(login(formUser)),
+  processForm: formUserAndHistory => dispatch(login(formUserAndHistory)),
   clearErrors: () => dispatch(clearErrors())
 });
 

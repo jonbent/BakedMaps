@@ -5,18 +5,18 @@ import Reviews from './Reviews'
 
 export default class BakeryReviews extends Component {
     constructor(props) {
-        super(props)
+        super(props);
         this.state = {
             numStarsHovered: 0,
             ready: false
-        }
+        };
         this.handleStarHover = this.handleStarHover.bind(this);
         this.resetStars = this.resetStars.bind(this);
         this.requireLoggedIn = this.requireLoggedIn.bind(this);
     }
     
     componentDidMount(){
-        this.props.fetchReviewsByBakeryId(this.props.bakeryId).then(() => this.setState({ ready: true }))
+        this.props.fetchReviewsByBakeryId(this.props.bakeryId, this.props.storeType).then(() => this.setState({ ready: true }))
     };
     handleStarHover(num){
         this.setState({

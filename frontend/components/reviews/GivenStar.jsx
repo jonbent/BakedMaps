@@ -15,9 +15,9 @@ const GivenStar = ({num, numStars}) => {
             </div>
         </div>
     )
-}
+};
 
-export default GivenStar
+export default GivenStar;
 
 // numStars | num | val
 // 4.5      | 4   | 1

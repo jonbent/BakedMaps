@@ -13,7 +13,7 @@ export default class SessionForm extends Component {
   handleSubmit(e) {
     e.preventDefault();
     const user = Object.assign({}, this.state);
-    this.props.processForm(user);
+    this.props.processForm({formUser: user, history: this.props.history});
   }
 
   handleInput(field){

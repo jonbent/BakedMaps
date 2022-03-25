@@ -9,7 +9,7 @@
     "acorn": "^6.4.1",
     "dateformat": "^3.0.3",
     "lodash": "^4.17.15",
-    "minimist": "^1.2.5",
+    "minimist": "^1.2.6",
     "query-string": "^6.9.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
